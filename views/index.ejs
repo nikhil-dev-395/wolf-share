@@ -1,10 +1,11 @@
-<!-- views/index.ejs -->
-
 <%- include("partials/header.ejs") %>
 
 <section class="w-full h-screen flex justify-center py-0 pb-28">
-  <form action="/upload" method="post" class="rounded-3xl max-w-lg w-[33%] h-auto px-8 py-0 pb-3">
-    <div
+  <div class="rounded-3xl max-w-lg w-[33%] h-auto px-8 py-0 pb-3">
+    <form
+      action="/upload"
+      method="post"
+      enctype="multipart/form-data"
       id="select-file-box"
       class="border-4 border-dashed border-blue-500 rounded-3xl px-8 pt-3 relative text-center mt-10"
     >
@@ -16,7 +17,7 @@
         name="file"
         id="file-sharing"
         class="opacity-0 absolute inset-0 cursor-pointer z-50"
-        accept=".jpg , .png , .pdf , .ppt , .docx , .svg"
+        accept=".jpg, .png, .pdf, .ppt, .docx, .svg"
       />
 
       <!-- Drop Image or File Selection UI -->
@@ -34,6 +35,7 @@
         </p>
         <p
           class="text-blue-600 font-bold text-xl cursor-pointer hover:text-blue-800 transition-all"
+          onclick="document.getElementById('file-sharing').click();"
         >
           Browse Files
         </p>
@@ -57,17 +59,12 @@
       </div>
 
       <!-- Display selected file content -->
-      <!-- Display selected file content -->
       <div
         id="show"
         class="relative w-full mt-4 max-w-sm h-52 max-h-52 border border-gray-200 rounded-lg overflow-hidden bg-gray-100 shadow-md hidden"
       >
         <!-- Top shadow overlay -->
-        <div
-          class="absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-black/80 to-transparent pointer-events-none"
-        ></div>
-
-        <!-- The file (image or content) will be dynamically inserted here -->
+        <div class="absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-black/80 to-transparent pointer-events-none"></div>
       </div>
 
       <!-- File info section -->
@@ -77,40 +74,32 @@
       ></ul>
 
       <div class="flex justify-between pb-3" id="btn">
-        <!-- cancel button -->
+        <!-- Cancel button -->
         <button
           type="button"
           id="cancelBtn"
           class="bg-gray-400 text-white py-2 px-4 mt-6 rounded-md shadow-md hidden hover:bg-blue-800 transition-all"
         >
           <div class="flex gap-2 items-center">
-            <span>cancel</span>
-            <img
-              src="/icons/cancel.svg"
-              alt="next"
-              class="w-4 h-4 bg-slate-50 rounded-3xl"
-            />
+            <span>Cancel</span>
+            <img src="/icons/cancel.svg" alt="next" class="w-4 h-4 bg-slate-50 rounded-3xl" />
           </div>
         </button>
 
-        <!-- Next button -->
+        <!-- Submit button -->
         <button
           type="submit"
           id="nextBtn"
           class="bg-blue-700 text-white py-2 px-4 mt-6 rounded-md shadow-md hidden hover:bg-blue-800 transition-all"
         >
           <div class="flex gap-2 items-center">
-            <span>next</span>
-            <img
-              src="/icons/next.svg"
-              alt="next"
-              class="w-4 h-4 bg-slate-50 rounded-3xl"
-            />
+            <span>Upload</span>
+            <img src="/icons/next.svg" alt="next" class="w-4 h-4 bg-slate-50 rounded-3xl" />
           </div>
         </button>
       </div>
-    </div>
-  </form>
+    </form>
+  </div>
 </section>
 
 <%- include("partials/footer.ejs") %>

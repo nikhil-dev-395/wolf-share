@@ -12,7 +12,6 @@ const fs = require("fs");
 const File = require("../models/files.models.js");
 const { upload, dropbox } = require("../middleware/upload.middleware.js");
 
-
 router.post("/upload", (req, res) => {
   upload(req, res, async (err) => {
     if (!req.file) {
@@ -51,7 +50,7 @@ router.post("/upload", (req, res) => {
         download_url: downloadLinkResponse.result.link, // Store the download link
       });
 
-      const response = await file.save();
+      await file.save();
       return res.status(200).json({
         success: true,
         file: `${process.env.APP_BASE_URL}/files/${response.uuid}`,
@@ -59,6 +58,14 @@ router.post("/upload", (req, res) => {
         download_url: downloadLinkResponse.result.link,
         data: dropbox_response,
       });
+
+      //   return res.render("helpers/success", {
+      //     title: "success",
+      //     originalFileName: req.file.originalname,
+      //     filename: req.file.filename,
+      //     download_url: downloadLinkResponse.result.link,
+      //     fileSize: req.file.size,
+      //   });
     } catch (uploadError) {
       console.error("Dropbox upload error:", uploadError);
       res.status(500).json({ success: false, error: "Dropbox upload failed" });
