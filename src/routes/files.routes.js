@@ -14,23 +14,26 @@ const { upload, dropbox } = require("../middleware/upload.middleware.js");
 
 router.post("/upload", (req, res) => {
   upload(req, res, async (err) => {
-    if (!req.file) {
-      return res
-        .status(400)
-        .json({ success: false, error: "all fields are required" });
-    }
     if (err) {
+      console.error("Multer error:", err);
       return res.status(500).json({ success: false, err });
     }
 
+    if (!req.file) {
+      return res
+        .status(400)
+        .json({ success: false, error: "All fields are required" });
+    }
+
+    console.log("Received file:", req.file);
+
     try {
-      // Read file content from disk
       const fileContent = fs.readFileSync(req.file.path);
 
-      // Upload file to Dropbox with the file content
+      // Upload file to Dropbox
       const dropbox_response = await dropbox.filesUpload({
         path: "/" + req.file.filename,
-        contents: fileContent, // Use file content from disk
+        contents: fileContent,
       });
 
       // Get a temporary download link for the uploaded file
@@ -40,32 +43,29 @@ router.post("/upload", (req, res) => {
 
       // Save file metadata to the database, including the download link
       const file = new File({
-        // sender:req,
-        userId: req.user.userId,
+        /*add userId for checking user is authorized or not  , expireAt, mimetype, userId, sender ,  receiver ? receiver : none */
+        // userId: req.user.userId,
         originalFileName: req.file.originalname,
         filename: req.file.filename,
-        uuid: uuid4(),
+        uuid: uuid4(), // Generate UUID for the file
         path: req.file.path,
         size: req.file.size,
         download_url: downloadLinkResponse.result.link, // Store the download link
       });
 
       await file.save();
-      return res.status(200).json({
+      console.log({
         success: true,
-        file: `${process.env.APP_BASE_URL}/files/${response.uuid}`,
+        file: `${process.env.APP_BASE_URL}/files/${file.uuid}`, // Use the saved file's UUID here
         message: "File uploaded successfully",
         download_url: downloadLinkResponse.result.link,
-        data: dropbox_response,
       });
-
-      //   return res.render("helpers/success", {
-      //     title: "success",
-      //     originalFileName: req.file.originalname,
-      //     filename: req.file.filename,
-      //     download_url: downloadLinkResponse.result.link,
-      //     fileSize: req.file.size,
-      //   });
+      res.render("helpers/success", {
+        title: "success",
+        filename: req.file.filename,
+        fileSize: req.file.size,
+        download_url: downloadLinkResponse.result.link,
+      });
     } catch (uploadError) {
       console.error("Dropbox upload error:", uploadError);
       res.status(500).json({ success: false, error: "Dropbox upload failed" });

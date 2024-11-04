@@ -5,6 +5,7 @@ const shareBtn = document.getElementById("shareBtn");
 const updateBtn = document.getElementById("updateBtn");
 const downloadBtn = document.getElementById("downloadBtn");
 
+
 console.log("All cookies:", document.cookie); // Log all cookies to see what you have
 
 

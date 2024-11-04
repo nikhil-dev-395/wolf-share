@@ -15,7 +15,7 @@ const { webRouter } = require("../src/routes/web.routes.js");
 const { showRouter } = require("../src/routes/show.routes.js");
 const { pageNotfoundRouter } = require("../src/routes/pageNotfound.routes.js");
 const { downloadRouter } = require("../src/routes/download.routes.js");
-const authUser = require("../src/middleware/auth.middleware.js")
+const authUser = require("../src/middleware/auth.middleware.js");
 // view ejs engine
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "../views"));
@@ -28,7 +28,7 @@ app.use(bodyParser.json());
 // ROUTES
 /* webRouter helps to routing all ejs pages - web route */
 app.use("/", webRouter);
-app.use("/api/v1/files", authUser, fileRouter);
+app.use("/api/v1/files", fileRouter);
 app.use("/files", showRouter);
 app.use("/files/download", downloadRouter);
 app.use("/api/v1/user", userRouter);

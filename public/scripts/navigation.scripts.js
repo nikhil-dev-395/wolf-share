@@ -16,15 +16,13 @@ if (currentLocation == "/pricing") {
 if (currentLocation == "/") {
   home.style.backgroundColor = "yellow";
 }
-
-cancelBtn.addEventListener("click", () => {
-  window.location.pathname = "/";
-});
-
-
 logo.addEventListener("click", () => {
   window.location.pathname = "/";
 });
+
+
+
+
 /* Function to access the token from cookies */
 function getCookie(name) {
   const value = `; ${document.cookie}`;
@@ -54,24 +52,3 @@ if (token) {
 }
 
 // this is for testing purpose  only not for use in any feature
-// Function to fetch user ID
-const fetchUserId = async () => {
-  try {
-    let response = await fetch("/api/v1/user/test", {
-      method: "POST",
-      credentials: "include", // Include cookies in the request
-    });
-
-    if (!response.ok) {
-      throw new Error("Network response was not ok " + response.statusText);
-    }
-
-    const userId = await response.text(); // Assuming the API returns the userId as plain text
-    document.getElementById("userId").textContent = userId; // Display user ID
-  } catch (error) {
-    console.log("Error fetching user ID:", error);
-  }
-};
-
-// Fetch the user ID when the script loads
-fetchUserId();

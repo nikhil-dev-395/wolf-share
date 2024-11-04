@@ -17,6 +17,11 @@ const nextBtn = document.getElementById("nextBtn");
 const cancelBtn = document.getElementById("cancelBtn");
 const select_file_box = document.getElementById("select-file-box");
 
+cancelBtn.addEventListener("click", () => {
+  window.location.pathname = "/";
+});
+
+
 files_sharing.addEventListener("change", (e) => {
   select_file_box.style.marginTop = "20px";
   nextBtn.style.display = "block";

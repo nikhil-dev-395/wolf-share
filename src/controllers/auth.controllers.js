@@ -20,6 +20,7 @@ const login = async (req, res) => {
       { email: user.email, userId: user._id },
       process.env.JWT_SECRET
     );
+    console.log(token);
 
     res.cookie("token", token, {
       httpOnly: false,
