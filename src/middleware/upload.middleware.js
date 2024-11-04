@@ -8,9 +8,13 @@ const { Dropbox } = require("dropbox");
 const fetch = require("isomorphic-fetch");
 // configuring the dropbox for uploading file from local
 const dropbox = new Dropbox({
-  accessToken: process.env.DROPBOX_ACCESS_TOKEN, // Ensure this environment variable is set
+  accessToken: process.env.DROPBOX_ACCESS_TOKEN,
+  refreshToken: process.env.DROPBOX_REFRESH_TOKEN,
+  clientId: process.env.DROPBOX_CLIENT_ID,
+  clientSecret: process.env.DROPBOX_CLIENT_SECRET,
   fetch: fetch,
 });
+
 
 // storage - a place where our file going to store
 const storage = multer.diskStorage({

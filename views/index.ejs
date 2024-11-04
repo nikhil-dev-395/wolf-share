@@ -3,7 +3,7 @@
 <%- include("partials/header.ejs") %>
 
 <section class="w-full h-screen flex justify-center py-0 pb-28">
-  <div class="rounded-3xl max-w-lg w-[33%] h-auto px-8 py-0 pb-3">
+  <form action="/upload" method="post" class="rounded-3xl max-w-lg w-[33%] h-auto px-8 py-0 pb-3">
     <div
       id="select-file-box"
       class="border-4 border-dashed border-blue-500 rounded-3xl px-8 pt-3 relative text-center mt-10"
@@ -79,6 +79,7 @@
       <div class="flex justify-between pb-3" id="btn">
         <!-- cancel button -->
         <button
+          type="button"
           id="cancelBtn"
           class="bg-gray-400 text-white py-2 px-4 mt-6 rounded-md shadow-md hidden hover:bg-blue-800 transition-all"
         >
@@ -94,6 +95,7 @@
 
         <!-- Next button -->
         <button
+          type="submit"
           id="nextBtn"
           class="bg-blue-700 text-white py-2 px-4 mt-6 rounded-md shadow-md hidden hover:bg-blue-800 transition-all"
         >
@@ -108,7 +110,7 @@
         </button>
       </div>
     </div>
-  </div>
+  </form>
 </section>
 
 <%- include("partials/footer.ejs") %>
