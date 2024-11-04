@@ -1,0 +1,79 @@
+<%- include("partials/header.ejs") %>
+
+<section class="flex w-full h-screen mx-auto">
+  <div class="w-3/4 py-16 mx-auto">
+    <div
+      id="user"
+      class="flex flex-row gap-4 p-4 border-b-2 border-yellow-300 justify-between"
+    >
+      <div class="">
+        <h2 class="text-yellow-300 text-lg font-bold font-IBM">nikhil wankhade</h2>
+        <h2 class="text-green-300 text-lg font-semibold ">Email12@gmail.com</h2>
+      </div>
+      <h2 class="text-green-300 text-lg font-bold">
+        total links : <span class="text-yellow-300">1</span>
+      </h2>
+    </div>
+
+    <!-- Your links -->
+    <h3 class="text-md text-purple-300 pt-11">links</h3>
+    <ul class="mt-6">
+      <!-- add here map function and make it repeat multiple time at how many links are available by user  -->
+      <li class="py-3">
+        <div class="flex justify-between font-IBM">
+          <span class="text-yellow-500 mr-10">1 .</span>
+          <span class="text-purple-500 "> <%= fileName %> </span>
+          <span class="text-green-400"> <%= fileSize %> mb. </span>
+          <a
+            href="<%= fileDownloadUrl %>"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-blue-500 underline hover:text-blue-700 font-mono"
+          >
+            <!-- <%= fileDownloadUrl.substring(0,40)+"...." %> -->
+             preview file
+          </a>
+          <!-- icons -->
+          <div class="flex gap-6">
+            <!-- download -->
+            <img
+              src="/icons/download.svg"
+              class="w-7 h-7 bg-white rounded-md hover:cursor-pointer hover:bg-red-400"
+              alt="download button"
+              id="downloadBtn"
+              title="download"
+            />
+
+            <!-- share -->
+            <img
+              src="/icons/share.svg"
+              class="w-7 h-7 bg-white rounded-md hover:cursor-pointer hover:bg-green-300"
+              alt="share button"
+              id="shareBtn"
+              title="share"
+            />
+            <!-- update -->
+            <img
+              src="/icons/update.svg"
+              class="w-7 h-7 bg-white rounded-md hover:cursor-pointer hover:bg-purple-300"
+              alt="update button"
+              id="updateBtn"
+              title="update"
+            />
+
+            <!-- delete -->
+            <img
+              src="/icons/delete.svg"
+              class="w-7 h-7 bg-white rounded-md hover:cursor-pointer hover:bg-red-400"
+              alt="delete button"
+              id="deleteBtn"
+              title="delete"
+            />
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<%- include("partials/footer.ejs") %>

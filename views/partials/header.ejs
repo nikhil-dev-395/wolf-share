@@ -1,0 +1,107 @@
+<!-- views/partials/header.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+   <link rel="shortcut icon" href="/icons/logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="/stylesheet/tailwind.css" />
+    <link rel="stylesheet" href="/stylesheet/global.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+  </head>
+
+  <body
+    class="w-full min-h-screen bg-slate-900 text-white !scroll-smooth font-sans"
+  >
+    <header class="w-full flex items-center">
+      <h2
+        class="px-28 flex items-center w-[37%] absolute top-[40px] left-[-70px]"
+      >
+        share any file with
+        <a href="/" class="flex items-center">
+          <span class="text-green-500 ml-3 ">wolf share</span>
+          <img
+            src="/icons/share.svg"
+            alt="share icons"
+            class="bg-green-500 rounded-md w-4 "
+          />
+        </a>
+      </h2>
+      <nav
+        class="mx-auto ml-72 flex w-[40%] px-20 justify-between bg-slate-50 rounded-2xl py-3 mt-6 mb-4 text-black"
+        style="margin-left: 373px"
+      >
+        <!-- logo of wolf share -->
+        <img
+          src="/icons/logo.svg"
+          class="w-9 hover:cursor-pointer"
+          alt="wolf share"
+          id="logo"
+          title="home"
+        />
+
+        <ul class="flex gap-8 items-center">
+          <!-- home -->
+          <li>
+            <a href="/">
+              <img
+                src="/icons/home.svg"
+                class="w-5 hover:bg-blue-500 rounded-xl"
+                alt="home"
+                id="home"
+                title="home"
+              />
+            </a>
+          </li>
+          <!-- account -->
+          <li>
+            <a href="/account">
+              <img
+                src="/icons/user.svg"
+                class="w-5 hover:bg-blue-500 rounded-xl"
+                alt="account"
+                id="account"
+                title="account"
+              />
+            </a>
+          </li>
+
+             <!-- pricing -->
+          <li>
+            <a href="/pricing">
+              <img
+                src="/icons/moneyIcon.svg"
+                class="w-5 hover:bg-blue-500 rounded-xl"
+                alt="pricing"
+                id="pricing"
+                title="pricing"
+              />
+            </a>
+          </li>
+
+        </ul>
+      </nav>
+
+      <button
+        id="logoutBtn"
+        class="text-red-800 mr-12 border border-green-300 flex items-center py-3 px-2 bg-yellow-500 rounded-xl hover:text-slate-100 hover:bg-orange-800 duration-200 ease-in-out"
+        onclick="logout()"
+      >
+        <span class="mr-2 font-IBM">Logout</span>
+        <img src="/icons/logout.svg" class="w-4" alt="home" />
+      </button>
+
+      <button
+        id="loginButton"
+        class="text-red-800 mr-12 border border-green-300 flex items-center py-3 px-2 bg-yellow-500 rounded-xl hover:text-slate-100 hover:bg-orange-800 duration-200 ease-in-out"
+      >
+        <span class="mr-2 font-IBM">Login</span>
+        <img src="/icons/login.svg" class="w-4" alt="home" />
+      </button>
+    </header>

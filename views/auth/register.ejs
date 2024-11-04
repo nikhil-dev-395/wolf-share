@@ -1,0 +1,95 @@
+<!-- auth/register.ejs -->
+
+<%- include("../partials/header.ejs") %>
+
+<section class="w-full h-[calc(100vh-40px)] mx-auto">
+  <div class="py-10">
+    <h3 class="text-xl text-yellow-500 px-40 font-IBM">register</h3>
+    <form
+     action="/api/v1/user/register"
+     method="post"
+      class="w-[39%] border-4 border-dashed border-blue-500 py-10 rounded-2xl text-md flex flex-col gap-y-6 mx-auto"
+      id="registerForm"
+    >
+      <!--  username -->
+      <div
+        class="flex items-center border mx-auto rounded-lg bg-white text-gray-700 w-[80%] shadow-sm focus-within:ring-2 focus-within:ring-blue-500"
+      >
+        <input
+          type="text"
+          name="username"
+          id="username"
+          placeholder="enter username"
+          class="flex-1 py-2 px-4 rounded-l-lg focus:outline-none"
+          required
+        />
+        <img
+          src="/icons/user.svg"
+          alt="User Icon"
+          class="w-5 h-5 mx-3 text-gray-500"
+        />
+      </div>
+
+      <!--  Email -->
+      <div
+        class="flex items-center border mx-auto rounded-lg bg-white text-gray-700 w-[80%] shadow-sm focus-within:ring-2 focus-within:ring-blue-500"
+      >
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="enter email"
+          class="flex-1 py-2 px-4 rounded-l-lg focus:outline-none"
+          required
+        />
+        <img
+          src="/icons/email.svg"
+          alt="User Icon"
+          class="w-5 h-5 mx-3 text-gray-500"
+        />
+      </div>
+
+      <!-- password -->
+      <div
+        class="flex items-center border rounded-lg bg-white text-gray-700 w-[80%] mx-auto shadow-sm focus-within:ring-2 focus-within:ring-blue-500"
+      >
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="enter password"
+          class="flex-1 py-2 px-4 rounded-l-lg focus:outline-none"
+          required
+        />
+        <img
+          src="/icons/password.svg"
+          onclick="showPassword()"
+          alt="User Icon"
+          class="w-5 h-5 mx-3 text-gray-500 cursor-pointer"
+          id="showpass"
+        />
+      </div>
+
+      <button
+        type="submit"
+        id="registerBtn"
+        class="bg-blue-500 text-white py-2 px-4 mt-6 w-28  rounded-md shadow-md hidden hover:bg-orange-500 transition-all ml-12 duration-500 ease-in-out"
+        style="display: block"
+      >
+        <div class="flex gap-2 items-center ">
+          <span class="font-IBM">register</span>
+          <img
+            src="/icons/login.svg"
+            alt="next"
+            class="w-4 h-4 bg-slate-50 rounded-3xl"
+          />
+        </div>
+      </button>
+      <p class="text-sm mx-auto">
+        already have an account
+        <a href="/login" class="text-blue-500 underline mx-2 font-IBM">login</a>
+      </p>
+    </form>
+  </div>
+</section>
+<%- include("../partials/footer.ejs")%>

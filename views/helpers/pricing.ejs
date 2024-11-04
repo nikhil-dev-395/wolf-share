@@ -1,0 +1,68 @@
+<%- include("../partials/header.ejs") %>
+
+<section class="w-full h-screen flex justify-center">
+  <div class="max-w-[90%] mx-auto text-center">
+    <h1 class="text-4xl font-bold capitalize">Friendly Pricing</h1>
+    <p class="text-sm py-3 text-yellow-600">
+      A new and better way to acquire, engage, and support customers
+    </p>
+    <!-- Price boxes will be shown here... -->
+    <div id="price-box-container" class="flex justify-center gap-10 py-4">
+      <div
+        id="price-box-container-free-one"
+        class="max-w-[300px] px-5 py-6 bg-white shadow-lg rounded-xl transition-transform transform hover:scale-105 hover:cursor-pointer"
+      >
+        <h2 class="text-2xl font-semibold text-slate-700">
+          <%= free.planType %>
+        </h2>
+        <p class="text-xs py-2 text-slate-600">
+          Essential tools for individuals and talents
+        </p>
+        <h3 class="text-5xl font-bold py-3 text-yellow-600 font-IBM">$0</h3>
+
+        <small class="text-sm py-3 text-slate-800">What's included?</small>
+        <ul class="text-xs text-slate-600 py-3">
+          <% free.whatsIncluded.forEach(function(item) { %>
+          <li class="py-2 flex items-center gap-2">
+            <img src="/icons/starIcon.svg" alt="" class="w-4 h-4" /> <%= item %>
+          </li>
+          <% }) %>
+        </ul>
+
+        <button class="bg-blue-600 px-3 py-2 rounded-xl hover:bg-purple-500">
+          choose plan
+        </button>
+      </div>
+
+      <!-- Paid Box -->
+      <div
+        id="price-box-container-paid-one"
+        class="max-w-[300px] px-5 py-6 bg-white shadow-lg rounded-xl transition-transform transform hover:scale-105 hover:cursor-pointer"
+      >
+        <h2 class="text-2xl font-semibold text-slate-700">
+          <%= premium.planType %>
+        </h2>
+        <p class="text-xs py-2 text-slate-600">
+          Advanced tools for professionals
+        </p>
+        <h3 class="text-5xl font-bold font-IBM py-3 text-yellow-600">
+          $<%= premium.price %>
+        </h3>
+
+        <small class="text-sm py-3 text-slate-800">What's included?</small>
+        <ul class="text-xs text-slate-600 py-3 list-disc list-inside">
+          <% premium.whatsIncluded.forEach(item=>{ %>
+          <li class="py-2 flex items-center gap-2">
+            <img src="/icons/starIcon.svg" alt="" class="w-4 h-4" /> <%= item %>
+          </li>
+          <%})%>
+        </ul>
+        <button class="bg-black px-3 py-2 rounded-xl hover:bg-yellow-600">
+          choose plan
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include("../partials/footer.ejs") %>

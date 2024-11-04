@@ -1,0 +1,97 @@
+<!-- views/helpers/send.ejs -->
+
+<%- include("../partials/header.ejs") %>
+
+<section class="w-full h-auto flex justify-center py-20">
+  <div class="rounded-2xl max-w-lg w-full p-8">
+    <div class="border border-gray-300 rounded-2xl p-6 relative text-center">
+      <form action="" class="space-y-5">
+        <!-- Sender Email -->
+        <div
+          class="flex items-center border rounded-lg bg-white text-gray-700 w-full shadow-sm focus-within:ring-2 focus-within:ring-blue-500"
+        >
+          <input
+            type="email"
+            name="senderEmail"
+            id="senderEmail"
+            placeholder="Sender Email"
+            class="flex-1 py-2 px-4 rounded-l-lg focus:outline-none"
+            required
+          />
+          <img
+            src="/icons/user.svg"
+            alt="User Icon"
+            class="w-5 h-5 mx-3 text-gray-500"
+          />
+        </div>
+
+        <!-- Receiver Email -->
+        <div
+          class="flex items-center border rounded-lg bg-white text-gray-700 w-full shadow-sm focus-within:ring-2 focus-within:ring-blue-500"
+        >
+          <input
+            type="email"
+            name="receiverEmail"
+            id="receiverEmail"
+            placeholder="Receiver Email"
+            class="flex-1 py-2 px-4 rounded-l-lg focus:outline-none"
+            required
+          />
+          <img
+            src="/icons/receiveEmail.svg"
+            alt="Email Icon"
+            class="w-5 h-5 mx-3 text-gray-500"
+          />
+        </div>
+
+        <!-- Email Title -->
+        <div
+          class="flex items-center border rounded-lg bg-white text-gray-700 w-full shadow-sm focus-within:ring-2 focus-within:ring-blue-500"
+        >
+          <input
+            type="text"
+            name="titleForEmail"
+            id="titleForEmail"
+            placeholder="Title"
+            class="flex-1 py-2 px-4 rounded-l-lg focus:outline-none"
+          />
+          <img
+            src="/icons/title.svg"
+            alt="Title Icon"
+            class="w-5 h-5 mx-3 text-gray-500"
+          />
+        </div>
+
+        <!-- Email Text -->
+        <div
+          class="flex relative items-center border rounded-lg bg-white text-gray-700 w-full shadow-sm focus-within:ring-2 focus-within:ring-blue-500"
+        >
+          <textarea
+            name="EmailText"
+            id="EmailText"
+            placeholder="Write your thoughts..."
+            class="flex-1 rounded-lg text-gray-700 outline-none w-full py-3 px-4 resize-none"
+            rows="6"
+          ></textarea>
+          <img
+            src="/icons/paragraph.svg"
+            alt="Text Icon"
+            class="absolute top-3 right-3 w-5 h-5 text-gray-500"
+          />
+        </div>
+
+        <!-- Send Button -->
+        <div class="flex justify-start">
+          <button
+            class="bg-blue-600 text-white rounded-lg py-2 px-4 flex items-center transition ease-in-out duration-150 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <span class="mr-2">Send File</span>
+            <img src="/icons/send.svg" alt="Send Icon" class="w-5 h-5" />
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<%- include("../partials/footer.ejs") %>

@@ -1,0 +1,114 @@
+<!-- views/index.ejs -->
+
+<%- include("partials/header.ejs") %>
+
+<section class="w-full h-screen flex justify-center py-0 pb-28">
+  <div class="rounded-3xl max-w-lg w-[33%] h-auto px-8 py-0 pb-3">
+    <div
+      id="select-file-box"
+      class="border-4 border-dashed border-blue-500 rounded-3xl px-8 pt-3 relative text-center mt-10"
+    >
+      <h2 id="userId"></h2>
+
+      <!-- File selection -->
+      <input
+        type="file"
+        name="file"
+        id="file-sharing"
+        class="opacity-0 absolute inset-0 cursor-pointer z-50"
+        accept=".jpg , .png , .pdf , .ppt , .docx , .svg"
+      />
+
+      <!-- Drop Image or File Selection UI -->
+      <img
+        src="/icons/drop.svg"
+        class="w-36 mx-auto mb-6 opacity-70"
+        alt="drop image"
+        id="dropImg"
+      />
+
+      <!-- Pre-upload instructions -->
+      <div id="displayPreInfo">
+        <p class="text-lg font-semibold text-gray-600 mb-2">
+          Drag & drop an image or
+        </p>
+        <p
+          class="text-blue-600 font-bold text-xl cursor-pointer hover:text-blue-800 transition-all"
+        >
+          Browse Files
+        </p>
+        <p class="text-xs text-gray-500 mt-3 font-sans">
+          Supported formats: .jpg, .png, .svg, .pdf, .docx (up to 100MB)
+        </p>
+      </div>
+
+      <!-- Progress bar -->
+      <div
+        id="myProgressBar"
+        class="hidden w-full bg-gray-300 rounded-full h-8"
+      >
+        <div
+          id="myBar"
+          class="bg-gradient-to-r from-green-400 to-purple-600 h-full rounded-full flex items-center justify-center transition-all duration-300 ease-in-out"
+          style="width: 10%"
+        >
+          <span id="value" class="text-xs text-white font-semibold">10%</span>
+        </div>
+      </div>
+
+      <!-- Display selected file content -->
+      <!-- Display selected file content -->
+      <div
+        id="show"
+        class="relative w-full mt-4 max-w-sm h-52 max-h-52 border border-gray-200 rounded-lg overflow-hidden bg-gray-100 shadow-md hidden"
+      >
+        <!-- Top shadow overlay -->
+        <div
+          class="absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-black/80 to-transparent pointer-events-none"
+        ></div>
+
+        <!-- The file (image or content) will be dynamically inserted here -->
+      </div>
+
+      <!-- File info section -->
+      <ul
+        id="fileInfo"
+        class="mt-3 flex flex-col items-start gap-2 text-gray-700 text-sm"
+      ></ul>
+
+      <div class="flex justify-between pb-3" id="btn">
+        <!-- cancel button -->
+        <button
+          id="cancelBtn"
+          class="bg-gray-400 text-white py-2 px-4 mt-6 rounded-md shadow-md hidden hover:bg-blue-800 transition-all"
+        >
+          <div class="flex gap-2 items-center">
+            <span>cancel</span>
+            <img
+              src="/icons/cancel.svg"
+              alt="next"
+              class="w-4 h-4 bg-slate-50 rounded-3xl"
+            />
+          </div>
+        </button>
+
+        <!-- Next button -->
+        <button
+          id="nextBtn"
+          class="bg-blue-700 text-white py-2 px-4 mt-6 rounded-md shadow-md hidden hover:bg-blue-800 transition-all"
+        >
+          <div class="flex gap-2 items-center">
+            <span>next</span>
+            <img
+              src="/icons/next.svg"
+              alt="next"
+              class="w-4 h-4 bg-slate-50 rounded-3xl"
+            />
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include("partials/footer.ejs") %>
