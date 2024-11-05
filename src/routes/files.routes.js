@@ -60,12 +60,17 @@ router.post("/upload", (req, res) => {
         message: "File uploaded successfully",
         download_url: downloadLinkResponse.result.link,
       });
-      res.render("helpers/success", {
-        title: "success",
-        filename: req.file.filename,
-        fileSize: req.file.size,
-        download_url: downloadLinkResponse.result.link,
-      });
+
+      //   res.render("helpers/success", {
+      //     title: "success",
+      //     filename: req.file.filename,
+      //     fileSize: req.file.size,
+      //     download_url: downloadLinkResponse.result.link,
+      //     uuid: file.uuid,
+      //   });
+
+      let uuid = file.uuid;
+      res.redirect(`/send/${uuid}`);
     } catch (uploadError) {
       console.error("Dropbox upload error:", uploadError);
       res.status(500).json({ success: false, error: "Dropbox upload failed" });
@@ -73,45 +78,150 @@ router.post("/upload", (req, res) => {
   });
 });
 
-router.post("/send", async (req, res) => {
-  try {
-    const { uuid, emailTo, emailFrom } = req.body;
-    if (!uuid || !emailTo || !emailFrom) {
-      res.status(422).send("all fields are required!");
-    }
-    // get file from database
+// router.post("/send/:uuid", async (req, res) => {
+//   try {
+//     const uuid = req.params.uuid;
+//     const { emailTo, emailFrom, FileTitle, FileMessage } = req.body;
 
-    const file = await File.findOne({ uuid: uuid });
-    if (file.sender) {
-      res.status(422).send("email already sent");
+//     // Check for required fields
+//     if (!uuid || !emailTo || !emailFrom) {
+//       return res.status(422).send("All fields are required!"); // Return here
+//     }
+
+//     // Get file from database
+//     const file = await File.findOne({ uuid: uuid });
+
+//     if (!file) {
+//       return res.status(404).send("File not found"); // Return if file is not found
+//     }
+
+//     if (file.sender) {
+//       return res.status(422).send("Email already sent"); // Return if email is already sent
+//     }
+
+//     // Update file information
+//     file.sender = emailFrom;
+//     file.receiver = emailTo;
+//     file.FileTitle = FileTitle;
+//     file.FileMessage = FileMessage;
+//     await file.save();
+
+//     // Send email
+//     const sendEmail = require("../services/emailService.services.js");
+//     const emailInfo = await sendEmail({
+//       from: emailFrom,
+//       to: emailTo,
+//       subject: FileTitle,
+//       text: `${emailFrom} shared a file with you...`,
+//       html: require("../services/emailTemplate.services.js")({
+//         emailFrom: emailFrom,
+//         downloadLink: `${file.download_url}`,
+//         size: parseInt(file.size / 1000) + "kb",
+//         expires: "24 hrs",
+//         FileMessage,
+//       }),
+//     });
+
+//     // return res.status(200).json({
+//     //   success: true,
+//     //   message: "Email was successfully sent",
+//     //   emailInfo, // Optionally return email info for debugging
+//     // });
+
+//     res.render("helpers/success", {
+//       title: "success",
+//       emailInfo,
+//       receiver: file.receiver,
+//       filename: file.filename,
+//       fileSize: file.size,
+//       download_url: file.download_url,
+//       uuid: file.uuid,
+//     });
+//   } catch (error) {
+//     console.log(error);
+//     return res.status(500).send("Internal Server Error"); // Handle errors properly
+//   }
+// });
+
+
+// const express = require("express");
+// const router = express.Router();
+// const File = require("../models/File"); // Assuming there's a File model
+const sendEmail = require("../services/emailService.services.js"); // Assuming this is the email sending service
+
+router.post("/send/:uuid", async (req, res) => {
+  try {
+    const uuid = req.params.uuid;
+    const { emailTo, emailFrom, FileTitle, FileMessage } = req.body;
+
+    // Check for required fields
+    if (!uuid || !emailTo || !emailFrom) {
+      return res.status(422).send("All fields are required!"); // Return here if any field is missing
     }
+
+    // Get file from the database
+    const file = await File.findOne({ uuid: uuid });
+    if (!file) {
+      return res.status(404).send("File not found"); // Return if file is not found
+    }
+
+    if (file.sender) {
+      return res.status(422).send("Email already sent"); // Return if email is already sent
+    }
+
+    // Update file information
     file.sender = emailFrom;
     file.receiver = emailTo;
+    file.FileTitle = FileTitle;
+    file.FileMessage = FileMessage;
     await file.save();
 
-    // send email
+    // Debug log to verify data before sending email
+    console.log("Preparing to send email with the following details:");
+    console.log("From:", emailFrom);
+    console.log("To:", emailTo);
+    console.log("Subject:", FileTitle);
+    console.log("File Link:", file.download_url);
+    console.log("File Size:", parseInt(file.size / 1000) + "kb");
 
-    const sendEmail = require("../services/emailService.services.js");
-    sendEmail({
-      from: emailFrom,
-      to: emailTo,
-      subject: "wolf share file sharing",
-      text: ` ${emailFrom} shared a file with you...`,
-      html: require("../services/emailTemplate.services.js")({
-        emailFrom: emailFrom,
-        downloadLink: `${process.env.APP_BASE_URL}/files/${file.uuid}`,
-        size: parseInt(file.size / 1000) + "kb",
-        expires: "24 hrs",
-      }),
-    });
+    // Send email
+    try {
+      const emailInfo = await sendEmail({
+        from: emailFrom,
+        to: emailTo,
+        subject: FileTitle,
+        text: `${emailFrom} shared a file with you...`,
+        html: require("../services/emailTemplate.services.js")({
+          emailFrom: emailFrom,
+          downloadLink: file.download_url,
+          size: parseInt(file.size / 1000) + "kb",
+          expires: "24 hrs",
+          FileMessage,
+        }),
+      });
 
-    return res.status(200).json({
-      success: true,
-      message: "email was successfully sent",
-    });
+      console.log("Email successfully sent:", emailInfo); // Log success response
+
+      // Render success page
+      res.render("helpers/success", {
+        title: "Success",
+        emailInfo,
+        receiver: file.receiver,
+        filename: file.filename,
+        fileSize: file.size,
+        download_url: file.download_url,
+        uuid: file.uuid,
+      });
+    } catch (emailError) {
+      console.error("Error sending email:", emailError); // Log email error
+      return res.status(500).send("Error sending email");
+    }
   } catch (error) {
-    console.log(error);
+    console.error("Internal Server Error:", error); // Log other errors
+    return res.status(500).send("Internal Server Error"); // Handle other errors properly
   }
 });
+
+
 
 module.exports = { fileRouter: router };

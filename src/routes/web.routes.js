@@ -6,6 +6,7 @@ const {
   linkedIn_profile_url,
   twitter_profile_url,
 } = require("../constants/constants.js");
+const File = require("../models/files.models.js");
 
 // with this middleware we can send github & linedin links ffff
 router.use((req, res, next) => {
@@ -23,10 +24,39 @@ router.get("/", (req, res) => {
   });
 });
 
-router.get("/send", (req, res) => {
-  return res.render("helpers/send", {
-    title: "send file",
-  });
+
+
+router.get("/send/:uuid", async (req, res) => {
+  const uuid = req.params.uuid;
+
+  try {
+    // Fetch the file details from the database
+    const findFile = await File.findOne(
+      { uuid },
+      "originalFileName size uuid download_url"
+    );
+
+    // Check if the file exists
+    if (!findFile) {
+      return res.status(404).json({ error: "File not found" });
+    }
+
+    // Render the template with the file details
+    return res.render("helpers/send", {
+      title: "Send File",
+      originalFileName: findFile.originalFileName,
+      size: findFile.size,
+      uuid: findFile.uuid,
+      download_url: findFile.download_url,
+    });
+  } catch (error) {
+    console.error("Error fetching file:", error); // Log the entire error object
+    return res.status(500).json({
+      success: false,
+      error: "An error occurred",
+      details: error.message,
+    });
+  }
 });
 
 router.get("/login", (req, res) => {

@@ -1,18 +1,21 @@
-<!-- views/helpers/send.ejs -->
-
 <%- include("../partials/header.ejs") %>
 
-<section class="w-full h-auto flex justify-center py-20">
-  <div class="rounded-2xl max-w-lg w-full p-8">
+<section class="w-full h-auto flex justify-center">
+  <div class="rounded-2xl max-w-md w-full my-6">
     <div class="border border-gray-300 rounded-2xl p-6 relative text-center">
-      <form action="" class="space-y-5">
+      <form
+        action="/api/v1/files/send/<%= uuid %>"
+        method="post"
+        id="sendFileForm"
+        class="space-y-5"
+      >
         <!-- Sender Email -->
         <div
           class="flex items-center border rounded-lg bg-white text-gray-700 w-full shadow-sm focus-within:ring-2 focus-within:ring-blue-500"
         >
           <input
             type="email"
-            name="senderEmail"
+            name="emailFrom"
             id="senderEmail"
             placeholder="Sender Email"
             class="flex-1 py-2 px-4 rounded-l-lg focus:outline-none"
@@ -31,7 +34,7 @@
         >
           <input
             type="email"
-            name="receiverEmail"
+            name="emailTo"
             id="receiverEmail"
             placeholder="Receiver Email"
             class="flex-1 py-2 px-4 rounded-l-lg focus:outline-none"
@@ -50,10 +53,11 @@
         >
           <input
             type="text"
-            name="titleForEmail"
-            id="titleForEmail"
+            name="FileTitle"
+            id="FileTitle"
             placeholder="Title"
             class="flex-1 py-2 px-4 rounded-l-lg focus:outline-none"
+            required
           />
           <img
             src="/icons/title.svg"
@@ -67,11 +71,12 @@
           class="flex relative items-center border rounded-lg bg-white text-gray-700 w-full shadow-sm focus-within:ring-2 focus-within:ring-blue-500"
         >
           <textarea
-            name="EmailText"
+            name="FileMessage"
             id="EmailText"
             placeholder="Write your thoughts..."
             class="flex-1 rounded-lg text-gray-700 outline-none w-full py-3 px-4 resize-none"
             rows="6"
+            required
           ></textarea>
           <img
             src="/icons/paragraph.svg"
@@ -83,6 +88,7 @@
         <!-- Send Button -->
         <div class="flex justify-start">
           <button
+            type="submit"
             class="bg-blue-600 text-white rounded-lg py-2 px-4 flex items-center transition ease-in-out duration-150 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <span class="mr-2">Send File</span>
