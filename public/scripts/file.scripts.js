@@ -21,7 +21,6 @@ cancelBtn.addEventListener("click", () => {
   window.location.pathname = "/";
 });
 
-
 files_sharing.addEventListener("change", (e) => {
   select_file_box.style.marginTop = "20px";
   nextBtn.style.display = "block";
@@ -166,4 +165,5 @@ files_sharing.addEventListener("change", (e) => {
     fileInfo.append(li2);
     fileInfo.append(li3);
   }
+
 });

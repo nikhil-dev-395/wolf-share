@@ -5,10 +5,16 @@ const shareBtn = document.getElementById("shareBtn");
 const updateBtn = document.getElementById("updateBtn");
 const downloadBtn = document.getElementById("downloadBtn");
 
+const nextBtn = document.getElementById("nextBtn");
+const btnContainer = document.getElementById("btn");
+const afterUploadMessage = document.getElementById("after-upload-btn-message");
+
+nextBtn.addEventListener("click", () => {
+  btnContainer.style.display = "none";
+  afterUploadMessage.style.display = "block";
+});
 
 console.log("All cookies:", document.cookie); // Log all cookies to see what you have
-
-
 
 // Check if deleteBtn exists before adding event listener
 if (deleteBtn) {

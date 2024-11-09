@@ -63,7 +63,7 @@
       <!-- Display selected file content -->
       <div
         id="show"
-        class="relative w-full mt-4 max-w-sm h-52 max-h-52 border border-gray-200 rounded-lg overflow-hidden bg-gray-100 shadow-md hidden"
+        class="relative w-full mt-4 max-w-sm h-52 max-h-52 border border-gray-200 rounded-lg overflow-hidden bg-black shadow-md hidden"
       >
         <!-- Top shadow overlay -->
         <div
@@ -101,7 +101,7 @@
           class="bg-blue-700 text-white py-2 px-4 mt-6 rounded-md shadow-md hidden hover:bg-blue-800 transition-all"
         >
           <div class="flex gap-2 items-center">
-            <span>Upload</span>
+            <span id="uploadText">Upload</span>
             <img
               src="/icons/next.svg"
               alt="next"
@@ -109,6 +109,15 @@
             />
           </div>
         </button>
+      </div>
+      <!-- After-upload message with better green-based styling -->
+      <div
+        id="after-upload-btn-message"
+        class="hidden flex items-center justify-center border-2 border-green-600 bg-green-100 px-4 py-3 rounded-lg shadow-lg"
+      >
+        <small class="text-green-800 text-sm font-medium">
+          File is going to upload in a few seconds... please wait.
+        </small>
       </div>
     </div>
   </form>
