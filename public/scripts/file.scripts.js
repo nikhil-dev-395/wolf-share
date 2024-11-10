@@ -51,6 +51,7 @@ files_sharing.addEventListener("change", (e) => {
 
   displayPreInfo.style.display = "none";
   show.style.display = "block";
+  show.style.border = "5px solid black";
   const file = e.target.files[0];
   console.log(file);
 
@@ -95,20 +96,19 @@ files_sharing.addEventListener("change", (e) => {
       show.append(embed);
     }
 
-    /* images handling from here ...*/
     if (
-      file.type === "image/png" ||
-      file.type === "image/jpg" ||
-      file.type === "image/svg+xml"
+      file.type.startsWith("image/") &&
+      (file.type === "image/png" ||
+        file.type === "image/jpg" ||
+        file.type === "image/jpeg" ||
+        file.type === "image/svg+xml")
     ) {
+      const img = document.createElement("img");
       img.src = url;
       img.alt = file.name;
-      img.style.width = "280px";
-      img.style.height = "300px";
-      img.style.margin = "auto";
-      img.style.borderRadius = "20px";
-      img.style.backgroundSize = "cover";
+      img.classList.add("w-full", "h-full", "mx-auto", "cover");
 
+      show.innerHTML = ""; // Clear any previous content
       show.append(img);
     }
 
@@ -118,8 +118,9 @@ files_sharing.addEventListener("change", (e) => {
       file.type ===
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
     ) {
+      show.style.color = "black";
+      show.innerHTML = "Loading document...";
       const reader = new FileReader();
-
       reader.onload = function (event) {
         const arrayBuffer = event.target.result;
 
@@ -131,6 +132,7 @@ files_sharing.addEventListener("change", (e) => {
           .catch(function (err) {
             console.error(err);
             alert("Failed to convert the document.");
+            show.innerHTML = "";
           });
       };
 
@@ -165,5 +167,4 @@ files_sharing.addEventListener("change", (e) => {
     fileInfo.append(li2);
     fileInfo.append(li3);
   }
-
 });

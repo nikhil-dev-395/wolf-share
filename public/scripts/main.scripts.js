@@ -11,7 +11,7 @@ const afterUploadMessage = document.getElementById("after-upload-btn-message");
 
 nextBtn.addEventListener("click", () => {
   btnContainer.style.display = "none";
-  afterUploadMessage.style.display = "block";
+  afterUploadMessage.style.display = "flex";
 });
 
 console.log("All cookies:", document.cookie); // Log all cookies to see what you have

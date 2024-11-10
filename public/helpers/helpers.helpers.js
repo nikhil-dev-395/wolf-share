@@ -1,5 +1,5 @@
 // /helpers.helpers.js
 
-const color = { docxBgColor: "#fff" };
+const color = { docxBgColor: "gray" };
 
 export { color };
