@@ -6,9 +6,14 @@ const {
   linkedIn_profile_url,
   twitter_profile_url,
 } = require("../constants/constants.js");
+/*model files*/
 const File = require("../models/files.models.js");
+const User = require("../models/user.models.js");
+/*middleware files*/
 
-// with this middleware we can send github & linedin links ffff
+const authUser = require("../middleware/auth.middleware.js");
+
+// with this middleware we can send github & linkedin links ffff
 router.use((req, res, next) => {
   res.locals.github_profile_url = github_profile_url;
   res.locals.linkedIn_profile_url = linkedIn_profile_url;
@@ -23,8 +28,6 @@ router.get("/", (req, res) => {
     title: "wolf share",
   });
 });
-
-
 
 router.get("/send/:uuid", async (req, res) => {
   const uuid = req.params.uuid;
@@ -71,11 +74,28 @@ router.get("/register", (req, res) => {
   });
 });
 
-router.get("/account", (req, res) => {
+router.get("/account", authUser, async (req, res) => {
   /*
   here i only add this values manually to show some data in ejs but add here mongodb db connection quickly to directly fetch the data form db
   */
+
+  const userId = req.user.userId;
+  const findUserInformation = await User.findOne(
+    { _id: userId },
+    " username email allFileLinks "
+  );
+
+  if (!findUserInformation) {
+    res.status(400).json({
+      success: false,
+      message: "user not fount || findUserInformation",
+    });
+  }
+
   return res.render("account", {
+    username: findUserInformation.username,
+    email: findUserInformation.email,
+    allFileLinksCount: findUserInformation.allFileLinks?.length || 0,
     title: "account",
     fileName: "hero",
     fileSize: 200,
