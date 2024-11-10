@@ -24,6 +24,8 @@ const login = async (req, res) => {
 
     res.cookie("token", token, {
       httpOnly: false,
+      expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
+      secure: true,
     });
     res.redirect("/");
   } catch (error) {
@@ -54,6 +56,8 @@ const register = async (req, res) => {
     // res.status(201).json({ message: "user created successfully", token });
     res.cookie("token", token, {
       httpOnly: false,
+      expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
+      secure: true,
     });
     res.redirect("/");
   } catch (error) {
