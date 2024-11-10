@@ -1,6 +1,7 @@
 /*auth.scripts.js*/
 console.log("auth.scripts.js");
 
+
 const password = document.getElementById("password");
 const loginForm = document.getElementById("loginForm");
 const registerForm = document.getElementById("registerForm");
@@ -18,7 +19,6 @@ const showPassword = () => {
 
 /*logout function is used for loggging out from website */
 const logout = () => {
-
   const cookies = document.cookie.split(";");
   for (let index = 0; index < cookies.length; index++) {
     document.cookie =

@@ -26,6 +26,7 @@ router.get("/", (req, res) => {
 
   return res.render("index", {
     title: "wolf share",
+    // isLoggedIn: req.isLoggedIn,
   });
 });
 
@@ -75,10 +76,6 @@ router.get("/register", (req, res) => {
 });
 
 router.get("/account", authUser, async (req, res) => {
-  /*
-  here i only add this values manually to show some data in ejs but add here mongodb db connection quickly to directly fetch the data form db
-  */
-
   const userId = req.user.userId;
   const findUserInformation = await User.findOne(
     { _id: userId },
@@ -96,6 +93,7 @@ router.get("/account", authUser, async (req, res) => {
     username: findUserInformation.username,
     email: findUserInformation.email,
     allFileLinksCount: findUserInformation.allFileLinks?.length || 0,
+    // isLoggedIn: res.locals.isLoggedIn,
     title: "account",
     fileName: "hero",
     fileSize: 200,
@@ -128,7 +126,7 @@ const free = {
 
 const premium = {
   planType: "premium",
-  price: "3",
+  price: "11",
   paymentCurrency: "dollar",
   whatsIncluded: [
     "Priority account support",
@@ -143,6 +141,12 @@ router.get("/pricing", (req, res) => {
     free,
     premium,
   });
+});
+
+router.get("/logout", (req, res) => {
+  // Clear the JWT token cookie
+  res.clearCookie("token");
+  res.redirect("/login");
 });
 
 module.exports = { webRouter: router };

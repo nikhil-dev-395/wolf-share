@@ -27,6 +27,7 @@ app.use(cors());
 app.use(bodyParser.json());
 // ROUTES
 /* webRouter helps to routing all ejs pages - web route */
+// app.use(authUser);
 app.use("/", webRouter);
 app.use("/api/v1/files", fileRouter);
 app.use("/files", showRouter);

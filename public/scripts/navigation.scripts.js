@@ -20,9 +20,6 @@ logo.addEventListener("click", () => {
   window.location.pathname = "/";
 });
 
-
-
-
 /* Function to access the token from cookies */
 function getCookie(name) {
   const value = `; ${document.cookie}`;

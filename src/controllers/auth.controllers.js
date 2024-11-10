@@ -26,6 +26,7 @@ const login = async (req, res) => {
       httpOnly: false,
       expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
       secure: true,
+      SameSite: "Strict",
     });
     res.redirect("/");
   } catch (error) {
@@ -58,6 +59,7 @@ const register = async (req, res) => {
       httpOnly: false,
       expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
       secure: true,
+      SameSite:"Strict"
     });
     res.redirect("/");
   } catch (error) {

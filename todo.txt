@@ -8,4 +8,5 @@ wolf share
 [+] complete the account page using mapping or forEach
 [+] add delete the file after 24hrs , for testing add only for 2min , then go for 24hrs
 [+] stop that span email popup in `gmail` app
+[+] don't forgot to add gsap for animation
 [+] add `premium` plan up to '11USD' , and make it default plan as `free` plan

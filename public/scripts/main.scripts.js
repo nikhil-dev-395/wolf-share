@@ -1,5 +1,6 @@
 /* public/scripts/main.js */
 console.log("this is main.js");
+
 const deleteBtn = document.getElementById("deleteBtn");
 const shareBtn = document.getElementById("shareBtn");
 const updateBtn = document.getElementById("updateBtn");

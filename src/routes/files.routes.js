@@ -143,7 +143,6 @@ router.post("/upload", (req, res) => {
 //   }
 // });
 
-
 // const express = require("express");
 // const router = express.Router();
 // const File = require("../models/File"); // Assuming there's a File model
@@ -221,7 +220,5 @@ router.post("/send/:uuid", async (req, res) => {
     return res.status(500).send("Internal Server Error"); // Handle other errors properly
   }
 });
-
-
 
 module.exports = { fileRouter: router };
