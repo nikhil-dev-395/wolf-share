@@ -13,7 +13,8 @@
         <h2 class="text-green-300 text-lg font-semibold"><%= email %></h2>
       </div>
       <h2 class="text-green-300 text-lg font-bold">
-        total links : <span class="text-yellow-300"> <%= allFileLinksCount %> </span>
+        total links :
+        <span class="text-yellow-300"> <%= allFileLinksCount %> </span>
       </h2>
     </div>
 
@@ -21,30 +22,42 @@
     <h3 class="text-md text-purple-300 pt-11">links</h3>
     <ul class="mt-6">
       <!-- add here map function and make it repeat multiple time at how many links are available by user  -->
+
+      <% findAllFileOFThisUser.forEach((file, index) => { %>
       <li class="py-3">
         <div class="flex justify-between font-IBM">
-          <span class="text-yellow-500 mr-10">1 .</span>
-          <span class="text-purple-500"> <%= fileName %> </span>
-          <span class="text-green-400"> <%= fileSize %> mb. </span>
+          <span class="text-yellow-500 mr-10"><%= index + 1 %>.</span>
+          <span class="text-purple-500">
+            <%= file.originalFileName %> -
+            <small class="text-slate-400"><%= file.filename %></small>
+          </span>
+          <span class="text-green-400"
+            ><%= (file.size / 1024 / 1024).toFixed(2) %> MB</span
+          >
           <a
-            href="<%= fileDownloadUrl %>"
+            href="#"
             target="_blank"
             rel="noopener noreferrer"
             class="text-blue-500 underline hover:text-blue-700 font-mono"
           >
-            <!-- <%= fileDownloadUrl.substring(0,40)+"...." %> -->
             preview file
           </a>
           <!-- icons -->
           <div class="flex gap-6">
             <!-- download -->
-            <img
-              src="/icons/download.svg"
-              class="w-7 h-7 bg-white rounded-md hover:cursor-pointer hover:bg-red-400"
-              alt="download button"
-              id="downloadBtn"
-              title="download"
-            />
+            <a
+              href="<%= file.download_url %>"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="/icons/download.svg"
+                class="w-7 h-7 bg-white rounded-md hover:cursor-pointer hover:bg-red-400"
+                alt="download button"
+                id="downloadBtn"
+                title="download"
+              />
+            </a>
 
             <!-- share -->
             <img
@@ -54,6 +67,7 @@
               id="shareBtn"
               title="share"
             />
+
             <!-- update -->
             <img
               src="/icons/update.svg"
@@ -74,6 +88,7 @@
           </div>
         </div>
       </li>
+      <% }) %>
     </ul>
   </div>
 </section>

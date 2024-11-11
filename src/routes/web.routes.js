@@ -21,7 +21,7 @@ router.use((req, res, next) => {
   next();
 });
 
-router.get("/", (req, res) => {
+router.get("/", authUser, (req, res) => {
   /* add here token for displaying the logout btn */
 
   return res.render("index", {
@@ -30,7 +30,7 @@ router.get("/", (req, res) => {
   });
 });
 
-router.get("/send/:uuid", async (req, res) => {
+router.get("/send/:uuid", authUser, async (req, res) => {
   const uuid = req.params.uuid;
 
   try {
@@ -76,6 +76,7 @@ router.get("/register", (req, res) => {
 });
 
 router.get("/account", authUser, async (req, res) => {
+  /* we `findUserInformation` this variable is used for displaying which user is logged in and we can use that info for showing user info*/
   const userId = req.user.userId;
   const findUserInformation = await User.findOne(
     { _id: userId },
@@ -85,7 +86,21 @@ router.get("/account", authUser, async (req, res) => {
   if (!findUserInformation) {
     res.status(400).json({
       success: false,
-      message: "user not fount || findUserInformation",
+      message: "user not found || findUserInformation",
+    });
+  }
+
+  /* display files based on email and userId - Files model */
+
+  const findAllFileOFThisUser = await File.find(
+    { userId },
+    " _id originalFileName filename size download_url "
+  );
+
+  if (!findAllFileOFThisUser) {
+    res.status(400).json({
+      success: false,
+      message: "file are not avail || findAllFileOFThisUser",
     });
   }
 
@@ -93,11 +108,10 @@ router.get("/account", authUser, async (req, res) => {
     username: findUserInformation.username,
     email: findUserInformation.email,
     allFileLinksCount: findUserInformation.allFileLinks?.length || 0,
-    // isLoggedIn: res.locals.isLoggedIn,
+    /*title - this is nothing but title of the html page*/
     title: "account",
-    fileName: "hero",
-    fileSize: 200,
-    fileDownloadUrl: "https://code.visualstudio.com/docs/editor/editingevolved",
+    findAllFileOFThisUser,
+
   });
 });
 
@@ -135,7 +149,7 @@ const premium = {
   ],
 };
 
-router.get("/pricing", (req, res) => {
+router.get("/pricing", authUser, (req, res) => {
   return res.render("helpers/pricing", {
     title: "pricing",
     free,
@@ -143,7 +157,7 @@ router.get("/pricing", (req, res) => {
   });
 });
 
-router.get("/logout", (req, res) => {
+router.get("/logout", authUser, (req, res) => {
   // Clear the JWT token cookie
   res.clearCookie("token");
   res.redirect("/login");

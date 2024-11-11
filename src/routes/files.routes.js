@@ -11,8 +11,9 @@ const fs = require("fs");
 // files
 const File = require("../models/files.models.js");
 const { upload, dropbox } = require("../middleware/upload.middleware.js");
+const authUser = require("../middleware/auth.middleware.js");
 
-router.post("/upload", (req, res) => {
+router.post("/upload",authUser, (req, res) => {
   upload(req, res, async (err) => {
     if (err) {
       console.error("Multer error:", err);
@@ -44,7 +45,7 @@ router.post("/upload", (req, res) => {
       // Save file metadata to the database, including the download link
       const file = new File({
         /*add userId for checking user is authorized or not  , expireAt, mimetype, userId, sender ,  receiver ? receiver : none */
-        // userId: req.user.userId,
+        userId: req.user.userId,
         originalFileName: req.file.originalname,
         filename: req.file.filename,
         uuid: uuid4(), // Generate UUID for the file
@@ -61,14 +62,6 @@ router.post("/upload", (req, res) => {
         download_url: downloadLinkResponse.result.link,
       });
 
-      //   res.render("helpers/success", {
-      //     title: "success",
-      //     filename: req.file.filename,
-      //     fileSize: req.file.size,
-      //     download_url: downloadLinkResponse.result.link,
-      //     uuid: file.uuid,
-      //   });
-
       let uuid = file.uuid;
       res.redirect(`/send/${uuid}`);
     } catch (uploadError) {
@@ -78,77 +71,10 @@ router.post("/upload", (req, res) => {
   });
 });
 
-// router.post("/send/:uuid", async (req, res) => {
-//   try {
-//     const uuid = req.params.uuid;
-//     const { emailTo, emailFrom, FileTitle, FileMessage } = req.body;
-
-//     // Check for required fields
-//     if (!uuid || !emailTo || !emailFrom) {
-//       return res.status(422).send("All fields are required!"); // Return here
-//     }
-
-//     // Get file from database
-//     const file = await File.findOne({ uuid: uuid });
-
-//     if (!file) {
-//       return res.status(404).send("File not found"); // Return if file is not found
-//     }
-
-//     if (file.sender) {
-//       return res.status(422).send("Email already sent"); // Return if email is already sent
-//     }
-
-//     // Update file information
-//     file.sender = emailFrom;
-//     file.receiver = emailTo;
-//     file.FileTitle = FileTitle;
-//     file.FileMessage = FileMessage;
-//     await file.save();
-
-//     // Send email
-//     const sendEmail = require("../services/emailService.services.js");
-//     const emailInfo = await sendEmail({
-//       from: emailFrom,
-//       to: emailTo,
-//       subject: FileTitle,
-//       text: `${emailFrom} shared a file with you...`,
-//       html: require("../services/emailTemplate.services.js")({
-//         emailFrom: emailFrom,
-//         downloadLink: `${file.download_url}`,
-//         size: parseInt(file.size / 1000) + "kb",
-//         expires: "24 hrs",
-//         FileMessage,
-//       }),
-//     });
-
-//     // return res.status(200).json({
-//     //   success: true,
-//     //   message: "Email was successfully sent",
-//     //   emailInfo, // Optionally return email info for debugging
-//     // });
-
-//     res.render("helpers/success", {
-//       title: "success",
-//       emailInfo,
-//       receiver: file.receiver,
-//       filename: file.filename,
-//       fileSize: file.size,
-//       download_url: file.download_url,
-//       uuid: file.uuid,
-//     });
-//   } catch (error) {
-//     console.log(error);
-//     return res.status(500).send("Internal Server Error"); // Handle errors properly
-//   }
-// });
-
-// const express = require("express");
-// const router = express.Router();
-// const File = require("../models/File"); // Assuming there's a File model
 const sendEmail = require("../services/emailService.services.js"); // Assuming this is the email sending service
+// const authUser = require("../middleware/auth.middleware.js");
 
-router.post("/send/:uuid", async (req, res) => {
+router.post("/send/:uuid", authUser, async (req, res) => {
   try {
     const uuid = req.params.uuid;
     const { emailTo, emailFrom, FileTitle, FileMessage } = req.body;

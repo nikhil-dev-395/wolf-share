@@ -4,9 +4,9 @@
   "main": "api/index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node server.js",
+    "start": "node api/index.js",
     "dev": "concurrently \"nodemon api/index.js\" \"npx tailwindcss -i ./public/stylesheet/style.css -o ./public/stylesheet/tailwind.css --watch\"",
-    "server": "nodemon server.js",
+    "server": "nodemon api/index.js",
     "tailwind": "npx tailwindcss -i ./public/stylesheet/style.css -o ./public/stylesheet/tailwind.css --watch"
   },
   "dependencies": {

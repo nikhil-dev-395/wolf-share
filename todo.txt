@@ -1,7 +1,6 @@
 wolf share
 
-[+] add animation like delay for message
-[+] display any file correctly in show Id of ejs
+[-] display any file correctly in show Id of ejs
 [+] send data from account route to account.ejs
 [+] implement data of account data in account.ejs remember to add forEach loop for displaying the how many file are uploaded
 [+] add share , update , delete , and download if possible then add preview
@@ -9,4 +8,7 @@ wolf share
 [+] add delete the file after 24hrs , for testing add only for 2min , then go for 24hrs
 [+] stop that span email popup in `gmail` app
 [+] don't forgot to add gsap for animation
+[+] add animation like delay for message use gsap
+[+] app pause and resume button when we are uploading file
+[+] remove useless console.log
 [+] add `premium` plan up to '11USD' , and make it default plan as `free` plan
