@@ -111,18 +111,27 @@ router.get("/account", authUser, async (req, res) => {
     /*title - this is nothing but title of the html page*/
     title: "account",
     findAllFileOFThisUser,
-
   });
 });
 
 /* add here proper details of files , which can help us to download it */
-router.get("/download", (req, res) => {
-  return res.render("helpers/download", {
-    title: "download",
-    filename: "let assume this is nikhil.jpg",
-    fileSize: 200,
-    downloadLink: "",
-  });
+router.get("/download/:uuid", async (req, res) => {
+  const uuid = req.params.uuid;
+  const findFileForDownload = await File.findOne(
+    { uuid },
+    " filename size download_url sender "
+  );
+
+  if (!findFileForDownload) {
+    res.status(400).send("file not found || findFileForDownload");
+  }
+    return res.render("helpers/download", {
+      title: "download",
+      filename: findFileForDownload.filename,
+      fileSize: findFileForDownload.size,
+      downloadLink: findFileForDownload.download_url,
+      sender: findFileForDownload.sender,
+    });
 });
 
 /*from here is pricing ->  remember this following code is for testing purpose*/

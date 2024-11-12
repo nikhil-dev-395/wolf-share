@@ -17,6 +17,9 @@ const nextBtn = document.getElementById("nextBtn");
 const cancelBtn = document.getElementById("cancelBtn");
 const select_file_box = document.getElementById("select-file-box");
 
+
+
+/*this cancel button will be used for going back to the index page of project*/
 cancelBtn.addEventListener("click", () => {
   window.location.pathname = "/";
 });

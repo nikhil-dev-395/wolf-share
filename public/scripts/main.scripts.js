@@ -1,59 +1,48 @@
 /* public/scripts/main.js */
-console.log("this is main.js");
+console.log("main.js");
 
-const deleteBtn = document.getElementById("deleteBtn");
-const shareBtn = document.getElementById("shareBtn");
-const updateBtn = document.getElementById("updateBtn");
-const downloadBtn = document.getElementById("downloadBtn");
+/* download a file in /download/:uuid route - add confirmation before downloading */
 
-const nextBtn = document.getElementById("nextBtn");
-const btnContainer = document.getElementById("btn");
-const afterUploadMessage = document.getElementById("after-upload-btn-message");
+const downloadFileBtn = document.getElementById("downloadFileBtn");
+const hiddenDownloadLink = document.getElementById("hiddenDownloadLink");
+downloadFileBtn.addEventListener("click", () => {
+  const downloadUrl = downloadFileBtn.dataset.downloadUrl;
 
-nextBtn.addEventListener("click", () => {
-  btnContainer.style.display = "none";
-  afterUploadMessage.style.display = "flex";
+  if (confirm("Do you want to download this file?")) {
+    // Set href and download attributes on the hidden <a> tag
+    hiddenDownloadLink.href = downloadUrl;
+    hiddenDownloadLink.download = ""; // Optionally specify a filename
+
+    // Programmatically trigger a click on the <a> tag to start the download
+    hiddenDownloadLink.click();
+  } else {
+    hiddenDownloadLink.href = "";
+  }
 });
 
-console.log("All cookies:", document.cookie); // Log all cookies to see what you have
+/* menu btns of account page */
+const shareBtn = document.getElementById("shareBtn");
+// const download_url = document.
+const shareData = {
+  url: shareBtn.dataset.downloadUrl,
+};
+shareBtn.addEventListener("click", async () => {
+  try {
+    await navigator.share(shareData);
+    alert("files shared successfully");
+  } catch (error) {
+    console.log("error occurred at sharing file", error);
+  }
+});
 
-// Check if deleteBtn exists before adding event listener
-if (deleteBtn) {
-  deleteBtn.addEventListener("click", () => {
-    const fileName = "mahavir";
-    const confirmDeletion = confirm(
-      `Do you really want to delete this "${fileName}" link?`
-    );
+const updateBtn = document.getElementById("updateBtn");
+updateBtn.addEventListener("click", () => {
+  alert("update btn clicked");
+});
 
-    if (confirmDeletion) {
-      console.log("You deleted this file from your database.");
-      console.log("Deletion confirmed.");
-      // Here you might want to add code to actually delete the file from the database
-    } else {
-      console.log("You canceled the deletion.");
-      console.log("Deletion canceled.");
-    }
-  });
-}
+const deleteBtn = document.getElementById("deleteBtn");
+deleteBtn.addEventListener("click", () => {
+  alert("delete btn clicked");
+});
 
-// Check if shareBtn exists before adding event listener
-if (shareBtn) {
-  shareBtn.addEventListener("click", () => {
-    console.log("shareBtn clicked");
-    // Add your sharing logic here
-  });
-}
 
-// Check if updateBtn exists before adding event listener
-if (updateBtn) {
-  updateBtn.addEventListener("click", () => {
-    console.log("updateBtn clicked");
-    // Add your update logic here
-  });
-}
-
-if (downloadBtn) {
-  downloadBtn.addEventListener("click", () => {
-    alert("do you want to download this");
-  });
-}

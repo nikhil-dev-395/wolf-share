@@ -7,7 +7,7 @@ const fileSchema = new mongoose.Schema(
     originalFileName: { type: String, required: false },
     filename: { type: String, required: false },
     path: { type: String, required: false },
-    FileMessage: { type: String, required: false }, 
+    FileMessage: { type: String, required: false },
     FileTitle: { type: String, required: false },
     size: { type: Number, required: false },
     uuid: { type: String, required: false },
@@ -15,7 +15,7 @@ const fileSchema = new mongoose.Schema(
     // expiration: { type: Date, required: false },
     status: {
       type: String,
-      enum: ["active", "deleted"],
+      enum: ["active", "deleted", "paused", "resumed"],
       default: "active",
       required: false,
     },
