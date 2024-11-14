@@ -53,8 +53,62 @@ if (token) {
 const nextBtn = document.getElementById("nextBtn");
 const btnContainer = document.getElementById("btn");
 const afterUploadMessage = document.getElementById("after-upload-btn-message");
+const menuBtnPauseAndResume = document.getElementById(
+  "menu-btn-pause-and-resume"
+);
 
 nextBtn.addEventListener("click", () => {
   btnContainer.style.display = "none";
   afterUploadMessage.style.display = "flex";
+  menuBtnPauseAndResume.style.display = "flex";
 });
+
+const pauseBtn = document.getElementById("pause-btn");
+pauseBtn.addEventListener("click", () => {
+  fetch("/api/v1/files/pause-upload", {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.message === "Upload paused") {
+        // Update UI to inform the user that the upload has been paused
+        document.getElementById("upload-status").textContent = "Upload paused";
+        // Optionally, disable the pause button after clicking
+        document.getElementById("pause-btn").disabled = true;
+      }
+    })
+    .catch((error) => console.error("Error pausing upload:", error));
+});
+
+/*resume button for resuming the uploading file on dropbox*/
+// Resume button for resuming the uploading file on Dropbox
+const resumeBtn = document.getElementById("resume-btn");
+const uploadStatus = document.getElementById("upload-status"); // Define uploadStatus here
+let isPaused = true; // Assume upload is paused initially
+
+// Resume upload
+resumeBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  fetch("/api/v1/files/resume-upload", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.message === "Upload resumed") {
+        isPaused = false;
+        uploadStatus.textContent = "Status: Resuming upload..."; // Set the status text
+        resumeBtn.disabled = true; // Disable resume button after resuming
+        pauseBtn.disabled = false; // Re-enable pause button if needed
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+});
+

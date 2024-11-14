@@ -121,6 +121,29 @@
       </div>
     </div>
   </form>
+
+  <div
+    id="menu-btn-pause-and-resume"
+    class="bg-transparent my-4 p-4 rounded-md shadow-lg justify-between items-center space-x-4 hidden"
+  >
+    <!-- pause uploading  on cloud storage -->
+    <button
+      id="pause-btn"
+      class="py-2 px-4 outline-none rounded-md bg-purple-500 text-white font-semibold transition-all duration-200 hover:bg-purple-600 active:bg-purple-700 focus:ring-2 focus:ring-purple-300 focus:outline-none"
+    >
+      <img src="/icons/pauseIcon.svg" alt="" />
+    </button>
+
+    <!-- resume uploading on cloud storage -->
+    <button
+      id="resume-btn"
+      class="py-2 px-4 outline-none rounded-md bg-green-500 text-white font-semibold transition-all duration-200 hover:bg-green-600 active:bg-green-700 focus:ring-2 focus:ring-green-300 focus:outline-none"
+    >
+      <img src="/icons/resumeIcon.svg" alt="" />
+    </button>
+
+    <div id="upload-status"></div>
+  </div>
 </section>
 
 <%- include("partials/footer.ejs") %>

@@ -2,7 +2,20 @@
 
 **Tech Stack**: EJS, Tailwind CSS, Express.js, Node.js, MongoDB
 
+## about
+
+ <h3> how to use `wolf share`</h3>
+ <ul>
+ <li>
+ <p>
+how to upload file ?
+ </p>
+ <small> just go to home page and there will be brows file option on page , just click on it you will able to upload a file , and just need to click upload button to upload , if you want to share this file with email you can share it , else wise go to account page share it from there</small>
+ </li>
+ </ul>
+
 ## deployment
+
 we are going to deploy this code on vercel platform
 
 ## Running the Application

@@ -30,6 +30,7 @@ app.use(bodyParser.json());
 // app.use(authUser);
 app.use("/", webRouter);
 app.use("/api/v1/files", fileRouter);
+/* if we don't need then remove this showRouter  & downloadRouter after completing code */
 app.use("/files", showRouter);
 app.use("/files/download", downloadRouter);
 app.use("/api/v1/user", userRouter);

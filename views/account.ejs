@@ -1,6 +1,6 @@
 <%- include("partials/header.ejs") %>
 
-<section class="flex w-full h-screen mx-auto">
+<section class="flex w-full h-auto mx-auto mb-10">
   <div class="w-3/4 py-16 mx-auto">
     <div
       id="user"
@@ -60,7 +60,11 @@
             </a>
 
             <!-- share -->
-            <button id="shareBtn" class="outline-none" data-download-url="<%= file.download_url %>">
+            <button
+              id="shareBtn"
+              class="outline-none"
+              data-download-url="<%= file.download_url %>"
+            >
               <img
                 src="/icons/share.svg"
                 class="w-7 h-7 bg-white rounded-md hover:cursor-pointer hover:bg-green-300"

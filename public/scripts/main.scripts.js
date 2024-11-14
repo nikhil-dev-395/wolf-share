@@ -20,6 +20,14 @@ downloadFileBtn.addEventListener("click", () => {
   }
 });
 
+/* pause the uploading file - /pause-upload */
+const pause_upload = document.getElementById("pause-btn");
+pause_upload.addEventListener("click", () => {
+  alert("pause btn");
+});
+
+
+
 /* menu btns of account page */
 const shareBtn = document.getElementById("shareBtn");
 // const download_url = document.
@@ -44,5 +52,3 @@ const deleteBtn = document.getElementById("deleteBtn");
 deleteBtn.addEventListener("click", () => {
   alert("delete btn clicked");
 });
-
-

@@ -5,8 +5,10 @@ wolf share
 [-] add download page full stack - using id of file
 [-] complete the account page using mapping or forEach
 [-] implement data of account data in account.ejs remember to add forEach loop for displaying the how many file are uploaded
-[+] app pause and resume button when we are uploading file - now complete this first
-[+] add share , update , delete , and download if possible then add preview
+[-] app pause and resume button when we are uploading file
+------------------------------------------------------------------------------------------------------------------------
+
+[+] add share , update , delete , and download if possible then add preview - now complete this first
 [+] add delete the file after 24hrs , for testing add only for 2min , then go for 24hrs
 [+] stop that span email popup in `gmail` app
 [+] don't forgot to add gsap for animation
