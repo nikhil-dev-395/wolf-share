@@ -20,12 +20,13 @@ const deleteFile = async (req, res) => {
     }
   } catch (error) {
     console.error("Error deleting file:", error);
+    /*return something valid in ejs */
     res.status(500).json({ message: "Error deleting file" });
   }
 };
 
 const updateFile = async (req, res) => {
-  const { uuid } = req.params;
+  const { uuid } = req.body;
   const updates = req.body;
   try {
     const updateOneFile = await File.findOneAndUpdate({ uuid }, updates, {
@@ -36,6 +37,10 @@ const updateFile = async (req, res) => {
     if (!updateOneFile) {
       return res.status(404).json({ message: "File not found" });
     }
+    if (updateOneFile) {
+      console.log("file updated successfully");
+    }
+    /*return something valid in ejs */
     res.status(200).json(updateOneFile);
   } catch (error) {
     console.error("Error updating file:", error);

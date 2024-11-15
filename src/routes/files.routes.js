@@ -12,6 +12,10 @@ const fs = require("fs");
 const File = require("../models/files.models.js");
 const { upload, dropbox } = require("../middleware/upload.middleware.js");
 const authUser = require("../middleware/auth.middleware.js");
+const {
+  deleteFile,
+  updateFile,
+} = require("../controllers/files.controllers.js");
 
 // router.post("/upload",authUser, (req, res) => {
 //   upload(req, res, async (err) => {
@@ -244,7 +248,7 @@ router.post("/send/:uuid", authUser, async (req, res) => {
   }
 });
 
-
-
+router.delete("/deleteFile",authUser, deleteFile);
+router.put("/updateFile",authUser, updateFile);
 
 module.exports = { fileRouter: router };

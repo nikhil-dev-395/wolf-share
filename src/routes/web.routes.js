@@ -80,7 +80,7 @@ router.get("/account", authUser, async (req, res) => {
   const userId = req.user.userId;
   const findUserInformation = await User.findOne(
     { _id: userId },
-    " username email allFileLinks "
+    " username email allFileLinks  "
   );
 
   if (!findUserInformation) {
@@ -94,7 +94,7 @@ router.get("/account", authUser, async (req, res) => {
 
   const findAllFileOFThisUser = await File.find(
     { userId },
-    " _id originalFileName filename size download_url "
+    " _id originalFileName filename size download_url uuid "
   );
 
   if (!findAllFileOFThisUser) {
@@ -125,13 +125,13 @@ router.get("/download/:uuid", async (req, res) => {
   if (!findFileForDownload) {
     res.status(400).send("file not found || findFileForDownload");
   }
-    return res.render("helpers/download", {
-      title: "download",
-      filename: findFileForDownload.filename,
-      fileSize: findFileForDownload.size,
-      downloadLink: findFileForDownload.download_url,
-      sender: findFileForDownload.sender,
-    });
+  return res.render("helpers/download", {
+    title: "download",
+    filename: findFileForDownload.filename,
+    fileSize: findFileForDownload.size,
+    downloadLink: findFileForDownload.download_url,
+    sender: findFileForDownload.sender,
+  });
 });
 
 /*from here is pricing ->  remember this following code is for testing purpose*/

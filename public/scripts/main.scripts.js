@@ -43,10 +43,6 @@ shareBtn.addEventListener("click", async () => {
   }
 });
 
-const updateBtn = document.getElementById("updateBtn");
-updateBtn.addEventListener("click", () => {
-  alert("update btn clicked");
-});
 
 const deleteBtn = document.getElementById("deleteBtn");
 deleteBtn.addEventListener("click", () => {

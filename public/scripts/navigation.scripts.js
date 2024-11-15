@@ -103,7 +103,7 @@ resumeBtn.addEventListener("click", (e) => {
       if (data.message === "Upload resumed") {
         isPaused = false;
         uploadStatus.textContent = "Status: Resuming upload..."; // Set the status text
-        resumeBtn.disabled = true; // Disable resume button after resuming
+        resumeBtn.disabled = true; // Disable resume button after resuming 
         pauseBtn.disabled = false; // Re-enable pause button if needed
       }
     })
@@ -111,4 +111,3 @@ resumeBtn.addEventListener("click", (e) => {
       console.error("Error:", error);
     });
 });
-

@@ -21,12 +21,11 @@
     <!-- Your links -->
     <h3 class="text-md text-purple-300 pt-11">links</h3>
     <ul class="mt-6">
-      <!-- add here map function and make it repeat multiple time at how many links are available by user  -->
-
+      <!-- add here forEach function and make it repeat multiple time at how many links are available by user  -->
       <% findAllFileOFThisUser.forEach((file, index) => { %>
-      <li class="py-3">
+      <li class="py-3 file-item">
         <div class="flex justify-between font-IBM">
-          <span class="text-yellow-500 mr-10"><%= index + 1 %>.</span>
+          <span class="text-yellow-500 mr-10 file-index"><%= index + 1 %>.</span>
           <span class="text-purple-500">
             <%= file.originalFileName %> -
             <small class="text-slate-400"><%= file.filename %></small>
@@ -84,7 +83,7 @@
             </button>
 
             <!-- delete -->
-            <button id="deleteBtn">
+            <button id="deleteBtn" data-uuid="<%= file.uuid %>">
               <img
                 src="/icons/delete.svg"
                 class="w-7 h-7 bg-white rounded-md hover:cursor-pointer hover:bg-red-400"
