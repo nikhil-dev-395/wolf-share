@@ -9,6 +9,7 @@ wolf share
 ------------------------------------------------------------------------------------------------------------------------
 
 [+] add share , update , delete , and download if possible then add preview - now complete this first
+[+] remember to add sender email automatically fill it 
 [+] add delete the file after 24hrs , for testing add only for 2min , then go for 24hrs
 [+] stop that span email popup in `gmail` app
 [+] don't forgot to add gsap for animation

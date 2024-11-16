@@ -41,10 +41,17 @@ const updateFile = async (req, res) => {
       console.log("file updated successfully");
     }
     /*return something valid in ejs */
-    res.status(200).json(updateOneFile);
+     res.status(200).json({
+       success: true,
+       message: "File updated successfully",
+       updateOneFile,
+     });
   } catch (error) {
     console.error("Error updating file:", error);
-    res.status(500).json({ message: "Error updating file" });
+    res.status(500).json({
+      success: false,
+      message: "An error occurred while updating the file",
+    });
   }
 };
 
