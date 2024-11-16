@@ -3,7 +3,6 @@
 const updateButtons = document.querySelectorAll("#updateBtn");
 updateButtons.forEach((button, index) => {
   const uuid = button.dataset.uuid;
-  // const originalFileName = button.dataset.originalFileName;
 
   button.addEventListener("click", () => {
     const newFileName = prompt("Enter the new file name:");
@@ -24,7 +23,7 @@ updateButtons.forEach((button, index) => {
         console.log(data);
 
         if (data.success) {
-          // Update the displayed file name dynamically
+          /* Update the displayed file name dynamically */
           button
             .closest(".file-item")
             .querySelector(".text-purple-500").innerHTML = `
