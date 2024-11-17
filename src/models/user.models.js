@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
 
+/* ^ warning :  carefully change the code here - because it will affect the database collections
+ */
+
 const userSchema = new mongoose.Schema(
   {
     username: { type: String, required: true },

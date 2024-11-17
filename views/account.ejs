@@ -21,6 +21,10 @@
     <!-- Your links -->
     <h3 class="text-md text-purple-300 pt-11">links</h3>
     <ul class="mt-6">
+      <% if(findAllFileOFThisUser.length === 0) { %>
+      <h2 class="text-red-500 text-center text-3xl">No data uploaded yet</h2>
+      <% } %>
+
       <!-- add here forEach function and make it repeat multiple time at how many links are available by user  -->
       <% findAllFileOFThisUser.forEach((file, index) => { %>
       <li class="py-3 file-item">

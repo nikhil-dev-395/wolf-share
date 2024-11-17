@@ -76,7 +76,6 @@ for smtp server i use [brevo]("https://app.brevo.com/")
 ``
  the api/index.js is a main file , in this project we are going to share any file to any person using email services , for this we need to first upload the file to the cloud then it send to the receiver (a person who will receive this file) , for this we need to specify the sender and receiver email
  ``
-
 ## For cloud storage
 
 for cloud i used dropbox cloud for storing the files there [dropbox](https://www.dropbox.com/developers) you can create your account here also

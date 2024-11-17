@@ -1,4 +1,4 @@
-wolf share
+  wolf share
 
 [-] display any file correctly in show Id of ejs
 [-] send data from "account route" to `account.ejs`
@@ -6,9 +6,12 @@ wolf share
 [-] complete the account page using mapping or forEach
 [-] implement data of account data in account.ejs remember to add forEach loop for displaying the how many file are uploaded
 [-] app pause and resume button when we are uploading file
+[-] handle the custom prompt in customPrompt.helpers.js and account.scripts.js
 ------------------------------------------------------------------------------------------------------------------------
-[+] handle the custom prompt in customPrompt.helpers.js and account.scripts.js - now complete this first
+[***] we are unable to send file using any email - - now complete this first
+
 [+] add share , update , delete , and download if possible then add preview
+
 [+] remember to add sender email automatically fill it
 [+] add delete the file after 24hrs , for testing add only for 2min , then go for 24hrs
 [+] stop that span email popup in `gmail` app
