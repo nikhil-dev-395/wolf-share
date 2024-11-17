@@ -3,6 +3,10 @@ console.log("file.js");
 
 // impoting module
 import { color } from "../helpers/helpers.helpers.js";
+// import customInputValue from "../helpers/customPrompt.helpers.js";
+// console.log("from files : " + customInputValue);
+
+
 
 const files_sharing = document.getElementById("file-sharing");
 const show = document.getElementById("show");
@@ -16,8 +20,6 @@ const progressValue = document.getElementById("value");
 const nextBtn = document.getElementById("nextBtn");
 const cancelBtn = document.getElementById("cancelBtn");
 const select_file_box = document.getElementById("select-file-box");
-
-
 
 /*this cancel button will be used for going back to the index page of project*/
 cancelBtn.addEventListener("click", () => {

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "api/index.js",
   "license": "MIT",
+  "type": "commonjs",
   "scripts": {
     "start": "node api/index.js",
     "dev": "concurrently \"nodemon api/index.js\" \"npx tailwindcss -i ./public/stylesheet/style.css -o ./public/stylesheet/tailwind.css --watch\"",
