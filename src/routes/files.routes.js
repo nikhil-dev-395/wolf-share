@@ -146,6 +146,7 @@ router.post("/upload", authUser, async (req, res) => {
         path: req.file.path,
         size: req.file.size,
         download_url: response.result.path_display,
+        expireAt: Date.now() + 24 * 60 * 60 * 1000,
       });
 
       await file.save();

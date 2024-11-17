@@ -32,7 +32,7 @@ router.get("/", authUser, (req, res) => {
 
 router.get("/send/:uuid", authUser, async (req, res) => {
   const uuid = req.params.uuid;
-
+  const userId = req.user.userId;
   try {
     // Fetch the file details from the database
     const findFile = await File.findOne(
@@ -45,6 +45,15 @@ router.get("/send/:uuid", authUser, async (req, res) => {
       return res.status(404).json({ error: "File not found" });
     }
 
+    // enter email id from db according to the who user is logged in
+    const findUser = await User.findOne({ _id: userId }, "email");
+
+    if (!findUser) {
+      console.log("user not found");
+      return res.status(404).json({ error: "User not found" });
+    }
+
+
     // Render the template with the file details
     return res.render("helpers/send", {
       title: "Send File",
@@ -52,6 +61,7 @@ router.get("/send/:uuid", authUser, async (req, res) => {
       size: findFile.size,
       uuid: findFile.uuid,
       download_url: findFile.download_url,
+      email: findUser.email
     });
   } catch (error) {
     console.error("Error fetching file:", error); // Log the entire error object

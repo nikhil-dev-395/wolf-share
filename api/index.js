@@ -16,6 +16,9 @@ const { showRouter } = require("../src/routes/show.routes.js");
 const { pageNotfoundRouter } = require("../src/routes/pageNotfound.routes.js");
 const { downloadRouter } = require("../src/routes/download.routes.js");
 const authUser = require("../src/middleware/auth.middleware.js");
+// cleanup - means delete the file after 24hrs
+require("../src/utils/cleanup.utils.js");
+
 // view ejs engine
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "../views"));

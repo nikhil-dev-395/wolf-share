@@ -12,7 +12,7 @@ const fileSchema = new mongoose.Schema(
     size: { type: Number, required: false },
     uuid: { type: String, required: false },
     /*add expire in 24hrs in mongodb collection and dropbox storage*/
-    // expiration: { type: Date, required: false },
+
     status: {
       type: String,
       enum: ["active", "deleted", "paused", "resumed"],
@@ -28,6 +28,11 @@ const fileSchema = new mongoose.Schema(
     },
     receiver: { type: String, required: false },
     download_url: { type: String, required: false },
+    expireAt: {
+      type: Date,
+      default: () => Date.now() + 24 * 60 * 60 * 1000, // Set expiry time to 24 hours from now
+      index: { expireAfterSeconds: 0 }, // TTL Index
+    },
   },
   { timestamps: true }
 );
