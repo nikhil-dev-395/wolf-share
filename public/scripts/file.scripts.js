@@ -3,8 +3,6 @@ console.log("file.js");
 
 // impoting module
 import { color } from "../helpers/helpers.helpers.js";
-// import customInputValue from "../helpers/customPrompt.helpers.js";
-// console.log("from files : " + customInputValue);
 
 
 

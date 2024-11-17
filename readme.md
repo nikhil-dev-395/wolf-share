@@ -1,72 +1,83 @@
-# File Sharing App
+# Wolf Share - File Sharing App
 
 **Tech Stack**: EJS, Tailwind CSS, Express.js, Node.js, MongoDB
 
-## about
+---
 
- <h3> how to use `wolf share`</h3>
- <ul>
- <li>
- <p>
-how to upload file ?
- </p>
- <small> just go to home page and there will be brows file option on page , just click on it you will able to upload a file , and just need to click upload button to upload , if you want to share this file with email you can share it , else wise go to account page share it from there</small>
- </li>
- </ul>
+## About
 
-## deployment
+### How to Upload a File?
+📂 **Steps**:
+- Go to the **Home Page**.
+- Click the **Browse File** option to select a file.
+- Hit the **Upload Button** to upload the file.
+- After uploading, you can choose to share the file via email. Alternatively, visit the **Account Page** to manage or share files later.
 
-we are going to deploy this code on vercel platform
+### What is the Account Page?
+👤 **Overview**:
+The **Account Page** allows you to:
+- Perform **CRUD operations** on uploaded files.
+- Share files or preview them.
+- Access details of all your files and user info for efficient file management.
+
+### What is the Pricing Page?
+💳 **Details**:
+The **Pricing Page** outlines the **Free** and **Premium Plans**, along with their benefits and advantages.
+
+---
+
+## Deployment
+
+This application is deployed on **Vercel** for easy and fast accessibility.
+
+---
 
 ## Running the Application
 
+### install packages
+```
+yarn
+```
 ### Development Command
-
-To run both the Tailwind CSS and Node.js server simultaneously, use:
-
+To start both the **Tailwind CSS** and **Node.js server**, run:
 ```bash
 yarn dev
 ```
 
-main file location is `api/index.js`
-
-# .env file
-
-```
-PORT = your port | 3000
-MONGO_URI = your mongodb url
-JWT_SECRET = your jwt secret key
-APP_BASE_URL = http://localhost:3000
-SMTP_HOST = you smtp host
-SMTP_PORT = your smtp port
-MAIL_USER = your smtp user id
-MAIL_PASS = smtp password
-DROPBOX_ACCESS_TOKEN = your dropbox access token
-DROPBOX_CLIENT_ID= your dropbox client Id
-DROPBOX_CLIENT_SECRET = your dropbox client secret
-DROPBOX_REFRESH_TOKEN= your dropbox refresh token
-
+---
+## env
+```PORT=your_port | 3000
+MONGO_URI=your_mongodb_url
+JWT_SECRET=your_jwt_secret_key
+APP_BASE_URL=http://localhost:3000
+SMTP_HOST=your_smtp_host
+SMTP_PORT=your_smtp_port
+MAIL_USER=your_smtp_user_id
+MAIL_PASS=your_smtp_password
+DROPBOX_ACCESS_TOKEN=your_dropbox_access_token
+DROPBOX_CLIENT_ID=your_dropbox_client_id
+DROPBOX_CLIENT_SECRET=your_dropbox_client_secret
+DROPBOX_REFRESH_TOKEN=your_dropbox_refresh_token
 ```
 
-# icon source
 
-for svg icons i used [hugeicons](https://hugeicons.com/) this website
+</br>
 
-# font source
+## Icon source
+ here in wolf share we used svg icon from [hugeIcons]("https://hugeicons.com/")
 
-font i used in wolf share is `sans` from tailwind default and [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono), for some modern feel
 
-# email services
+## Font
+here i used tailwind default font and IBM plex mono from google fonts
 
-https://app.brevo.com/ - we used as SMTP server , you can use any services based on your preference ,if you ever wanted to use this app
+## Email Services
+for smtp server i use [brevo]("https://app.brevo.com/")
 
-`whats happening here .. ?`
-->
-the api/index.js is a main file , in this project we are going to share any file to any person using email services , for this we need to first upload the file to the cloud then it send to the receiver (a person who will receive this file) , for this we need to specify the sender and receiver email
+```
+ the api/index.js is a main file , in this project we are going to share any file to any person using email services , for this we need to first upload the file to the cloud then it send to the receiver (a person who will receive this file) , for this we need to specify the sender and receiver email
+ ```
 
-# for cloud
+## For cloud storage
 
 for cloud i used dropbox cloud for storing the files there [dropbox](https://www.dropbox.com/developers) you can create your account here also
 "# wolf-share"
-
-<!-- thanks god all code  -->
