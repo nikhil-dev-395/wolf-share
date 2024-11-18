@@ -7,10 +7,14 @@
       A new and better way to acquire, engage, and support customers
     </p>
     <!-- Price boxes will be shown here... -->
-    <div id="price-box-container" class="flex justify-center gap-10 py-4">
+    <div
+      id="price-box-container"
+      class="md:flex md:justify-center block gap-10 py-4"
+    >
       <div
         id="price-box-container-free-one"
-        class="max-w-[300px] px-5 py-6 bg-white shadow-lg rounded-xl transition-transform transform hover:scale-105 hover:cursor-pointer"
+        class="max-w-[300px] px-5 py-6 bg-white shadow-lg rounded-xl transition-transform transform hover:scale-105 hover:cursor-pointer md:mb-0 mx-auto"
+        style="margin-bottom: 20px"
       >
         <h2 class="text-2xl font-semibold text-slate-700">
           <%= free.planType %>
@@ -37,7 +41,8 @@
       <!-- Paid Box -->
       <div
         id="price-box-container-paid-one"
-        class="max-w-[300px] px-5 py-6 bg-white shadow-lg rounded-xl transition-transform transform hover:scale-105 hover:cursor-pointer"
+        class="max-w-[300px] px-5 py-6 bg-white shadow-lg rounded-xl transition-transform transform hover:scale-105 hover:cursor-pointer md:mb-0 mx-auto"
+        style="margin-bottom: 20px"
       >
         <h2 class="text-2xl font-semibold text-slate-700">
           <%= premium.planType %>

@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="/icons/logo.svg" type="image/x-icon" />
     <link rel="stylesheet" href="/stylesheet/tailwind.css" />
     <link rel="stylesheet" href="/stylesheet/global.css" />
-    
+
     <link
       rel="stylesheet"
       type="text/css"
@@ -20,9 +20,9 @@
   <body
     class="w-full min-h-screen bg-slate-900 text-white !scroll-smooth font-sans"
   >
-    <header class="w-full flex items-center">
+    <header class="md:w-[80%] w-full flex items-center">
       <h2
-        class="px-28 flex items-center w-[37%] absolute top-[40px] left-[-70px]"
+        class="px-28 md:flex lg:flex items-center w-[37%] absolute top-[40px] left-[-70px] hidden"
       >
         share any file with
         <a href="/" class="flex items-center">
@@ -35,8 +35,7 @@
         </a>
       </h2>
       <nav
-        class="mx-auto ml-72 flex w-[40%] px-20 justify-between bg-slate-50 rounded-2xl py-3 mt-6 mb-4 text-black"
-        style="margin-left: 373px"
+        class="flex bg-blue-50 flex-row w-[70%] md:w-1/2 max-w-6xl px-7 md:px-12 lg:px-20 justify-between rounded-2xl py-3 mt-6 mb-4 text-black items-center mx-3 ml-3 md:ml-80"
       >
         <!-- logo of wolf share -->
         <img
@@ -90,10 +89,10 @@
 
       <button
         id="logoutBtn"
-        class="text-red-800 mr-12 border border-green-300 flex items-center py-3 px-2 bg-yellow-500 rounded-xl hover:text-slate-100 hover:bg-orange-800 duration-200 ease-in-out"
+        class="text-red-800 mr-12 border border-green-300 flex items-center py-3 px-2 bg-yellow-500 rounded-xl hover:text-slate-100 hover:bg-orange-800 duration-200 ease-in-out mx-auto"
         onclick="logout()"
       >
-        <span class="mr-2 font-IBM">Logout</span>
+        <span class="mr-2 font-IBM hidden md:block">Logout</span>
         <img src="/icons/logout.svg" class="w-4" alt="home" />
       </button>
 
@@ -105,3 +104,4 @@
         <img src="/icons/login.svg" class="w-4" alt="home" />
       </button>
     </header>
+
