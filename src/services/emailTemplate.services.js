@@ -8,7 +8,7 @@ module.exports = ({ emailFrom, downloadLink, size, expires }) => {
                 <title>Simple Transactional Email</title>
                 <style>
                 /* -------------------------------------
-                    INLINED WITH htmlemail.io/inline
+                    INLINED WITH html email.io/inline
                 ------------------------------------- */
                 /* -------------------------------------
                     RESPONSIVE AND MOBILE FRIENDLY STYLES

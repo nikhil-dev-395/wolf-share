@@ -137,6 +137,12 @@ router.post("/upload", authUser, async (req, res) => {
         },
       });
 
+      // Generate a temporaryLink for the download file
+      const temporaryLink = await dropbox.filesGetTemporaryLink({
+        path: response.result.path_display,
+      });
+      console.log("Temporary Link:", temporaryLink.result.link);
+
       // Cleanup and respond
       const file = new File({
         userId: req.user.userId,
@@ -145,7 +151,7 @@ router.post("/upload", authUser, async (req, res) => {
         uuid: uuid4(),
         path: req.file.path,
         size: req.file.size,
-        download_url: response.result.path_display,
+        download_url: temporaryLink.result.link,
         expireAt: Date.now() + 24 * 60 * 60 * 1000,
       });
 
@@ -203,13 +209,7 @@ router.post("/send/:uuid", authUser, async (req, res) => {
     file.FileMessage = FileMessage;
     await file.save();
 
-    // Debug log to verify data before sending email
-    // console.log("Preparing to send email with the following details:");
-    // console.log("From:", emailFrom);
-    // console.log("To:", emailTo);
-    // console.log("Subject:", FileTitle);
-    // console.log("File Link:", file.download_url);
-    // console.log("File Size:", parseInt(file.size / 1000) + "kb");
+
 
     // Send email
     try {
@@ -227,7 +227,8 @@ router.post("/send/:uuid", authUser, async (req, res) => {
         }),
       });
 
-      console.log("Email successfully sent:", emailInfo); // Log success response
+      console.log("Email successfully sent:", emailInfo);
+      // Log success response
 
       // Render success page
       res.render("helpers/success", {
@@ -249,7 +250,7 @@ router.post("/send/:uuid", authUser, async (req, res) => {
   }
 });
 
-router.delete("/deleteFile",authUser, deleteFile);
-router.put("/updateFile",authUser, updateFile);
+router.delete("/deleteFile", authUser, deleteFile);
+router.put("/updateFile", authUser, updateFile);
 
 module.exports = { fileRouter: router };

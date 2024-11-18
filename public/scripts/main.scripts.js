@@ -1,4 +1,4 @@
-/* public/scripts/main.js */
+/* public/scripts/main.scripts.js */
 console.log("main.js");
 
 /* download a file in /download/:uuid route - add confirmation before downloading */
