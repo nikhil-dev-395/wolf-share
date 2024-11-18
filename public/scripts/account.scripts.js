@@ -194,3 +194,80 @@ const updateFileIndex = () => {
     if (fileIndexDisplay) fileIndexDisplay.textContent = index + 1;
   });
 };
+
+// Confirm download function
+const downloadFileConfirm = (callback) => {
+  const overlay = document.createElement("div");
+  overlay.style.position = "fixed";
+  overlay.style.top = "0";
+  overlay.style.left = "0";
+  overlay.style.width = "100vw";
+  overlay.style.height = "100vh";
+  overlay.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+  overlay.style.zIndex = "1000";
+  overlay.style.display = "flex";
+  overlay.style.justifyContent = "center";
+  overlay.style.alignItems = "center";
+
+  const alertBox = document.createElement("div");
+  alertBox.style.width = "400px";
+  alertBox.style.padding = "20px";
+  alertBox.style.backgroundColor = "white";
+  alertBox.style.borderRadius = "10px";
+  alertBox.style.textAlign = "center";
+
+  const message = document.createElement("p");
+  message.innerText = "Do you want to download this file?";
+  message.style.color = "black";
+  message.style.marginBottom = " 26px";
+  alertBox.appendChild(message);
+
+  const confirmButton = document.createElement("button");
+  confirmButton.innerText = "Yes";
+  confirmButton.style.backgroundColor = "#28a745"; // Green for confirmation
+  confirmButton.style.color = "white";
+  confirmButton.style.border = "none";
+  confirmButton.style.borderRadius = "8px";
+  confirmButton.style.padding = "10px 20px";
+  confirmButton.style.cursor = "pointer";
+  confirmButton.style.fontSize = "14px";
+  confirmButton.style.margin = "0 10px";
+
+  confirmButton.addEventListener("click", () => {
+    callback(true);
+    overlay.remove();
+  });
+
+  const cancelButton = document.createElement("button");
+  cancelButton.innerText = "No";
+  cancelButton.style.backgroundColor = "#dc3545"; // Red for cancellation
+  cancelButton.style.color = "white";
+  cancelButton.style.border = "none";
+  cancelButton.style.borderRadius = "8px";
+  cancelButton.style.padding = "10px 20px";
+  cancelButton.style.cursor = "pointer";
+  cancelButton.style.fontSize = "14px";
+  cancelButton.style.margin = "0 10px";
+  cancelButton.addEventListener("click", () => {
+    callback(false);
+    overlay.remove();
+  });
+
+  alertBox.appendChild(confirmButton);
+  alertBox.appendChild(cancelButton);
+  overlay.appendChild(alertBox);
+  document.body.appendChild(overlay);
+};
+
+// Attach event listeners to buttons
+document.querySelectorAll(".downloadBtn").forEach((button) => {
+  button.addEventListener("click", () => {
+    const downloadUrl = button.getAttribute("data-download-url"); // Correctly fetch the attribute
+    downloadFileConfirm((confirmed) => {
+      if (confirmed) {
+        // Trigger file download
+        window.open(downloadUrl);
+      }
+    });
+  });
+});

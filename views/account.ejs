@@ -63,7 +63,8 @@
           <div class="flex gap-6 py-2">
             <!-- download -->
             <a
-              href="<%= file.download_url %>"
+              class="downloadBtn"
+              data-download-url="<%= file.download_url %>"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -71,8 +72,7 @@
                 src="/icons/download.svg"
                 class="w-7 h-7 rounded-md hover:cursor-pointer hover:bg-red-400"
                 alt="download button"
-                id="downloadBtn"
-                title="download"
+                title="Download"
               />
             </a>
 

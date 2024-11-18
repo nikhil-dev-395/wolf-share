@@ -50,10 +50,10 @@ yarn dev
 MONGO_URI=your_mongodb_url
 JWT_SECRET=your_jwt_secret_key
 APP_BASE_URL=http://localhost:3000
-SMTP_HOST=your_smtp_host
-SMTP_PORT=your_smtp_port
-MAIL_USER=your_smtp_user_id
-MAIL_PASS=your_smtp_password
+EMAIL_HOST= your host
+EMAIL_USER = your email
+EMAIL_PASSWORD = gmail smtp pass
+EMAIL_PORT = your smtp port
 DROPBOX_ACCESS_TOKEN=your_dropbox_access_token
 DROPBOX_CLIENT_ID=your_dropbox_client_id
 DROPBOX_CLIENT_SECRET=your_dropbox_client_secret

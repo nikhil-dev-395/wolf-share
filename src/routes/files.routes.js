@@ -16,64 +16,7 @@ const {
   deleteFile,
   updateFile,
 } = require("../controllers/files.controllers.js");
-
-// router.post("/upload",authUser, (req, res) => {
-//   upload(req, res, async (err) => {
-//     if (err) {
-//       console.error("Multer error:", err);
-//       return res.status(500).json({ success: false, err });
-//     }
-
-//     if (!req.file) {
-//       return res
-//         .status(400)
-//         .json({ success: false, error: "All fields are required" });
-//     }
-
-//     console.log("Received file:", req.file);
-
-//     try {
-//       const fileContent = fs.readFileSync(req.file.path);
-
-//       // Upload file to Dropbox
-//       const dropbox_response = await dropbox.filesUpload({
-//         path: "/" + req.file.filename,
-//         contents: fileContent,
-//       });
-
-//       // Get a temporary download link for the uploaded file
-//       const downloadLinkResponse = await dropbox.filesGetTemporaryLink({
-//         path: dropbox_response.result.path_display,
-//       });
-
-//       // Save file metadata to the database, including the download link
-//       const file = new File({
-//         /*add userId for checking user is authorized or not  , expireAt, mimetype, userId, sender ,  receiver ? receiver : none */
-//         userId: req.user.userId,
-//         originalFileName: req.file.originalname,
-//         filename: req.file.filename,
-//         uuid: uuid4(), // Generate UUID for the file
-//         path: req.file.path,
-//         size: req.file.size,
-//         download_url: downloadLinkResponse.result.link, // Store the download link
-//       });
-
-//       await file.save();
-//       console.log({
-//         success: true,
-//         file: `${process.env.APP_BASE_URL}/files/${file.uuid}`, // Use the saved file's UUID here
-//         message: "File uploaded successfully",
-//         download_url: downloadLinkResponse.result.link,
-//       });
-
-//       let uuid = file.uuid;
-//       res.redirect(`/send/${uuid}`);
-//     } catch (uploadError) {
-//       console.error("Dropbox upload error:", uploadError);
-//       res.status(500).json({ success: false, error: "Dropbox upload failed" });
-//     }
-//   });
-// });
+const { sendFileByEmail } = require("../controllers/sendFile.controllers.js");
 
 let isPaused = false; // Flag to manage pause and resume
 
@@ -179,76 +122,7 @@ router.post("/resume-upload", (req, res) => {
   res.status(200).json({ message: "Upload resumed" });
 });
 
-const sendEmail = require("../services/emailService.services.js"); // Assuming this is the email sending service
-// const authUser = require("../middleware/auth.middleware.js");
-
-router.post("/send/:uuid", authUser, async (req, res) => {
-  try {
-    const uuid = req.params.uuid;
-    const { emailTo, emailFrom, FileTitle, FileMessage } = req.body;
-
-    // Check for required fields
-    if (!uuid || !emailTo || !emailFrom) {
-      return res.status(422).send("All fields are required!"); // Return here if any field is missing
-    }
-
-    // Get file from the database
-    const file = await File.findOne({ uuid: uuid });
-    if (!file) {
-      return res.status(404).send("File not found"); // Return if file is not found
-    }
-
-    if (file.sender) {
-      return res.status(422).send("Email already sent"); // Return if email is already sent
-    }
-
-    // Update file information
-    file.sender = emailFrom;
-    file.receiver = emailTo;
-    file.FileTitle = FileTitle;
-    file.FileMessage = FileMessage;
-    await file.save();
-
-
-
-    // Send email
-    try {
-      const emailInfo = await sendEmail({
-        from: emailFrom,
-        to: emailTo,
-        subject: FileTitle,
-        text: `${emailFrom} shared a file with you...`,
-        html: require("../services/emailTemplate.services.js")({
-          emailFrom: emailFrom,
-          downloadLink: file.download_url,
-          size: parseInt(file.size / 1000) + "kb",
-          expires: "24 hrs",
-          FileMessage,
-        }),
-      });
-
-      console.log("Email successfully sent:", emailInfo);
-      // Log success response
-
-      // Render success page
-      res.render("helpers/success", {
-        title: "Success",
-        emailInfo,
-        receiver: file.receiver,
-        filename: file.filename,
-        fileSize: file.size,
-        download_url: file.download_url,
-        uuid: file.uuid,
-      });
-    } catch (emailError) {
-      console.error("Error sending email:", emailError); // Log email error
-      return res.status(500).send("Error sending email");
-    }
-  } catch (error) {
-    console.error("Internal Server Error:", error); // Log other errors
-    return res.status(500).send("Internal Server Error"); // Handle other errors properly
-  }
-});
+router.post("/send/:uuid", authUser, sendFileByEmail);
 
 router.delete("/deleteFile", authUser, deleteFile);
 router.put("/updateFile", authUser, updateFile);

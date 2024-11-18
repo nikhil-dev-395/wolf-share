@@ -7,7 +7,7 @@ const cookieParser = require("cookie-parser");
 require("dotenv").config();
 const app = express();
 const path = require("path");
-// FILES
+/* FILES */
 const connect = require("../src/db/connect.db.js");
 const { fileRouter } = require("../src/routes/files.routes.js");
 const { userRouter } = require("../src/routes/user.routes.js");
@@ -16,10 +16,10 @@ const { showRouter } = require("../src/routes/show.routes.js");
 const { pageNotfoundRouter } = require("../src/routes/pageNotfound.routes.js");
 const { downloadRouter } = require("../src/routes/download.routes.js");
 const authUser = require("../src/middleware/auth.middleware.js");
-// cleanup - means delete the file after 24hrs
+/* cleanup - means delete the file after 24hrs */
 require("../src/utils/cleanup.utils.js");
 
-// view ejs engine
+/* view ejs engine */
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "../views"));
 app.use(express.static(path.join(__dirname, "../public")));
