@@ -18,7 +18,8 @@ const showCustomPrompt = (callback) => {
 
   const customNoButton = document.createElement("button");
   customNoButton.textContent = "Cancel";
-  customNoButton.style.backgroundColor = "orange";
+  customNoButton.style.backgroundColor = "yellow";
+  customNoButton.style.color = "black";
   customNoButton.className = " py-3 px-4 hover:bg-gray-800 rounded-md";
 
   const customDiv = document.createElement("div");
@@ -116,8 +117,8 @@ const customConfirm = (callback) => {
   customAlertOK.innerText = "Delete";
   customAlertOK.style.padding = "10px 20px";
   customAlertOK.style.margin = "0 10px";
-  customAlertOK.style.backgroundColor = "orange";
-  customAlertOK.style.color = "white";
+  customAlertOK.style.backgroundColor = "yellow";
+  customAlertOK.style.color = "black";
   customAlertOK.style.border = "none";
   customAlertOK.style.borderRadius = "5px";
   customAlertOK.style.cursor = "pointer";

@@ -1,7 +1,6 @@
 /*auth.scripts.js*/
 console.log("auth.scripts.js");
 
-
 const password = document.getElementById("password");
 const loginForm = document.getElementById("loginForm");
 const registerForm = document.getElementById("registerForm");
@@ -17,13 +16,77 @@ const showPassword = () => {
   }
 };
 
-/*logout function is used for loggging out from website */
+/* Confirm Logout */
+const confirmLogout = (callback) => {
+  // Create the backdrop for background blur
+  const backdrop = document.createElement("div");
+  backdrop.className =
+    "fixed top-0 left-0 w-full h-full bg-black/50 flex items-center justify-center z-[999]";
+  backdrop.style.zIndex = "1000";
+  // Create the dialog container
+  const dialogContainer = document.createElement("div");
+  dialogContainer.className =
+    "bg-white p-6 rounded-lg shadow-lg w-96 text-center space-y-4";
+
+  // Confirm logout message
+  const confirmLogoutMessage = document.createElement("p");
+  confirmLogoutMessage.innerText = "Are you sure you want to logout?";
+  confirmLogoutMessage.style.color = "black";
+  confirmLogoutMessage.style.fontSize = "17px";
+  confirmLogoutMessage.className = "text-gray-800";
+
+  // Yes button for logout
+  const logoutOkBtn = document.createElement("button");
+  logoutOkBtn.innerText = "Yes";
+  logoutOkBtn.className =
+    "bg-yellow-500 text-black px-4 py-2 rounded-lg shadow hover:bg-yellow-600 transition";
+  logoutOkBtn.addEventListener("click", () => {
+    callback(true);
+    document.body.removeChild(backdrop); // Remove the backdrop
+  });
+
+  // No button to cancel
+  const logoutCancelBtn = document.createElement("button");
+  logoutCancelBtn.innerText = "No";
+  logoutCancelBtn.style.color = "black";
+  logoutCancelBtn.style.backgroundColor = "#b06a7c";
+  logoutCancelBtn.className =
+    "bg-gray-500 text-white px-4 py-2 rounded-lg shadow hover:bg-gray-600 transition";
+  logoutCancelBtn.addEventListener("click", () => {
+    callback(false);
+    document.body.removeChild(backdrop); // Remove the backdrop
+  });
+
+  // Button container
+  const btnContainer = document.createElement("div");
+  btnContainer.className = "flex justify-around mt-4";
+  btnContainer.appendChild(logoutOkBtn);
+  btnContainer.appendChild(logoutCancelBtn);
+
+  // Append elements to dialog container
+  dialogContainer.appendChild(confirmLogoutMessage);
+  dialogContainer.appendChild(btnContainer);
+
+  // Append dialog container to backdrop
+  backdrop.appendChild(dialogContainer);
+
+  // Append backdrop to body
+  document.body.appendChild(backdrop);
+};
+
+/* Logout Function */
 const logout = () => {
-  const cookies = document.cookie.split(";");
-  for (let index = 0; index < cookies.length; index++) {
-    document.cookie =
-      cookies[index] + "=; expires =+" + new Date(0).toUTCString();
-  }
-  /*after logout we are redirecting it to login page of wolf share*/
-  window.location.pathname = "/login";
+  confirmLogout((confirmed) => {
+    if (confirmed) {
+      // Clear all cookies
+      const cookies = document.cookie.split(";");
+      cookies.forEach((cookie) => {
+        const cookieName = cookie.split("=")[0].trim();
+        document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/`;
+      });
+
+      // Redirect to login page
+      window.location.pathname = "/login";
+    }
+  });
 };
