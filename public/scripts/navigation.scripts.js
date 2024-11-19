@@ -61,6 +61,8 @@ nextBtn.addEventListener("click", () => {
   btnContainer.style.display = "none";
   afterUploadMessage.style.display = "flex";
   menuBtnPauseAndResume.style.display = "flex";
+  menuBtnPauseAndResume.style.margin = "30px";
+  menuBtnPauseAndResume.style.marginLeft = "100px";
 });
 
 const pauseBtn = document.getElementById("pause-btn");
@@ -103,7 +105,7 @@ resumeBtn.addEventListener("click", (e) => {
       if (data.message === "Upload resumed") {
         isPaused = false;
         uploadStatus.textContent = "Status: Resuming upload..."; // Set the status text
-        resumeBtn.disabled = true; // Disable resume button after resuming 
+        resumeBtn.disabled = true; // Disable resume button after resuming
         pauseBtn.disabled = false; // Re-enable pause button if needed
       }
     })
