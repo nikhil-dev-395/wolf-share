@@ -8,6 +8,9 @@ const showCustomPrompt = (callback) => {
   const customInput = document.createElement("input");
   customInput.type = "text";
   customInput.placeholder = "Enter the new file name";
+  customInput.style.fontSize = " 12px";
+  customInput.style.border = "1px solid black";
+
   customInput.className =
     "px-3 py-2 w-full rounded-md text-black border-2 border-sky-500";
 
@@ -18,8 +21,9 @@ const showCustomPrompt = (callback) => {
 
   const customNoButton = document.createElement("button");
   customNoButton.textContent = "Cancel";
-  customNoButton.style.backgroundColor = "yellow";
+  customNoButton.style.backgroundColor = "orange";
   customNoButton.style.color = "black";
+  customNoButton.style.border = "1px solid black";
   customNoButton.className = " py-3 px-4 hover:bg-gray-800 rounded-md";
 
   const customDiv = document.createElement("div");
@@ -225,7 +229,7 @@ const downloadFileConfirm = (callback) => {
 
   const confirmButton = document.createElement("button");
   confirmButton.innerText = "Yes";
-  confirmButton.style.backgroundColor = "#28a745"; // Green for confirmation
+  confirmButton.style.backgroundColor = "#0F172A"; // purple for confirmation
   confirmButton.style.color = "white";
   confirmButton.style.border = "none";
   confirmButton.style.borderRadius = "8px";
@@ -241,7 +245,7 @@ const downloadFileConfirm = (callback) => {
 
   const cancelButton = document.createElement("button");
   cancelButton.innerText = "No";
-  cancelButton.style.backgroundColor = "#dc3545"; // Red for cancellation
+  cancelButton.style.backgroundColor = "#ef4444"; // Red for cancellation
   cancelButton.style.color = "white";
   cancelButton.style.border = "none";
   cancelButton.style.borderRadius = "8px";

@@ -4,8 +4,6 @@ console.log("file.js");
 // impoting module
 import { color } from "../helpers/helpers.helpers.js";
 
-
-
 const files_sharing = document.getElementById("file-sharing");
 const show = document.getElementById("show");
 const fileInfo = document.getElementById("fileInfo");
@@ -29,8 +27,9 @@ files_sharing.addEventListener("change", (e) => {
   nextBtn.style.display = "block";
   cancelBtn.style.display = "block";
   show.style.display = "block";
-  show.style.width = "280px";
-  show.style.height = "300px";
+  // show.style.width = "12rem";
+  // show.style.height = "300px";
+  show.style.objectFit = "cover";
   show.style.backgroundColor = color.docxBgColor;
   /* following code is for progress bar after uploading a file
    Reset progress bar*/
