@@ -29,7 +29,7 @@ files_sharing.addEventListener("change", (e) => {
   show.style.display = "block";
   // show.style.width = "12rem";
   // show.style.height = "300px";
-  show.style.objectFit = "cover";
+  // show.style.objectFit = "cover";
   show.style.backgroundColor = color.docxBgColor;
   /* following code is for progress bar after uploading a file
    Reset progress bar*/
