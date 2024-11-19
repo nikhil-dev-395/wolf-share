@@ -53,7 +53,6 @@ router.get("/send/:uuid", authUser, async (req, res) => {
       return res.status(404).json({ error: "User not found" });
     }
 
-
     // Render the template with the file details
     return res.render("helpers/send", {
       title: "Send File",
@@ -61,7 +60,7 @@ router.get("/send/:uuid", authUser, async (req, res) => {
       size: findFile.size,
       uuid: findFile.uuid,
       download_url: findFile.download_url,
-      email: findUser.email
+      email: findUser.email,
     });
   } catch (error) {
     console.error("Error fetching file:", error); // Log the entire error object
@@ -180,6 +179,12 @@ router.get("/logout", authUser, (req, res) => {
   // Clear the JWT token cookie
   res.clearCookie("token");
   res.redirect("/login");
+});
+
+router.get("/test", (req, res) => {
+  res.render("helpers/test", {
+    title: "test",
+  });
 });
 
 module.exports = { webRouter: router };

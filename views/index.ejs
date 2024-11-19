@@ -129,7 +129,7 @@
 
   <div
     id="menu-btn-pause-and-resume"
-    class="bg-transparent my-4 px-3 rounded-lg shadow-xl justify-between items-center space-x-6 w-full max-w-md hidden mt-8 md:mt-1 mx-auto"
+    class="bg-transparent my-4 px-3 rounded-lg shadow-xl justify-between items-center space-x-6 w-full max-w-[80%] md:max-w-md hidden mt-8 md:mt-1 mx-auto"
   >
     <!-- Pause Uploading on Cloud Storage -->
     <button
@@ -148,9 +148,8 @@
       <img src="/icons/resumeIcon.svg" alt="Resume" class="w-6 h-6 mr-2" />
       Resume
     </button>
-
-    <div id="upload-status" class="text-sm text-gray-500"></div>
   </div>
+  <div id="upload-status" class="text-sm text-gray-500"></div>
 </section>
 
 <%- include("partials/footer.ejs") %>

@@ -1,0 +1,44 @@
+<%- include("../partials/header.ejs") %>
+
+<section class="w-full h-screen py-7">
+  <div
+    class="md:max-w-md w-[90%] mx-auto p-6 bg-transparent border border-slate-100 rounded-3xl shadow-md"
+  >
+    <div class="text-center space-y-6">
+      <h3 class="text-3xl font-semibold text-green-600">
+        Your file was sent successfully!
+      </h3>
+      <div class="space-y-2">
+        <h2 class="text-xl font-medium text-gray-700">
+          <span class="text-slate-600">receiver</span>:
+          <span class="font-thin text-blue-200"> receiver </span>
+        </h2>
+        <h2 class="text-lg font-medium text-gray-700">
+          File Name:
+          <span class="font-bold text-blue-700"> "Unknown File" </span>
+        </h2>
+        <h2 class="text-lg font-medium text-gray-700">
+          File Size:
+          <span class="font-bold text-blue-700">fileSize </span>
+        </h2>
+        <h2 class="text-lg font-medium text-gray-700">
+          Download URL:
+          <a
+            href=" download_url "
+            class="text-blue-600 font-semibold underline hover:text-blue-800 transition max-w-md"
+          >
+            download_url
+          </a>
+        </h2>
+      </div>
+      <a
+        href="/"
+        class="inline-block mt-8 border border-slate-300 text-white py-2 px-6 rounded-md shadow-lg hover:bg-yellow-500 hover:text-black"
+      >
+        Back to Home
+      </a>
+    </div>
+  </div>
+</section>
+
+<%- include("../partials/footer.ejs") %>

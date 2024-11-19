@@ -4,11 +4,19 @@
 
 <section class="w-full h-[calc(100vh-40px)] mx-auto">
   <div class="py-10">
-    <h3 class="text-xl text-yellow-500 px-40 font-IBM">register</h3>
+    <div class="texts md:ml-24 ml-4 py-10 md:py-1">
+      <h2 class="md:text-xl text-sm text-blue-500 ml-4 font-IBM contents">
+        welcome to wolf share
+      </h2>
+      <br />
+      <h3 class="text-xl text-yellow-500 px-40 font-IBM pb-10 md:pb-0 contents">
+        register
+      </h3>
+    </div>
     <form
-     action="/api/v1/user/register"
-     method="post"
-      class="w-[39%] border-4 border-dashed border-blue-500 py-10 rounded-2xl text-md flex flex-col gap-y-6 mx-auto"
+      action="/api/v1/user/register"
+      method="post"
+      class="md:w-[39%] w-[90%] border-4 border-dashed border-blue-500 py-10 rounded-2xl text-md flex flex-col gap-y-6 mx-auto"
       id="registerForm"
     >
       <!--  username -->
@@ -73,10 +81,10 @@
       <button
         type="submit"
         id="registerBtn"
-        class="bg-blue-500 text-white py-2 px-4 mt-6 w-28  rounded-md shadow-md hidden hover:bg-orange-500 transition-all ml-12 duration-500 ease-in-out"
+        class="bg-blue-500 text-white py-2 px-4 mt-6 w-28 rounded-md shadow-md hidden hover:bg-orange-500 transition-all ml-12 duration-500 ease-in-out"
         style="display: block"
       >
-        <div class="flex gap-2 items-center ">
+        <div class="flex gap-2 items-center">
           <span class="font-IBM">register</span>
           <img
             src="/icons/login.svg"

@@ -1,9 +1,9 @@
 <%- include("../partials/header.ejs") %>
 
-<section class="w-full h-screen flex justify-center">
+<section class="w-full md:h-screen h-auto flex justify-center">
   <div class="max-w-[90%] mx-auto text-center">
-    <h1 class="text-4xl font-bold capitalize">Friendly Pricing</h1>
-    <p class="text-sm py-3 text-yellow-600">
+    <h1 class="md:text-4xl text-xl font-bold capitalize">Friendly Pricing</h1>
+    <p class="md:text-sm text-xs py-3 text-yellow-600">
       A new and better way to acquire, engage, and support customers
     </p>
     <!-- Price boxes will be shown here... -->
@@ -13,7 +13,7 @@
     >
       <div
         id="price-box-container-free-one"
-        class="max-w-[300px] px-5 py-6 bg-white shadow-lg rounded-xl transition-transform transform hover:scale-105 hover:cursor-pointer md:mb-0 mx-auto"
+        class="md:max-w-[300px] w-2/3 px-5 py-6 bg-white shadow-lg rounded-xl transition-transform transform hover:scale-105 hover:cursor-pointer md:mb-0 mx-auto"
         style="margin-bottom: 20px"
       >
         <h2 class="text-2xl font-semibold text-slate-700">
@@ -41,11 +41,14 @@
       <!-- Paid Box -->
       <div
         id="price-box-container-paid-one"
-        class="max-w-[300px] px-5 py-6 bg-white shadow-lg rounded-xl transition-transform transform hover:scale-105 hover:cursor-pointer md:mb-0 mx-auto"
+        class="md:max-w-[300px] w-2/3 px-5 py-6 bg-white shadow-lg rounded-xl transition-transform transform hover:scale-105 hover:cursor-pointer md:mb-0 mx-auto"
         style="margin-bottom: 20px"
       >
-        <h2 class="text-2xl font-semibold text-slate-700">
-          <%= premium.planType %>
+        <h2
+          class="text-2xl font-semibold text-slate-700 flex ml-14 w-auto mx-auto"
+        >
+          <span> <%= premium.planType %> </span>
+          <img src="/icons/premiumIcon.svg" alt="premiumIcon" class="w-7" />
         </h2>
         <p class="text-xs py-2 text-slate-600">
           Advanced tools for professionals

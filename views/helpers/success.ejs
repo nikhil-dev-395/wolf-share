@@ -1,30 +1,31 @@
 <%- include("../partials/header.ejs") %>
 
-<section class="w-full h-screen flex items-center justify-center">
-  <div
-    class="max-w-md mx-auto p-6 bg-white rounded-3xl "
-  >
+<section class="w-full h-screen py-7">
+  <div class="md:max-w-md w-[90%] mx-auto p-6 bg-transparent border border-slate-100 rounded-3xl shadow-md"">
     <div class="text-center space-y-6">
       <h3 class="text-3xl font-semibold text-green-600">
         Your file was sent successfully!
       </h3>
       <div class="space-y-2">
         <h2 class="text-lg font-medium text-gray-700">
-          Receiver: <span class="font-bold text-blue-700"><%= receiver %></span>
+             <span class="text-slate-500">receiver</span>: <span class="font-bold text-blue-200"><%= receiver %></span>
         </h2>
         <h2 class="text-lg font-medium text-gray-700">
-          File Name:
-          <span class="font-bold text-blue-700"><%= filename %></span>
+
+             <span class="text-slate-500">     File Name</span>:
+          <span class="font-bold text-blue-200"><%= filename %></span>
         </h2>
         <h2 class="text-lg font-medium text-gray-700">
-          File Size:
-          <span class="font-bold text-blue-700"><%= fileSize %></span>
+             <span class="text-slate-500">File Size </span>:
+
+          <span class="font-bold text-blue-200"><%= fileSize %></span>
         </h2>
         <h2 class="text-lg font-medium text-gray-700">
-          Download URL:
+
+             <span class="text-slate-500"> Download URL</span>:
           <a
             href="<%= download_url %>"
-            class="text-blue-600 font-semibold underline hover:text-blue-800 transition max-w-md"
+            class="text-blue-200 font-semibold underline hover:text-blue-800 transition max-w-md"
           >
             <%= download_url.substring(0, 20) %>
           </a>
@@ -32,7 +33,7 @@
       </div>
       <a
         href="/"
-        class="inline-block mt-8 bg-gradient-to-r from-blue-600 to-blue-800 text-white py-2 px-6 rounded-full shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-blue-900 transition transform hover:scale-110 duration-200"
+        class=" hover:bg-gray-300 hover:text-slate-950 inline-block mt-8 border border-slate-300 text-white py-2 px-6 rounded-md shadow-lg "
         >Back to Home</a
       >
     </div>

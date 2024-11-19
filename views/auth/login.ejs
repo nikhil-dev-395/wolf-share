@@ -4,12 +4,19 @@
 
 <section class="w-full h-[calc(100vh-40px)] mx-auto">
   <div class="py-10">
-    <h2 class="text-xl text-blue-500 px-40 font-IBM">welcome back</h2>
-    <h3 class="text-xl text-yellow-500 px-40 font-IBM">Login</h3>
+    <div class="texts md:ml-24 ml-4 py-10 md:py-0">
+      <h2 class="md:text-xl text-sm text-blue-500 ml-4 font-IBM contents">
+        welcome back
+      </h2>
+      <br />
+      <h3 class="text-xl text-yellow-500 px-40 font-IBM pb-10 md:pb-0 contents">
+        Login
+      </h3>
+    </div>
     <form
       action="/api/v1/user/login"
       method="post"
-      class="w-[39%] border-4 border-dashed border-blue-500 py-10 rounded-2xl text-md flex flex-col gap-y-6 mx-auto"
+      class="md:w-[39%] w-[90%] border-4 border-dashed border-blue-500 py-10 rounded-2xl text-md flex flex-col gap-y-6 mx-auto"
       id="loginForm"
     >
       <!--  Email -->
@@ -52,7 +59,11 @@
         />
       </div>
 
-<a href="/forgotPassword" class="text-sm underline font-IBM text-blue-600 w-[90%] px-1 py-2  text-end ">forgot password</a>
+      <a
+        href="/forgotPassword"
+        class="text-sm underline font-IBM text-blue-600 w-[90%] px-1 py-2 text-end"
+        >forgot password</a
+      >
 
       <button
         type="submit"
@@ -71,7 +82,9 @@
       </button>
       <p class="text-sm mx-auto">
         dont have an account
-        <a href="/register" class="text-blue-500 underline mx-2 font-IBM">register</a>
+        <a href="/register" class="text-blue-500 underline mx-2 font-IBM"
+          >register</a
+        >
       </p>
     </form>
   </div>
