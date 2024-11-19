@@ -1,3 +1,17 @@
+<!-- views/account.ejs -->
+<!--
+
+ In account.ejs file we are able manipulate file data , like update(name only) , delete ,
+preview file in dropbox editor for full view (premium), share link to anyone using whatsapp , telegram etc social media platform , download file;
+
+file data -1. original file name
+            2. filename
+            3. download link
+            4. shared link for preview
+
+
+ -->
+
 <%- include("partials/header.ejs") %>
 
 <section class="flex w-full h-auto mx-auto mb-10">
@@ -28,7 +42,7 @@
       <!-- Loop through the file list -->
       <% findAllFileOFThisUser.forEach((file, index) => { %>
       <li class="py-3 file-item">
-        <div class="flex justify-between font-IBM">
+        <div class="flex md:justify-between font-IBM">
           <!-- file-index class name is used for updating the file index after deleting a file -->
           <span class="text-yellow-500 mr-4 md:mr-10 file-index"
             ><%= index + 1 %>.</span
@@ -49,13 +63,13 @@
             />
           </span>
           <span
-            class="text-green-400 md:text-base text-xs md:w-28 w-32 flex ml-2"
+            class="text-green-400 md:text-base text-xs md:w-28 w-36 flex ml-2"
             ><%= (file.size / 1024 / 1024).toFixed(2) %> MB</span
           >
 
           <!-- icons -->
           <div
-            class="flex items-center w-[300px] md:w-auto md:gap-6 gap-[6px] ml-4 md:ml-0 py-2"
+            class="flex items-center w-[320px] md:w-auto md:gap-6 gap-[7px] ml-4 md:ml-0 md:py-2 pb-14 md:pb-5"
           >
             <a
               href="#"

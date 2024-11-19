@@ -18,5 +18,6 @@
 [+] don't forgot to add gsap for animation
 [+] add animation like delay for message use gsap
 [+] remove useless console.log
+[+] check design preview for 320px size
 [+] check the use of "download.routes.js" and "show.routes.js"
 [+] add `premium` plan up to '11USD' , and make it default plan as `free` plan

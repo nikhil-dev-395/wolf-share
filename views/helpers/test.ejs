@@ -1,42 +1,97 @@
 <%- include("../partials/header.ejs") %>
 
-<section class="w-full h-screen py-7">
-  <div
-    class="md:max-w-md w-[90%] mx-auto p-6 bg-transparent border border-slate-100 rounded-3xl shadow-md"
-  >
-    <div class="text-center space-y-6">
-      <h3 class="text-3xl font-semibold text-green-600">
-        Your file was sent successfully!
-      </h3>
-      <div class="space-y-2">
-        <h2 class="text-xl font-medium text-gray-700">
-          <span class="text-slate-600">receiver</span>:
-          <span class="font-thin text-blue-200"> receiver </span>
-        </h2>
-        <h2 class="text-lg font-medium text-gray-700">
-          File Name:
-          <span class="font-bold text-blue-700"> "Unknown File" </span>
-        </h2>
-        <h2 class="text-lg font-medium text-gray-700">
-          File Size:
-          <span class="font-bold text-blue-700">fileSize </span>
-        </h2>
-        <h2 class="text-lg font-medium text-gray-700">
-          Download URL:
-          <a
-            href=" download_url "
-            class="text-blue-600 font-semibold underline hover:text-blue-800 transition max-w-md"
+<section class="w-full h-screen md:h-auto mt-10 md:mt-0 flex justify-center">
+  <div class="rounded-2xl max-w-md w-full px-4 my-6">
+    <div class="border border-gray-300 rounded-2xl p-6 relative text-center">
+      <form action="#" method="post" id="sendFileForm" class="space-y-5">
+        <!-- Sender Email -->
+        <div
+          class="flex items-center border rounded-lg bg-white text-gray-700 w-full shadow-sm focus-within:ring-2 focus-within:ring-blue-500"
+        >
+          <input
+            type="email"
+            name="emailFrom"
+            id="senderEmail"
+            placeholder="Sender Email"
+            class="flex-1 py-2 px-4 rounded-l-lg focus:outline-none text-sm"
+            required
+            value=""
+          />
+          <img
+            src="/icons/user.svg"
+            alt="User Icon"
+            class="w-5 h-5 mx-3 text-gray-500"
+          />
+        </div>
+
+        <!-- Receiver Email -->
+        <div
+          class="flex items-center border rounded-lg bg-white text-gray-700 w-full shadow-sm focus-within:ring-2 focus-within:ring-blue-500"
+        >
+          <input
+            type="email"
+            name="emailTo"
+            id="receiverEmail"
+            placeholder="Receiver Email"
+            class="flex-1 py-2 px-4 rounded-l-lg focus:outline-none text-sm"
+            required
+          />
+          <img
+            src="/icons/receiveEmail.svg"
+            alt="Email Icon"
+            class="w-5 h-5 mx-3 text-gray-500"
+          />
+        </div>
+
+        <!-- Email Title -->
+        <div
+          class="flex items-center border rounded-lg bg-white text-gray-700 w-full shadow-sm focus-within:ring-2 focus-within:ring-blue-500"
+        >
+          <input
+            type="text"
+            name="FileTitle"
+            id="FileTitle"
+            placeholder="Title"
+            class="flex-1 py-2 px-4 rounded-l-lg focus:outline-none text-sm"
+            required
+          />
+          <img
+            src="/icons/title.svg"
+            alt="Title Icon"
+            class="w-5 h-5 mx-3 text-gray-500"
+          />
+        </div>
+
+        <!-- Email Text -->
+        <div
+          class="flex relative items-center border rounded-lg bg-white text-gray-700 w-full shadow-sm focus-within:ring-2 focus-within:ring-blue-500"
+        >
+          <textarea
+            name="FileMessage"
+            id="EmailText"
+            placeholder="Write your thoughts..."
+            class="flex-1 rounded-lg text-gray-700 outline-none w-full py-3 px-4 resize-none text-sm"
+            rows="6"
+            required
+          ></textarea>
+          <img
+            src="/icons/paragraph.svg"
+            alt="Text Icon"
+            class="absolute top-3 right-3 w-5 h-5 text-gray-500"
+          />
+        </div>
+
+        <!-- Send Button -->
+        <div class="flex justify-start">
+          <button
+            type="submit"
+            class="bg-blue-600 text-white rounded-lg py-2 px-4 flex items-center transition ease-in-out duration-150 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
-            download_url
-          </a>
-        </h2>
-      </div>
-      <a
-        href="/"
-        class="inline-block mt-8 border border-slate-300 text-white py-2 px-6 rounded-md shadow-lg hover:bg-yellow-500 hover:text-black"
-      >
-        Back to Home
-      </a>
+            <span class="mr-2">Send File</span>
+            <img src="/icons/send.svg" alt="Send Icon" class="w-5 h-5" />
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 </section>
