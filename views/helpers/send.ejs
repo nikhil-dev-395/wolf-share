@@ -1,6 +1,12 @@
 <%- include("../partials/header.ejs") %>
 
 <section class="w-full h-screen md:h-auto mt-10 md:mt-0 flex justify-center">
+  <div>
+    <% if(error){ %>
+    <p><%=error%></p>
+    <%} %>
+  </div>
+
   <div class="rounded-2xl max-w-md w-full px-4 my-6">
     <div class="border border-gray-300 rounded-2xl p-6 relative text-center">
       <form

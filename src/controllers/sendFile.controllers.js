@@ -1,7 +1,4 @@
-// account.controllers.js
-// files
 const File = require("../models/files.models.js");
-/* Assuming this is the email sending service */
 const sendEmail = require("../services/emailService.services.js");
 
 const sendFileByEmail = async (req, res) => {
@@ -11,17 +8,46 @@ const sendFileByEmail = async (req, res) => {
 
     // Check for required fields
     if (!uuid || !emailTo || !emailFrom) {
-      return res.status(422).send("All fields are required!"); // Return here if any field is missing
+      return res.render("helpers/send", {
+        title: "send",
+        error: "Fields are missing.",
+        uuid,
+        email: emailFrom || "",
+      });
     }
 
     // Get file from the database
-    const file = await File.findOne({ uuid: uuid });
-    if (!file) {
-      return res.status(404).send("File not found"); // Return if file is not found
+    let file;
+    try {
+      file = await File.findOne({ uuid });
+    } catch (dbError) {
+      console.error("Database error:", dbError);
+      return res.status(500).send("Database error occurred.");
     }
 
+    if (!file) {
+      return res.render("helpers/send", {
+        title: "send",
+        error: "The requested file does not exist.",
+        uuid,
+        email: emailFrom || "",
+      });
+    }
+
+    // Check if email is already sent
     if (file.sender) {
-      return res.status(422).send("Email already sent"); // Return if email is already sent
+      return res.render("helpers/success", {
+        title: "error ",
+        receiver: file.receiver,
+        filename: file.filename,
+        fileSize: file.size,
+        download_url: file.download_url,
+        uuid: file.uuid,
+        error:
+          "email already sent to `" +
+          file.receiver +
+          "` ,  if you want to sent this to another then click back to home button",
+      });
     }
 
     // Update file information
@@ -39,7 +65,7 @@ const sendFileByEmail = async (req, res) => {
         subject: FileTitle,
         text: `${emailFrom} shared a file with you...`,
         html: require("../services/emailTemplate.services.js")({
-          emailFrom: emailFrom,
+          emailFrom,
           downloadLink: file.download_url,
           size: parseInt(file.size / 1000) + "kb",
           expires: "24 hrs",
@@ -48,7 +74,6 @@ const sendFileByEmail = async (req, res) => {
       });
 
       console.log("Email successfully sent:", emailInfo);
-      // Log success response
 
       // Render success page
       res.render("helpers/success", {
@@ -59,14 +84,20 @@ const sendFileByEmail = async (req, res) => {
         fileSize: file.size,
         download_url: file.download_url,
         uuid: file.uuid,
+        error: null,
       });
     } catch (emailError) {
-      console.error("Error sending email:", emailError); // Log email error
-      return res.status(500).send("Error sending email");
+      console.error("Error sending email:", emailError.message);
+      return res.render("helpers/send", {
+        title: "send",
+        error: "Failed to send email. Please try again later.",
+        uuid,
+      });
     }
   } catch (error) {
-    console.error("Internal Server Error:", error); // Log other errors
-    return res.status(500).send("Internal Server Error"); // Handle other errors properly
+    console.error("Internal Server Error:", error);
+    return res.status(500).send("Internal Server Error.");
   }
 };
+
 module.exports = { sendFileByEmail };

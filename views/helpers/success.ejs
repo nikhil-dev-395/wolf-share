@@ -1,6 +1,14 @@
 <%- include("../partials/header.ejs") %>
 
 <section class="w-full h-screen py-7">
+<!-- error wil be show here -->
+<div class="text-sm ">
+  <% if (error) { %>
+    <h2 class="text-red-400  py-3 px-4 my-4 rounded-md border border-slate-200 w-1/2 flex flex-wrap mx-auto"><%= error %></h2>
+  <% } %>
+</div>
+
+
   <div class="md:max-w-md w-[90%] mx-auto p-6 bg-transparent border border-slate-100 rounded-3xl shadow-md"">
     <div class="text-center space-y-6">
       <h3 class="text-3xl font-semibold text-green-600">

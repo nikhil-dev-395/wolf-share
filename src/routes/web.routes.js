@@ -61,6 +61,7 @@ router.get("/send/:uuid", authUser, async (req, res) => {
       uuid: findFile.uuid,
       download_url: findFile.download_url,
       email: findUser.email,
+      error: null
     });
   } catch (error) {
     console.error("Error fetching file:", error); // Log the entire error object
