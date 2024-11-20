@@ -86,6 +86,15 @@
           >register</a
         >
       </p>
+
+      <!-- Error Section -->
+      <div class="text-center w-[70%] mx-auto">
+        <% if (error) { %>
+        <p class="text-red-500 border border-slate-200 px-3 py-2 rounded-md">
+          <%= error %>
+        </p>
+        <% } %>
+      </div>
     </form>
   </div>
 </section>

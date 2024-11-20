@@ -75,12 +75,14 @@ router.get("/send/:uuid", authUser, async (req, res) => {
 router.get("/login", (req, res) => {
   return res.render("auth/login", {
     title: "login",
+    error: null,
   });
 });
 
 router.get("/register", (req, res) => {
   return res.render("auth/register", {
     title: "register",
+    error: null,
   });
 });
 
@@ -116,7 +118,7 @@ router.get("/account", authUser, async (req, res) => {
   return res.render("account", {
     username: findUserInformation.username,
     email: findUserInformation.email,
-    allFileLinksCount: findUserInformation.allFileLinks?.length || 0,
+    allFileLinksCount: findUserInformation.allFileLinks,
     /*title - this is nothing but title of the html page*/
     title: "account",
     findAllFileOFThisUser,

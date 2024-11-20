@@ -10,11 +10,18 @@ const login = async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(300).json({ message: "user not exist" });
+      return res.render("auth/login", {
+        title: "Login",
+        error: "Invalid email or password",
+      });
     }
+
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(300).json({ message: "user not valid" });
+      return res.render("auth/login", {
+        title: "Login",
+        error: "Invalid email or password",
+      });
     }
     const token = jwt.sign(
       { email: user.email, userId: user._id },
@@ -31,7 +38,10 @@ const login = async (req, res) => {
     res.redirect("/");
   } catch (error) {
     console.log("err at login user", error.message);
-    res.status(500).json({ err: error.message });
+    res.render("auth/login", {
+      title: "Login",
+      error: "An unexpected error occurred. Please try again.",
+    });
   }
 };
 
@@ -41,8 +51,12 @@ const register = async (req, res) => {
     const { username, email, password } = req.body;
     const existUser = await User.findOne({ email });
     if (existUser) {
-      return res.status(300).json({ message: "user already existed" });
+      return res.render("auth/register", {
+        title: "register",
+        error: "User already exists. Please try logging in.",
+      });
     }
+
     const hashPassword = await bcrypt.hash(password, 10);
     const user = await User.create({
       username,
@@ -59,12 +73,15 @@ const register = async (req, res) => {
       httpOnly: false,
       expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
       secure: true,
-      SameSite:"Strict"
+      SameSite: "Strict",
     });
     res.redirect("/");
   } catch (error) {
     console.log("err at register user", error.message);
-    res.status(500).json({ err: error.message });
+    res.render("auth/register", {
+      title: "register",
+      error: "An error occurred during registration. Please try again.",
+    });
   }
 };
 

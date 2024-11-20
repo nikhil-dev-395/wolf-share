@@ -21,7 +21,7 @@
     >
       <!--  username -->
       <div
-        class="flex items-center border mx-auto rounded-lg bg-white text-gray-700  md:w-[80%] w-[90%] shadow-sm focus-within:ring-2 focus-within:ring-blue-500"
+        class="flex items-center border mx-auto rounded-lg bg-white text-gray-700 md:w-[80%] w-[90%] shadow-sm focus-within:ring-2 focus-within:ring-blue-500"
       >
         <input
           type="text"
@@ -40,7 +40,7 @@
 
       <!--  Email -->
       <div
-        class="flex items-center border mx-auto rounded-lg bg-white text-gray-700  md:w-[80%] w-[90%] shadow-sm focus-within:ring-2 focus-within:ring-blue-500"
+        class="flex items-center border mx-auto rounded-lg bg-white text-gray-700 md:w-[80%] w-[90%] shadow-sm focus-within:ring-2 focus-within:ring-blue-500"
       >
         <input
           type="email"
@@ -97,6 +97,15 @@
         already have an account
         <a href="/login" class="text-blue-500 underline mx-2 font-IBM">login</a>
       </p>
+
+      <!-- Error Section -->
+      <div class="text-center w-[70%] mx-auto">
+        <% if (error) { %>
+        <p class="text-red-500 border border-slate-200 px-3 py-2 rounded-md">
+          <%= error %>
+        </p>
+        <% } %>
+      </div>
     </form>
   </div>
 </section>

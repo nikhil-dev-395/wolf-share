@@ -99,6 +99,17 @@ router.post("/upload", authUser, async (req, res) => {
       });
 
       await file.save();
+      /* we are now updating the allFileLinks in user model */
+      const User = require("../models/user.models.js");
+
+      await User.findByIdAndUpdate(
+        req.user.userId,
+        {
+          $push: { allFileLinks: file._id },
+        },
+        { new: true }
+      );
+
       const uuid = file.uuid;
       res.redirect(`/send/${uuid}`);
     } catch (uploadError) {
