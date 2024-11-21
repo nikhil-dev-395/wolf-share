@@ -645,6 +645,16 @@ video {
   margin-bottom: 1.5rem;
 }
 
+.my-10 {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.my-20 {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
 .-mt-1 {
   margin-top: -0.25rem;
 }
@@ -799,6 +809,10 @@ video {
 
 .h-screen {
   height: 100vh;
+}
+
+.h-96 {
+  height: 24rem;
 }
 
 .max-h-48 {
@@ -1637,6 +1651,11 @@ video {
   color: rgb(202 138 4 / var(--tw-text-opacity));
 }
 
+.text-gray-300 {
+  --tw-text-opacity: 1;
+  color: rgb(209 213 219 / var(--tw-text-opacity));
+}
+
 .underline {
   text-decoration-line: underline;
 }
@@ -1915,6 +1934,10 @@ video {
 
   .sm\:h-8 {
     height: 2rem;
+  }
+
+  .sm\:h-screen {
+    height: 100vh;
   }
 
   .sm\:max-h-52 {

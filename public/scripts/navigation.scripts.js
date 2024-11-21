@@ -58,11 +58,10 @@ const menuBtnPauseAndResume = document.getElementById(
 );
 
 nextBtn.addEventListener("click", () => {
-  btnContainer.style.display = "none";
-  afterUploadMessage.style.display = "flex";
-  menuBtnPauseAndResume.style.display = "flex";
-  menuBtnPauseAndResume.style.margin = "30px";
-  menuBtnPauseAndResume.style.marginLeft = "100px";
+  menuBtnPauseAndResume.classList.remove("hidden"); // Make it visible
+  btnContainer.style.display = "none"; // Hide the button container
+  afterUploadMessage.style.display = "block"; // Show the upload message
+  menuBtnPauseAndResume.style.display = "flex"; // Ensure it's flex for alignment
 });
 
 const pauseBtn = document.getElementById("pause-btn");
