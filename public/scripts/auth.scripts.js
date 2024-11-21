@@ -1,6 +1,18 @@
 /*auth.scripts.js*/
 console.log("auth.scripts.js");
 
+/*after message of sharing file to receiver */
+
+const sendFileFormBtn = document.getElementById("sendFileFormBtn");
+const afterSendFileMessage = document.getElementById("after-sendFile-message");
+sendFileFormBtn.addEventListener("click", () => {
+  sendFileFormBtn.style.display = "none"; // Hide the button
+  afterSendFileMessage.classList.remove("hidden"); // Show the message
+});
+
+
+
+/*following code is used for show and hide the password*/
 const password = document.getElementById("password");
 const loginForm = document.getElementById("loginForm");
 const registerForm = document.getElementById("registerForm");
