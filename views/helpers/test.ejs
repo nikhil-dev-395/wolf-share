@@ -1,26 +1,15 @@
 <%- include("../partials/header.ejs") %>
 
 <section class="w-full h-screen md:h-auto mt-10 md:mt-0 flex justify-center">
-  <div id="menu-btn-pause-and-resume" class="flex items-center gap-8">
-    <!-- Pause Uploading on Cloud Storage -->
-    <button
-      id="pause-btn"
-      class="flex items-center border border-slate-200 px-3 py-2 rounded-md"
-    >
-      <img src="/icons/pauseIcon.svg" alt="Pause" class="w-6 h-6 mr-2" />
-      Pause
-    </button>
-
-    <!-- Resume Uploading on Cloud Storage -->
-    <button
-      id="resume-btn"
-      class="flex items-center border border-slate-200 px-3 py-2 rounded-md"
-    >
-      <img src="/icons/resumeIcon.svg" alt="Resume" class="w-6 h-6 mr-2" />
-      Resume
-    </button>
+  <!-- after clicking on send file button - after message -->
+  <div
+    class="md:w-auto sm:w-auto text-center w-[80%] h-fit py-3 px-3 mx-auto border-2 border-green-900 bg-green-300 text-slate-800 rounded-md md:text-xl text-xs"
+    id="after-sendFile-message"
+  >
+    <small class="">
+      please wait.. File will be sent in a few seconds...
+    </small>
   </div>
-  <div id="upload-status" class="text-sm text-gray-500"></div>
 </section>
 
 <%- include("../partials/footer.ejs") %>
