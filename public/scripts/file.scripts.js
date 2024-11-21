@@ -27,9 +27,6 @@ files_sharing.addEventListener("change", (e) => {
   nextBtn.style.display = "block";
   cancelBtn.style.display = "block";
   show.style.display = "block";
-  // show.style.width = "12rem";
-  // show.style.height = "300px";
-  // show.style.objectFit = "cover";
   show.style.backgroundColor = color.docxBgColor;
   /* following code is for progress bar after uploading a file
    Reset progress bar*/
@@ -79,9 +76,8 @@ files_sharing.addEventListener("change", (e) => {
     // console.log("file is occurred", file, file.type, file.name, filesize);
     const img = document.createElement("img");
 
-    // embed is going to show the .pdf
-    const embed = document.createElement("embed");
-
+    // iframe is going to show the .pdf - note : -  before iframe i used here embed
+    const iframe = document.createElement("iframe");
     /* li elemets for showing the metadata of files*/
     const li1 = document.createElement("li");
     const li2 = document.createElement("li");
@@ -89,13 +85,14 @@ files_sharing.addEventListener("change", (e) => {
 
     /* PDF File Handling*/
     if (file.type === "application/pdf") {
-      embed.src = url;
-      embed.type = "application/pdf";
-      embed.style.width = "280px";
-      embed.style.height = "300px";
-      embed.style.margin = "auto";
+      // iframe.type = "application/pdf";
 
-      show.append(embed);
+      iframe.src = url;
+      iframe.style.width = "280px";
+      iframe.style.height = "300px";
+      iframe.style.margin = "auto";
+
+      show.append(iframe);
     }
 
     if (

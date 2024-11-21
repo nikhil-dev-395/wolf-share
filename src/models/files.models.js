@@ -29,9 +29,11 @@ const fileSchema = new mongoose.Schema(
     receiver: { type: String, required: false },
     download_url: { type: String, required: false },
     sharedFile_url: { type: String, required: false },
+    // Set expiry time to 24 hours from now
     expireAt: {
       type: Date,
-      default: () => Date.now() + 24 * 60 * 60 * 1000, // Set expiry time to 24 hours from now
+      default: () => Date.now() + 24 * 60 * 60 * 1000,
+      // default: () => Date.now() + 2000,
       index: { expireAfterSeconds: 0 }, // TTL Index
     },
   },

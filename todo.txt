@@ -10,14 +10,14 @@
 [-] we are unable to send file using any email - (for this now we are using gmail smtp server which is better than old smtp server (brevo))
 [-] stop that span email popup in `gmail` app
 [-] remember to add sender email automatically fill it
-------------------------------------------------------------------------------------------------------------------------
-[+] we are handling error in success page - check this out - at 16:54 
-[+] add share , update , delete , and download if possible then add preview - - now complete this first
 [+] email already sent -  success , user already existed - register , user not found - login
+[+] we are handling error in success page
+[+] check design preview for 320px size -  we handled perfectly
+------------------------------------------------------------------------------------------------------------------------
+[+] add share , update , delete , and download if possible then add preview - - now complete this first
 [+] add delete the file after 24hrs , for testing add only for 2min , then go for 24hrs
 [+] don't forgot to add gsap for animation
 [+] add animation like delay for message use gsap
 [+] remove useless console.log
-[+] check design preview for 320px size
 [+] check the use of "download.routes.js" and "show.routes.js"
 [+] add `premium` plan up to '11USD' , and make it default plan as `free` plan
