@@ -41,7 +41,8 @@ const sendFileByEmail = async (req, res) => {
         receiver: file.receiver,
         filename: file.filename,
         fileSize: file.size,
-        download_url: file.download_url,
+        // download_url: file.download_url,
+        download_url: `${process.env.APP_BASE_URL}/download/${file.uuid}`,
         uuid: file.uuid,
         error:
           "email already sent to `" +
@@ -66,7 +67,8 @@ const sendFileByEmail = async (req, res) => {
         text: `${emailFrom} shared a file with you...`,
         html: require("../services/emailTemplate.services.js")({
           emailFrom,
-          downloadLink: file.download_url,
+          // downloadLink: file.download_url,
+          downloadLink: `${process.env.APP_BASE_URL}/download/${file.uuid}`,
           size: parseInt(file.size / 1000) + "kb",
           expires: "24 hrs",
           FileMessage,
@@ -82,7 +84,7 @@ const sendFileByEmail = async (req, res) => {
         receiver: file.receiver,
         filename: file.filename,
         fileSize: file.size,
-        download_url: file.download_url,
+        download_url: `${process.env.APP_BASE_URL}/download/${file.uuid}`,
         uuid: file.uuid,
         error: null,
       });
