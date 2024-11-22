@@ -8,15 +8,19 @@
 [-] app pause and resume button when we are uploading file
 [-] handle the custom prompt in customPrompt.helpers.js and account.scripts.js
 [-] we are unable to send file using any email - (for this now we are using gmail smtp server which is better than old smtp server (brevo))
-[-] stop that span email popup in `gmail` app
 [-] remember to add sender email automatically fill it
 [-] email already sent -  success , user already existed - register , user not found - login
 [-] we are handling error in success page
 [-] check design preview for 320px size -  we handled perfectly
 ------------------------------------------------------------------------------------------------------------------------
-[+] add share , update , delete , and download if possible then add preview - - now complete this first
+[+] file not found || findFileForDownload - handle this error in frontend
+[+] add admin section
+[+] add download count also
+[+] add toastify for login , registration , uploading file , send file using email ,
 [+] add payment integration for choosing a plan -  like up to 1000 INR
+[+] add share , update , delete , and download if possible then add preview - - now complete this first
 [+] add delete the file after 24hrs , for testing add only for 2min , then go for 24hrs
+[-] stop that spam email popup in `gmail` app
 [+] don't forgot to add gsap for animation
 [+] add animation like delay for message use gsap
 [+] remove useless console.log

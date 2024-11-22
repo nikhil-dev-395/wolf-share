@@ -16,6 +16,7 @@ const { showRouter } = require("../src/routes/show.routes.js");
 const { pageNotfoundRouter } = require("../src/routes/pageNotfound.routes.js");
 const { downloadRouter } = require("../src/routes/download.routes.js");
 const authUser = require("../src/middleware/auth.middleware.js");
+const authRoles = require("../src/middleware/authRoles.middleware.js");
 /* cleanup - means delete the file after 24hrs */
 require("../src/utils/cleanup.utils.js");
 
@@ -37,7 +38,7 @@ app.use("/api/v1/files", fileRouter);
 app.use("/files", showRouter);
 app.use("/files/download", downloadRouter);
 app.use("/api/v1/user", userRouter);
-app.use("*", pageNotfoundRouter);
+// app.use("*", pageNotfoundRouter);
 
 const port = process.env.port || 3000;
 (async () => {

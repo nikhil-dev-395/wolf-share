@@ -61,7 +61,7 @@ router.get("/send/:uuid", authUser, async (req, res) => {
       uuid: findFile.uuid,
       download_url: findFile.download_url,
       email: findUser.email,
-      error: null
+      error: null,
     });
   } catch (error) {
     console.error("Error fetching file:", error); // Log the entire error object
@@ -129,21 +129,44 @@ router.get("/account", authUser, async (req, res) => {
 /* add here proper details of files , which can help us to download it */
 router.get("/download/:uuid", async (req, res) => {
   const uuid = req.params.uuid;
-  const findFileForDownload = await File.findOne(
-    { uuid },
-    " filename size download_url sender "
-  );
 
-  if (!findFileForDownload) {
-    res.status(400).send("file not found || findFileForDownload");
+  try {
+    const findFileForDownload = await File.findOne(
+      { uuid },
+      "filename size download_url sender"
+    );
+
+    if (!findFileForDownload) {
+      console.error(`File not found for UUID: ${uuid}`);
+      return res.status(404).render("helpers/download", {
+        title: "Download",
+        error: "File not found, please check the download link.",
+        filename: null,
+        fileSize: null,
+        downloadLink: null,
+        sender: null,
+      });
+    }
+
+    return res.render("helpers/download", {
+      title: "Download",
+      filename: findFileForDownload.filename,
+      fileSize: findFileForDownload.size,
+      downloadLink: findFileForDownload.download_url,
+      sender: findFileForDownload.sender,
+      error: null,
+    });
+  } catch (err) {
+    console.error("Error while fetching file:", err.message);
+    return res.status(500).render("helpers/download", {
+      title: "Download",
+      error: "An unexpected error occurred. Please try again later.",
+      filename: null,
+      fileSize: null,
+      downloadLink: null,
+      sender: null,
+    });
   }
-  return res.render("helpers/download", {
-    title: "download",
-    filename: findFileForDownload.filename,
-    fileSize: findFileForDownload.size,
-    downloadLink: findFileForDownload.download_url,
-    sender: findFileForDownload.sender,
-  });
 });
 
 /*from here is pricing ->  remember this following code is for testing purpose*/

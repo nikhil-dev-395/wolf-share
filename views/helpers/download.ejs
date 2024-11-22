@@ -4,11 +4,17 @@
 <%- include("../partials/header.ejs") %>
 
 <section class="w-full h-full pt-3 pb-16">
-  <% if(locals.error) { %>
-
-  <h1><%= locals.error %></h1>
-
-  <% } else { %>
+  <% if(error) { %>
+    <!-- when the error will be popup it will automatically take full width and height  -->
+  <div class="w-full h-screen">
+    <div
+      id="fileDownloadError"
+      class="py-3 px-3 rounded-md border-2 border-red-800 bg-red-300 w-fit mx-auto text-center"
+    >
+      <h1><%= error %></h1>
+    </div>
+  </div>
+  <% } else {%>
 
   <div
     class="rounded-xl py-8 px-6 max-w-lg mx-auto relative text-center bg-slate-100"
@@ -48,7 +54,6 @@
     <!-- Hidden <a> tag for the actual download  when we click on download button and ok button then we will use this tag for downloading file -->
     <a id="hiddenDownloadLink" style="display: none"></a>
   </div>
-
   <% } %>
 </section>
 

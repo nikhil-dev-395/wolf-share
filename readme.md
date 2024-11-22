@@ -6,6 +6,17 @@
 
 ---
 
+pages name
+- home
+- account
+- pricing
+- send file
+- download
+- admin
+- success
+
+
+
 ## About
 
 ### How to Upload a File?
