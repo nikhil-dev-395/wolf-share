@@ -38,7 +38,7 @@ app.use("/api/v1/files", fileRouter);
 app.use("/files", showRouter);
 app.use("/files/download", downloadRouter);
 app.use("/api/v1/user", userRouter);
-// app.use("*", pageNotfoundRouter);
+app.use("*", pageNotfoundRouter);
 
 const port = process.env.port || 3000;
 (async () => {
