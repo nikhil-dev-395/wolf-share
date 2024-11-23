@@ -37,9 +37,11 @@ let token = getCookie("token");
 let loginButton = document.getElementById("loginButton");
 let logoutBtn = document.getElementById("logoutBtn");
 
-loginButton.addEventListener("click", () => {
-  window.location.pathname = "/login";
-});
+// logoutBtn.click("click", () => {
+//   alert("click");
+// });
+
+loginButton.addEventListener("click", () => {});
 
 if (token) {
   logoutBtn.style.display = "flex"; // Show logout button
