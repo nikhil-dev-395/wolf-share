@@ -106,7 +106,7 @@ router.get("/account", authUser, async (req, res) => {
 
   const findAllFileOFThisUser = await File.find(
     { userId },
-    " _id originalFileName filename size download_url uuid "
+    " _id originalFileName filename size download_url uuid sharedFile_url "
   );
 
   if (!findAllFileOFThisUser) {
@@ -123,6 +123,10 @@ router.get("/account", authUser, async (req, res) => {
     /*title - this is nothing but title of the html page*/
     title: "account",
     findAllFileOFThisUser,
+    /* generate the file download link for every single file */
+    FileDownloadLink: findAllFileOFThisUser.map(
+      (file) => `${process.env.APP_BASE_URL}/download/${file.uuid}`
+    ),
   });
 });
 

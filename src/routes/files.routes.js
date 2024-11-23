@@ -84,7 +84,15 @@ router.post("/upload", authUser, async (req, res) => {
       const temporaryLink = await dropbox.filesGetTemporaryLink({
         path: response.result.path_display,
       });
-      console.log("Temporary Link:", temporaryLink.result.link);
+      // console.log("Temporary Link:", temporaryLink.result.link);
+
+      // Generate a shared link for the uploaded file
+      const sharedLinkResponse =
+        await dropbox.sharingCreateSharedLinkWithSettings({
+          path: response.result.path_display,
+        });
+      const sharedLink = sharedLinkResponse.result.url;
+      console.log("Shared File Link:", sharedLink);
 
       // Cleanup and respond
       const file = new File({
@@ -95,6 +103,7 @@ router.post("/upload", authUser, async (req, res) => {
         path: req.file.path,
         size: req.file.size,
         download_url: temporaryLink.result.link,
+        sharedFile_url: sharedLink,
         expireAt: Date.now() + 24 * 60 * 60 * 1000,
       });
 

@@ -93,20 +93,20 @@ pause_upload.addEventListener("click", () => {
   alert("pause btn");
 });
 
-/* menu btns of account page */
-const shareBtn = document.getElementById("shareBtn");
-// const download_url = document.
-const shareData = {
-  url: shareBtn.dataset.downloadUrl,
-};
-shareBtn.addEventListener("click", async () => {
-  try {
-    await navigator.share(shareData);
-    alert("files shared successfully");
-  } catch (error) {
-    console.log("error occurred at sharing file", error);
-  }
-});
+// /* menu btns of account page */
+// const shareBtn = document.getElementById("shareBtn");
+// // const download_url = document.
+// const shareData = {
+//   url: shareBtn.dataset.downloadUrl,
+// };
+// shareBtn.addEventListener("click", async () => {
+//   try {
+//     await navigator.share(shareData);
+//     alert("files shared successfully");
+//   } catch (error) {
+//     console.log("error occurred at sharing file", error);
+//   }
+// });
 
 const deleteBtn = document.getElementById("deleteBtn");
 deleteBtn.addEventListener("click", () => {

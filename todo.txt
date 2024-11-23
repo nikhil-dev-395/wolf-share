@@ -12,9 +12,14 @@
 [-] email already sent -  success , user already existed - register , user not found - login
 [-] we are handling error in success page
 [-] check design preview for 320px size -  we handled perfectly
+[-] file not found || findFileForDownload - handle this error in frontend
 ------------------------------------------------------------------------------------------------------------------------
-[+] file not found || findFileForDownload - handle this error in frontend
-[+] add admin section
+
+[+] make everything in mb , don't use  kb format
+[+] handle the timing bar in frontend or remove it
+[+] handle latency in gmail service and spam message popup also
+[+] add admin section -
+[+] in admin section add total user , number of download , search user , access user account , like handling password and email , removing any user , any file ,
 [+] add download count also
 [+] add toastify for login , registration , uploading file , send file using email ,
 [+] add payment integration for choosing a plan -  like up to 1000 INR

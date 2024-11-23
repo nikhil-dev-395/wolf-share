@@ -75,7 +75,7 @@ file data -1. original file name
             class="flex items-center w-[90%] md:w-auto md:gap-6 gap-[7px] ml-4 md:ml-0 md:py-2 pb-16 md:pb-5"
           >
             <a
-              href="#"
+              href="<%= file.sharedFile_url %>"
               target="_blank"
               rel="noopener noreferrer"
               class="underline hover:text-blue-700 font-mono"
@@ -113,7 +113,7 @@ file data -1. original file name
             <button
               id="shareBtn"
               class="outline-none"
-              data-download-url="<%= file.download_url %>"
+              data-download-url="<%= FileDownloadLink %>"
             >
               <img
                 src="/icons/share.svg"
