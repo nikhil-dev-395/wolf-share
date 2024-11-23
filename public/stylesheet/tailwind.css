@@ -1247,6 +1247,19 @@ video {
   background-color: rgb(234 179 8 / var(--tw-bg-opacity));
 }
 
+.bg-\[\] {
+  background-color: ;
+}
+
+.bg-\[0F172A\] {
+  background-color: 0F172A;
+}
+
+.bg-\[\#0F172A\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(15 23 42 / var(--tw-bg-opacity));
+}
+
 .bg-gradient-to-b {
   background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
 }
@@ -2031,6 +2044,10 @@ video {
 
   .md\:h-auto {
     height: auto;
+  }
+
+  .md\:h-full {
+    height: 100%;
   }
 
   .md\:h-screen {

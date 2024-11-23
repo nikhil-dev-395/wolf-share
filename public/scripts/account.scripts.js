@@ -2,35 +2,50 @@
 const showCustomPrompt = (callback) => {
   const promptContainer = document.querySelector(".prompt-container");
   const backdrop = document.createElement("div");
-  backdrop.className =
-    "fixed top-0 left-0 w-full h-full bg-black/50 blur-sm z-[999]";
+
+  backdrop.style.position = "fixed";
+  backdrop.style.top = "0";
+  backdrop.style.left = "0";
+  backdrop.style.width = "100%";
+  backdrop.style.height = "100%";
+  backdrop.style.backgroundColor = "rgba(0, 0, 0, 0.5)"; // equivalent to bg-black/50
+  backdrop.style.filter = "blur(4px)"; // equivalent to blur-md
+  backdrop.style.zIndex = "999";
 
   const customInput = document.createElement("input");
   customInput.type = "text";
   customInput.placeholder = "Enter the new file name";
   customInput.style.fontSize = " 12px";
-  customInput.style.border = "1px solid black";
-
-  customInput.className =
-    "px-3 py-2 w-full rounded-md text-black border-2 border-sky-500";
+  customInput.style.backgroundColor = "transparent";
+  customInput.style.color = "white";
+  customInput.style.border = "1px solid white";
+  customInput.style.padding = "10px 13px";
+  customInput.style.borderRadius = "10px";
+  customInput.style.width = "100%";
+  customInput.style.margin = "auto";
 
   const customOkButton = document.createElement("button");
   customOkButton.textContent = "OK";
-  customOkButton.className =
-    "bg-blue-600 py-3 px-4 hover:bg-blue-800 rounded-md";
+  customOkButton.style.color = "white";
+  customOkButton.style.border = "1px solid white";
+  customOkButton.style.padding = "10px 13px";
+  customOkButton.style.borderRadius = "10px";
 
   const customNoButton = document.createElement("button");
   customNoButton.textContent = "Cancel";
-  customNoButton.style.backgroundColor = "orange";
-  customNoButton.style.color = "black";
-  customNoButton.style.border = "1px solid black";
-  customNoButton.className = " py-3 px-4 hover:bg-gray-800 rounded-md";
+  customNoButton.style.color = "white";
+  customNoButton.style.border = "1px solid white";
+  customNoButton.style.padding = "10px 13px";
+  customNoButton.style.borderRadius = "10px";
 
   const customDiv = document.createElement("div");
   customDiv.className = "flex justify-between mt-8";
+  customDiv.style.display = "flex";
+  customDiv.style.justifyContent = "space-around";
+  customDiv.style.marginTop = "20px";
+
   customDiv.appendChild(customOkButton);
   customDiv.appendChild(customNoButton);
-
   promptContainer.innerHTML = ""; // Clear any existing content
   promptContainer.appendChild(customInput);
   promptContainer.appendChild(customDiv);
@@ -104,7 +119,7 @@ const customConfirm = (callback) => {
   const customAlertBox = document.createElement("div");
   customAlertBox.style.width = "400px";
   customAlertBox.style.padding = "20px";
-  customAlertBox.style.backgroundColor = "white";
+  customAlertBox.style.backgroundColor = "#0F172A";
   customAlertBox.style.borderRadius = "10px";
   customAlertBox.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)";
   customAlertBox.style.textAlign = "center";
@@ -113,7 +128,7 @@ const customConfirm = (callback) => {
   const createAlertMsg = document.createElement("p");
   createAlertMsg.innerText = "Are you sure you want to delete this file?";
   createAlertMsg.style.fontSize = "16px";
-  createAlertMsg.style.color = "black";
+  createAlertMsg.style.color = "white";
   createAlertMsg.style.marginBottom = "20px";
 
   // OK button
@@ -121,9 +136,11 @@ const customConfirm = (callback) => {
   customAlertOK.innerText = "Delete";
   customAlertOK.style.padding = "10px 20px";
   customAlertOK.style.margin = "0 10px";
-  customAlertOK.style.backgroundColor = "yellow";
-  customAlertOK.style.color = "black";
-  customAlertOK.style.border = "none";
+  // customAlertOK.style.backgroundColor = "yellow";
+  customAlertOK.style.border = "1px solid white"; // Corrected border
+
+  customAlertOK.style.color = "white";
+  // customAlertOK.style.border = "none";
   customAlertOK.style.borderRadius = "5px";
   customAlertOK.style.cursor = "pointer";
 
@@ -137,9 +154,11 @@ const customConfirm = (callback) => {
   customAlertCancel.innerText = "Cancel";
   customAlertCancel.style.padding = "10px 20px";
   customAlertCancel.style.margin = "0 10px";
-  customAlertCancel.style.backgroundColor = "gray";
+  // customAlertCancel.style.backgroundColor = "gray";
+  customAlertCancel.style.border = "1px solid white"; // Corrected border
+
   customAlertCancel.style.color = "white";
-  customAlertCancel.style.border = "none";
+  // customAlertCancel.style.border = "none";
   customAlertCancel.style.borderRadius = "5px";
   customAlertCancel.style.cursor = "pointer";
 
@@ -217,13 +236,13 @@ const downloadFileConfirm = (callback) => {
   const alertBox = document.createElement("div");
   alertBox.style.width = "400px";
   alertBox.style.padding = "20px";
-  alertBox.style.backgroundColor = "white";
+  alertBox.style.backgroundColor = "#0F172A";
   alertBox.style.borderRadius = "10px";
   alertBox.style.textAlign = "center";
 
   const message = document.createElement("p");
   message.innerText = "Do you want to download this file?";
-  message.style.color = "black";
+  message.style.color = "white";
   message.style.marginBottom = " 26px";
   alertBox.appendChild(message);
 
@@ -231,7 +250,7 @@ const downloadFileConfirm = (callback) => {
   confirmButton.innerText = "Yes";
   confirmButton.style.backgroundColor = "#0F172A"; // purple for confirmation
   confirmButton.style.color = "white";
-  confirmButton.style.border = "none";
+  confirmButton.style.border = "1px solid white";
   confirmButton.style.borderRadius = "8px";
   confirmButton.style.padding = "10px 20px";
   confirmButton.style.cursor = "pointer";
@@ -245,9 +264,9 @@ const downloadFileConfirm = (callback) => {
 
   const cancelButton = document.createElement("button");
   cancelButton.innerText = "No";
-  cancelButton.style.backgroundColor = "#ef4444"; // Red for cancellation
+  // cancelButton.style.backgroundColor = "#ef4444"; // Red for cancellation
   cancelButton.style.color = "white";
-  cancelButton.style.border = "none";
+  cancelButton.style.border = "1px solid white";
   cancelButton.style.borderRadius = "8px";
   cancelButton.style.padding = "10px 20px";
   cancelButton.style.cursor = "pointer";
