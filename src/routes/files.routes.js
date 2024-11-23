@@ -92,7 +92,7 @@ router.post("/upload", authUser, async (req, res) => {
           path: response.result.path_display,
         });
       const sharedLink = sharedLinkResponse.result.url;
-      console.log("Shared File Link:", sharedLink);
+      // console.log("Shared File Link:", sharedLink);
 
       // Cleanup and respond
       const file = new File({

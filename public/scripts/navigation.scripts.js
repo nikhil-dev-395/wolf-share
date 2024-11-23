@@ -6,7 +6,7 @@ const logo = document.getElementById("logo");
 const pricing = document.getElementById("pricing");
 const cancelBtn = document.getElementById("cancelBtn");
 
-/* currentLocation - with this we can define color to the icon which related to route like home , account , and pricing */
+// Set background color for active route
 let currentLocation = window.location.pathname;
 if (currentLocation == "/account") {
   account.style.backgroundColor = "yellow";
@@ -17,11 +17,13 @@ if (currentLocation == "/pricing") {
 if (currentLocation == "/") {
   home.style.backgroundColor = "yellow";
 }
+
+// Event listener to navigate back to the home page
 logo.addEventListener("click", () => {
   window.location.pathname = "/";
 });
 
-/* Function to access the token from cookies */
+// Function to access the token from cookies
 function getCookie(name) {
   const value = `; ${document.cookie}`;
   const parts = value.split(`; ${name}=`);
@@ -29,20 +31,15 @@ function getCookie(name) {
   return null;
 }
 
-// Retrieve the token
+// Retrieve the token from cookies
 let token = getCookie("token");
-// console.log(token);
+console.log("Token:", token); // Debugging - check the token value
 
-/* Update UI based on token presence , if we are logged in then we will be only display logout if not then login button */
+// Elements for login/logout buttons
 let loginButton = document.getElementById("loginButton");
 let logoutBtn = document.getElementById("logoutBtn");
 
-// logoutBtn.click("click", () => {
-//   alert("click");
-// });
-
-loginButton.addEventListener("click", () => {});
-
+// Update UI based on token presence
 if (token) {
   logoutBtn.style.display = "flex"; // Show logout button
   loginButton.style.display = "none"; // Hide login button
@@ -51,7 +48,9 @@ if (token) {
   loginButton.style.display = "flex"; // Show login button
 }
 
-/* for dispaying message after uploading file on cloud storage */
+
+
+// For displaying message after uploading file on cloud storage
 const nextBtn = document.getElementById("nextBtn");
 const btnContainer = document.getElementById("btn");
 const afterUploadMessage = document.getElementById("after-upload-btn-message");
@@ -66,6 +65,7 @@ nextBtn.addEventListener("click", () => {
   menuBtnPauseAndResume.style.display = "flex"; // Ensure it's flex for alignment
 });
 
+// Pause upload button functionality
 const pauseBtn = document.getElementById("pause-btn");
 pauseBtn.addEventListener("click", () => {
   fetch("/api/v1/files/pause-upload", {
@@ -86,13 +86,11 @@ pauseBtn.addEventListener("click", () => {
     .catch((error) => console.error("Error pausing upload:", error));
 });
 
-/*resume button for resuming the uploading file on dropbox*/
-// Resume button for resuming the uploading file on Dropbox
+// Resume upload button functionality
 const resumeBtn = document.getElementById("resume-btn");
 const uploadStatus = document.getElementById("upload-status"); // Define uploadStatus here
 let isPaused = true; // Assume upload is paused initially
 
-// Resume upload
 resumeBtn.addEventListener("click", (e) => {
   e.preventDefault();
   fetch("/api/v1/files/resume-upload", {

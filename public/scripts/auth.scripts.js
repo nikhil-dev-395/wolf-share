@@ -3,15 +3,6 @@ console.log("auth.scripts.js");
 
 /*after message of sharing file to receiver */
 
-const sendFileFormBtn = document.getElementById("sendFileFormBtn");
-const afterSendFileMessage = document.getElementById("after-sendFile-message");
-sendFileFormBtn.addEventListener("click", () => {
-  sendFileFormBtn.style.display = "none"; // Hide the button
-  afterSendFileMessage.classList.remove("hidden"); // Show the message
-});
-
-
-
 /*following code is used for show and hide the password*/
 const password = document.getElementById("password");
 const loginForm = document.getElementById("loginForm");
@@ -102,3 +93,12 @@ const logout = () => {
     }
   });
 };
+
+/* with the help sendFileFormBtn & afterSendFileMessage we are going to hide and show the after message for sending a file using email in `send.ejs fle`*/
+
+const sendFileFormBtn = document.getElementById("sendFileFormBtn");
+const afterSendFileMessage = document.getElementById("after-sendFile-message");
+sendFileFormBtn.addEventListener("click", () => {
+  sendFileFormBtn.style.display = "none"; // Hide the button
+  afterSendFileMessage.classList.remove("hidden"); // Show the message
+});

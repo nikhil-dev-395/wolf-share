@@ -1,10 +1,10 @@
-// auth.controllers.js
+/* src/controllers/auth.controllers.js */
 
 const User = require("../models/user.models.js");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-// login controller
+/* login controller */
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -27,7 +27,8 @@ const login = async (req, res) => {
       { email: user.email, userId: user._id },
       process.env.JWT_SECRET
     );
-    console.log(token);
+    /* uncomment when you need for testing */
+    // console.log(token);
 
     res.cookie("token", token, {
       httpOnly: false,
@@ -67,7 +68,9 @@ const register = async (req, res) => {
       { email: user.email, userId: user._id },
       process.env.JWT_SECRET
     );
-    console.log("token", token);
+
+    /* uncomment `token` log when you need for testing */
+    // console.log("token", token);
     // res.status(201).json({ message: "user created successfully", token });
     res.cookie("token", token, {
       httpOnly: false,
