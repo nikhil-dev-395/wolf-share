@@ -85,16 +85,62 @@ files_sharing.addEventListener("change", (e) => {
 
     /* PDF File Handling*/
     if (file.type === "application/pdf") {
-      // iframe.type = "application/pdf";
+      const pdfContainer = document.createElement("div");
+      pdfContainer.id = "pdf-container";
 
-      iframe.src = url;
-      iframe.style.width = "280px";
-      iframe.style.height = "300px";
-      iframe.style.margin = "auto";
+      // Apply CSS styles to pdfContainer
+      pdfContainer.style.width = "100%";
+      pdfContainer.style.maxWidth = "100%";
+      pdfContainer.style.overflow = "hidden";
+      pdfContainer.style.margin = "0 auto";
 
-      show.append(iframe);
+      show.innerHTML = ""; // Clear previous content
+      show.appendChild(pdfContainer);
+
+      const loadingTask = pdfjsLib.getDocument(url);
+      loadingTask.promise.then(
+        function (pdf) {
+          console.log("PDF loaded");
+
+          const numPages = pdf.numPages; // Total number of pages
+          const scale = 2.0; // Higher scale for better quality
+
+          // Loop through all the pages
+          for (let pageNumber = 1; pageNumber <= numPages; pageNumber++) {
+            pdf.getPage(pageNumber).then(function (page) {
+              const viewport = page.getViewport({ scale: scale });
+              const canvas = document.createElement("canvas");
+              const context = canvas.getContext("2d");
+              canvas.height = viewport.height;
+              canvas.width = viewport.width;
+
+              // Apply CSS styles to canvas
+              canvas.style.width = "100%";
+              canvas.style.height = "auto";
+              canvas.style.display = "block";
+              canvas.style.marginBottom = "10px";
+
+              pdfContainer.appendChild(canvas);
+
+              // Render the page to the canvas
+              page
+                .render({
+                  canvasContext: context,
+                  viewport: viewport,
+                })
+                .promise.then(function () {
+                  console.log("Page " + pageNumber + " rendered");
+                });
+            });
+          }
+        },
+        function (reason) {
+          console.error(reason);
+        }
+      );
     }
 
+    /* for all type of images */
     if (
       file.type.startsWith("image/") &&
       (file.type === "image/png" ||
