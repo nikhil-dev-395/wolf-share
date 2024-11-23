@@ -1,4 +1,4 @@
-const customShareConfirm = (callback) => {
+const customDropBoxOpenConfirm = (callback) => {
   // Overlay
   const overlay = document.createElement("div");
   overlay.style.zIndex = "1000";
@@ -24,7 +24,7 @@ const customShareConfirm = (callback) => {
 
   // Confirmation Message
   const confirmMsg = document.createElement("p");
-  confirmMsg.innerText = "Do you want to share this file via WhatsApp?";
+  confirmMsg.innerText = "Do you want to open this file via dropbox editor?";
   confirmMsg.style.fontSize = "16px";
   confirmMsg.style.color = "slategray"; // Corrected the color name
   confirmMsg.style.marginBottom = "20px";
@@ -36,7 +36,7 @@ const customShareConfirm = (callback) => {
   confirmShareButton.style.padding = "10px 12px";
   confirmShareButton.style.borderRadius = "5px";
   confirmShareButton.style.marginRight = "10px";
-  confirmShareButton.innerText = "Share";
+  confirmShareButton.innerText = "open";
   confirmShareButton.addEventListener("click", () => {
     document.body.removeChild(overlay);
     callback(true);
@@ -64,20 +64,17 @@ const customShareConfirm = (callback) => {
   document.body.appendChild(overlay);
 };
 
-// Share button event listener
-const shareBtns = document.querySelectorAll("#shareBtn");
-shareBtns.forEach((button) => {
-  const fileDownloadUrl = button.dataset.downloadUrl; // Match the attribute in EJS
+/** for sharedLink to open on cloud storage */
+
+const sharedFileUrls = document.querySelectorAll("#sharedFile_url");
+
+sharedFileUrls.forEach((button) => {
+  const url = button.dataset.sharedUrl; // Access dataset inside the loop for each button
   button.addEventListener("click", () => {
-    customShareConfirm((confirmed) => {
+    customDropBoxOpenConfirm((confirmed) => {
       if (confirmed) {
-        const whatsAppUrl = `https://wa.me/?text=${encodeURIComponent(
-          fileDownloadUrl
-        )}`;
-        window.open(whatsAppUrl, "_blank");
+        window.location.href = url;
       }
     });
   });
 });
-
-
