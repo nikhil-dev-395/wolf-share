@@ -7,7 +7,7 @@ preview file in dropbox editor for full view (premium), share link to anyone usi
 file data -1. original file name
             2. filename
             3. download link
-            4. shared link for preview
+            4. shared link for preview in dropbox
 
 
  -->
@@ -110,10 +110,11 @@ file data -1. original file name
             </a>
 
             <!-- share -->
+            <!-- ${process.env.APP_BASE_URL}/download/${file.uuid} -> with this we can get download url , means it wil redirect to download page then we have there download file option -->
             <button
               id="shareBtn"
               class="outline-none"
-              data-download-url="<%= FileDownloadLink %>"
+              data-download-url="<%= `${process.env.APP_BASE_URL}/download/${file.uuid}` %>"
             >
               <img
                 src="/icons/share.svg"

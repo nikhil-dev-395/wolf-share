@@ -75,9 +75,6 @@ files_sharing.addEventListener("change", (e) => {
     const filesize = file.size / 1_000_000 + " mb";
     // console.log("file is occurred", file, file.type, file.name, filesize);
     const img = document.createElement("img");
-
-    // iframe is going to show the .pdf - note : -  before iframe i used here embed
-    const iframe = document.createElement("iframe");
     /* li elemets for showing the metadata of files*/
     const li1 = document.createElement("li");
     const li2 = document.createElement("li");

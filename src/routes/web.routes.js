@@ -124,9 +124,9 @@ router.get("/account", authUser, async (req, res) => {
     title: "account",
     findAllFileOFThisUser,
     /* generate the file download link for every single file */
-    FileDownloadLink: findAllFileOFThisUser.map(
-      (file) => `${process.env.APP_BASE_URL}/download/${file.uuid}`
-    ),
+    // FileDownloadLink: findAllFileOFThisUser.map(
+    //   (file) => `${process.env.APP_BASE_URL}/download/${file.uuid}`
+    // ),
   });
 });
 
@@ -211,10 +211,12 @@ router.get("/logout", authUser, (req, res) => {
   res.redirect("/login");
 });
 
-router.get("/test", (req, res) => {
-  res.render("helpers/test", {
-    title: "test",
-  });
-});
+
+
+// router.get("/test", (req, res) => {
+//   res.render("helpers/test", {
+//     title: "test",
+//   });
+// });
 
 module.exports = { webRouter: router };
