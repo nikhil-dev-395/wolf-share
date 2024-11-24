@@ -13,9 +13,9 @@
 [-] we are handling error in success page
 [-] check design preview for 320px size -  we handled perfectly
 [-] file not found || findFileForDownload - handle this error in frontend
+[-] make everything in mb , don't use  kb format
 ------------------------------------------------------------------------------------------------------------------------
-
-[+] make everything in mb , don't use  kb format
+[+] feedback form
 [+] handle the timing bar in frontend or remove it
 [+] handle latency in gmail service and spam message popup also
 [+] add admin section -

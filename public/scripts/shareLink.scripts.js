@@ -67,7 +67,7 @@ const customShareConfirm = (callback) => {
 // Share button event listener
 const shareBtns = document.querySelectorAll("#shareBtn");
 shareBtns.forEach((button) => {
-  const fileDownloadUrl = button.dataset.downloadUrl; // Match the attribute in EJS
+  const fileDownloadUrl = button.dataset.sharefileUrl; // Match the attribute in EJS
   button.addEventListener("click", () => {
     customShareConfirm((confirmed) => {
       if (confirmed) {
@@ -79,5 +79,3 @@ shareBtns.forEach((button) => {
     });
   });
 });
-
-

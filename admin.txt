@@ -1,4 +1,4 @@
-[+] Dashboard Overview: Display file upload/download stats, active users, and storage usage.
+[] Dashboard Overview: Display file upload/download stats, active users, and storage usage.
 [+] File Management: Enable admins to view, search, delete, or archive files.
 [+] User Management: Add, edit, or delete user accounts; track user activities.
 [+] Access Control: Implement roles and permissions for admins and sub-admins.

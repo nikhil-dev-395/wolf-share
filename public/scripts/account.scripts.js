@@ -25,7 +25,7 @@ const showCustomPrompt = (callback) => {
   customInput.style.margin = "auto";
 
   const customOkButton = document.createElement("button");
-  customOkButton.textContent = "OK";
+  customOkButton.textContent = "update";
   customOkButton.style.color = "white";
   customOkButton.style.border = "1px solid white";
   customOkButton.style.padding = "10px 13px";
@@ -39,8 +39,9 @@ const showCustomPrompt = (callback) => {
   customNoButton.style.borderRadius = "10px";
 
   const customDiv = document.createElement("div");
-  customDiv.className = "flex justify-between mt-8";
+  // customDiv.className = "flex justify-between mt-8";
   customDiv.style.display = "flex";
+  // customDiv.style.width = "100%";
   customDiv.style.justifyContent = "space-around";
   customDiv.style.marginTop = "20px";
 
