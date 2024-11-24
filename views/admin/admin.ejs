@@ -4,14 +4,16 @@
   <!-- admin dashboard box -->
   <div
     id="admin-dashboard"
-    class="w-full md:w-[95%] h-auto mx-2 border border-slate-500 rounded-md px-3"
+    class="w-full md:w-[95%] h-auto mx-2 border border-slate-700 rounded-md px-3 bg-slate-800"
   >
     <h1 class="text-xl text-center md:py-4 py-2 md:my-2 mb-7 px-3">
       Admin Dashboard
     </h1>
     <div id="admin-details" class="py-3 px-4">
-      <h2 id="admin-email" class="text-lg">admin#123</h2>
-      <h2 id="admin-username" class="text-sm">admin-username#123</h2>
+      <h2 id="admin-email" class="text-lg text-yellow-500">admin#123</h2>
+      <h2 id="admin-username" class="text-sm text-pretty text-indigo-500">
+        admin-username#123
+      </h2>
     </div>
 
     <div id="users-details" class="py-4">
@@ -44,16 +46,17 @@
       </ul>
     </div>
 
+    <!-- add notification here -->
 
-<!-- add notification here -->
-
-
-
+    <div id="feedbackNotification"></div>
 
     <!-- file management like crud -->
 
     <div id="file-management" class="py-4">
-      <div id="searchFileAndUserManage" class="flex items-center w-full gap-3">
+      <div
+        id="searchFileAndUserManage"
+        class="flex items-center justify-center w-full gap-3"
+      >
         <input
           type="text"
           name="searchFile"
@@ -68,7 +71,10 @@
 
       <!-- output of search like file and user -->
 
-      <div id="mainUserAndFileinfo" class="w-full h-auto flex flex-wrap gap-3">
+      <div
+        id="mainUserAndFileinfo"
+        class="w-full h-auto flex flex-wrap md:justify-center gap-3 mt-10"
+      >
         <!-- file information -->
         <div
           id="fileDetailsBox"

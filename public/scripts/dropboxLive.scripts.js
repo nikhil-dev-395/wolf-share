@@ -73,7 +73,7 @@ sharedFileUrls.forEach((button) => {
   button.addEventListener("click", () => {
     customDropBoxOpenConfirm((confirmed) => {
       if (confirmed) {
-        window.location.href = url;
+        window.open(url, "_blank");
       }
     });
   });
