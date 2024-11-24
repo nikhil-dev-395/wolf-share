@@ -650,6 +650,11 @@ video {
   margin-bottom: 1.5rem;
 }
 
+.my-7 {
+  margin-top: 1.75rem;
+  margin-bottom: 1.75rem;
+}
+
 .-mt-1 {
   margin-top: -0.25rem;
 }
@@ -732,6 +737,10 @@ video {
 
 .mt-8 {
   margin-top: 2rem;
+}
+
+.mb-7 {
+  margin-bottom: 1.75rem;
 }
 
 .block {
@@ -1010,6 +1019,10 @@ video {
   gap: 7px;
 }
 
+.gap-3 {
+  gap: 0.75rem;
+}
+
 .gap-y-6 {
   row-gap: 1.5rem;
 }
@@ -1044,6 +1057,10 @@ video {
 
 .\!scroll-smooth {
   scroll-behavior: smooth !important;
+}
+
+.text-wrap {
+  text-wrap: wrap;
 }
 
 .rounded {
@@ -1101,6 +1118,10 @@ video {
 
 .border-dashed {
   border-style: dashed;
+}
+
+.border-none {
+  border-style: none;
 }
 
 .border-blue-500 {
@@ -1161,6 +1182,11 @@ video {
 .border-yellow-300 {
   --tw-border-opacity: 1;
   border-color: rgb(253 224 71 / var(--tw-border-opacity));
+}
+
+.border-slate-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(100 116 139 / var(--tw-border-opacity));
 }
 
 .bg-\[\#0F172A\] {
@@ -1250,6 +1276,21 @@ video {
 .bg-yellow-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(234 179 8 / var(--tw-bg-opacity));
+}
+
+.bg-slate-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(148 163 184 / var(--tw-bg-opacity));
+}
+
+.bg-red-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 202 202 / var(--tw-bg-opacity));
+}
+
+.bg-red-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 242 242 / var(--tw-bg-opacity));
 }
 
 .bg-gradient-to-b {
@@ -1657,6 +1698,16 @@ video {
   color: rgb(202 138 4 / var(--tw-text-opacity));
 }
 
+.text-purple-400 {
+  --tw-text-opacity: 1;
+  color: rgb(192 132 252 / var(--tw-text-opacity));
+}
+
+.text-blue-400 {
+  --tw-text-opacity: 1;
+  color: rgb(96 165 250 / var(--tw-text-opacity));
+}
+
 .underline {
   text-decoration-line: underline;
 }
@@ -1986,6 +2037,11 @@ video {
     top: 1.5rem;
   }
 
+  .md\:my-2 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
   .md\:mb-0 {
     margin-bottom: 0px;
   }
@@ -2078,6 +2134,10 @@ video {
     width: 80%;
   }
 
+  .md\:w-\[95\%\] {
+    width: 95%;
+  }
+
   .md\:w-auto {
     width: auto;
   }
@@ -2106,6 +2166,10 @@ video {
     gap: 1.5rem;
   }
 
+  .md\:border {
+    border-width: 1px;
+  }
+
   .md\:px-0 {
     padding-left: 0px;
     padding-right: 0px;
@@ -2131,6 +2195,11 @@ video {
     padding-bottom: 0.5rem;
   }
 
+  .md\:py-4 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
   .md\:pb-0 {
     padding-bottom: 0px;
   }
@@ -2141,6 +2210,10 @@ video {
 
   .md\:pb-5 {
     padding-bottom: 1.25rem;
+  }
+
+  .md\:text-center {
+    text-align: center;
   }
 
   .md\:text-4xl {

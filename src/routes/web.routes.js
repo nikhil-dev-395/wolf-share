@@ -211,7 +211,12 @@ router.get("/logout", authUser, (req, res) => {
   res.redirect("/login");
 });
 
-
+router.get("/admin", authUser, (req, res) => {
+  res.render("admin/admin", {
+    title: "admin",
+    error: null,
+  });
+});
 
 // router.get("/test", (req, res) => {
 //   res.render("helpers/test", {
