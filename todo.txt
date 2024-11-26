@@ -19,7 +19,8 @@
 [+] handle the timing bar in frontend or remove it
 [+] handle latency in gmail service and spam message popup also
 [+] add admin section -
-[+] in admin section add total user , number of download , search user , access user account , like handling password and email , removing any user , any file ,
+[+] in admin section add total user , number of download , search user , access user account , like handling password and email , removing any user , any file .
+[+] check weather file is deleted or not from dropbox
 [+] add download count also
 [+] add toastify for login , registration , uploading file , send file using email ,
 [+] add payment integration for choosing a plan -  like up to 1000 INR

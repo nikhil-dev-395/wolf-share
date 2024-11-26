@@ -14,6 +14,7 @@ const User = require("../models/user.models.js");
 const authUser = require("../middleware/auth.middleware.js");
 /* for checking user is admin or not */
 const authRole = require("../middleware/authRole.middleware.js");
+const { admin } = require("../controllers/admin.controllers.js");
 
 // with this middleware we can send github & linkedin links ffff
 router.use((req, res, next) => {
@@ -223,12 +224,7 @@ router.get("/logout", authUser, authRole("user", "admin"), (req, res) => {
   res.redirect("/login");
 });
 
-router.get("/admin", authUser, authRole("admin"), (req, res) => {
-  res.render("admin/admin", {
-    title: "admin",
-    error: null,
-  });
-});
+router.get("/admin", authUser, authRole("admin"), admin);
 
 router.get("/test", authUser, (req, res) => {
   res.send(req.user.role);
