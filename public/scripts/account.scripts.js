@@ -205,6 +205,7 @@ document.querySelectorAll("#deleteBtn").forEach((button, index) => {
           if (fileItem) {
             fileItem.remove();
             updateFileIndex();
+            updateFileCount();
           }
         })
         .catch((error) => console.error("Error during file deletion:", error));
@@ -218,6 +219,18 @@ const updateFileIndex = () => {
     const fileIndexDisplay = file.querySelector(".file-index");
     if (fileIndexDisplay) fileIndexDisplay.textContent = index + 1;
   });
+};
+
+// Update file count dynamically after deletion
+const updateFileCount = () => {
+  const checkFileCount = document.querySelectorAll(".file-item"); // Get all remaining file items
+  const checkFileCountElement = document.querySelector("#checkFileCount");
+
+  if (checkFileCountElement) {
+    // Update the count displayed in the element
+    checkFileCountElement.querySelector("#checkFileCountNumber").textContent =
+      checkFileCount.length;
+  }
 };
 
 // Confirm download function

@@ -21,12 +21,10 @@ file data -1. original file name
       class="flex flex-row gap-4 p-4 border-b-2 border-yellow-300 justify-between"
     >
       <div class="">
-        <h2 class="text-yellow-300 md:text-lg text-sm font-bold font-IBM">
+        <h2 class="text-yellow-300 text-lg font-bold font-IBM">
           <%= username %>
         </h2>
-        <h2 class="text-green-300 md:text-lg font-semibold text-sm">
-          <%= email %>
-        </h2>
+        <h2 class="text-green-300 text-lg font-semibold"><%= email %></h2>
       </div>
       <h2 class="text-green-300 md:text-lg text-xs font-bold">
         total links :
@@ -34,15 +32,15 @@ file data -1. original file name
       </h2>
 
       <!-- avail links in number -->
-      <h2 class="text-green-300 md:text-lg text-xs font-bold">
+      <h2 class="text-green-300 md:text-lg text-xs font-bold" id="checkFileCount">
         available links :
-        <span class="text-yellow-300"> <%= checkFileCount.length %> </span>
+        <span class="text-yellow-300" id="checkFileCountNumber"> <%= checkFileCount.length %> </span>
       </h2>
     </div>
 
     <!-- Your links -->
     <h3 class="text-md text-purple-300 pt-11">links</h3>
-    <ul class="mt-6 mb-80">
+    <ul class="mt-6 mb-64">
       <% if(findAllFileOFThisUser.length === 0) { %>
       <h2 class="text-red-500 text-center text-3xl w-full h-80">
         No data uploaded yet
