@@ -16,6 +16,7 @@ const { showRouter } = require("../src/routes/show.routes.js");
 const { pageNotfoundRouter } = require("../src/routes/pageNotfound.routes.js");
 const { downloadRouter } = require("../src/routes/download.routes.js");
 const authUser = require("../src/middleware/auth.middleware.js");
+const { searchFileAndUSer } = require("../src/controllers/admin.controllers.js");
 // const authRoles = require("../src/middleware/authRoles.middleware.js");
 /* cleanup - means delete the file after 24hrs */
 require("../src/utils/cleanup.utils.js");
@@ -32,6 +33,9 @@ app.use(bodyParser.json());
 // ROUTES
 /* webRouter helps to routing all ejs pages - web route */
 // app.use(authUser);
+
+// app.get("/testSearch", searchFileAndUSer);
+
 app.use("/", webRouter);
 app.use("/api/v1/files", fileRouter);
 /* if we don't need then remove this showRouter  & downloadRouter after completing code */

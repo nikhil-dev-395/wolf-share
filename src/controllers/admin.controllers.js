@@ -4,16 +4,21 @@ const File = require("../models/files.models");
 
 /*  in admin controllers we are handle admin data , like user , download , premium , and memory usage count  && searching a file and user for updating , deleting  , and for a file we are going add sharedLink of dropbox  */
 
-const searchFileAndUSer = async(req, res) => {
+const searchFileAndUSer = async (req, res) => {
   try {
+    if (!req.body.originalFileName) {
+      res.send("please give me proper file ");
+    }
 
     const findFile = await File.find({
-        $or :[
-            
-        ]
-    })
+      $or: [
+        {
+          originalFileName: { $regex: req.body.originalFileName },
+        },
+      ],
+    });
 
-
+    res.send(findFile);
   } catch (error) {
     res.render("admin/admin", {
       title: "error",
@@ -26,8 +31,9 @@ const searchFileAndUSer = async(req, res) => {
 const admin = (req, res) => {
   res.render("admin/admin", {
     title: "admin",
+    searchFileAndUSer,
     error: null,
   });
 };
 
-module.exports = { admin };
+module.exports = { admin, searchFileAndUSer };
