@@ -24,7 +24,12 @@ const login = async (req, res) => {
       });
     }
     const token = jwt.sign(
-      { email: user.email, userId: user._id, role: user.role },
+      {
+        email: user.email,
+        userId: user._id,
+        role: user.role,
+        plan: user.userPlan,
+      },
       process.env.JWT_SECRET
     );
     /* uncomment when you need for testing */
@@ -65,7 +70,12 @@ const register = async (req, res) => {
       password: hashPassword,
     });
     const token = jwt.sign(
-      { email: user.email, userId: user._id, role: user.role },
+      {
+        email: user.email,
+        userId: user._id,
+        role: user.role,
+        plan: user.userPlan,
+      },
       process.env.JWT_SECRET
     );
 

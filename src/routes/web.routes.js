@@ -29,6 +29,7 @@ router.get("/", authUser, authRole("user", "admin"), (req, res) => {
 
   return res.render("index", {
     title: "wolf share",
+    error: null,
     // isLoggedIn: req.isLoggedIn,
   });
 });
@@ -107,6 +108,16 @@ router.get(
       " username email allFileLinks  "
     );
 
+    // check the files existed or not
+
+    const checkFileCount = await File.find({
+      _id: { $in: findUserInformation.allFileLinks },
+    });
+
+    if (checkFileCount.length > 0) {
+      console.log(checkFileCount);
+    }
+
     if (!findUserInformation) {
       res.status(400).json({
         success: false,
@@ -135,6 +146,7 @@ router.get(
       /*title - this is nothing but title of the html page*/
       title: "account",
       findAllFileOFThisUser,
+      checkFileCount,
       /* generate the file download link for every single file */
       // FileDownloadLink: findAllFileOFThisUser.map(
       //   (file) => `${process.env.APP_BASE_URL}/download/${file.uuid}`
@@ -227,7 +239,7 @@ router.get("/logout", authUser, authRole("user", "admin"), (req, res) => {
 router.get("/admin", authUser, authRole("admin"), admin);
 
 router.get("/test", authUser, (req, res) => {
-  res.send(req.user.role);
+  res.send(req.user.plan);
 });
 
 module.exports = { webRouter: router };
