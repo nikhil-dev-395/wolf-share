@@ -177,6 +177,13 @@ router.get("/download/:uuid", async (req, res) => {
       });
     }
 
+    /* update file download count */
+    await File.findOneAndUpdate(
+      { uuid },
+      { $inc: { downloadCount: 1 } }, // Increment the count by 1
+      { new: true, runValidators: true } // Return the updated document
+    );
+
     return res.render("helpers/download", {
       title: "Download",
       filename: findFileForDownload.filename,
@@ -203,7 +210,7 @@ router.get("/download/:uuid", async (req, res) => {
 const free = {
   planType: "free",
   price: "0",
-  paymentCurrency: "dollar",
+  paymentCurrency: "INR",
   whatsIncluded: [
     "Account dashboard support ",
     "You can share files up to 1GB",
@@ -213,8 +220,8 @@ const free = {
 
 const premium = {
   planType: "premium",
-  price: "11",
-  paymentCurrency: "dollar",
+  price: "1000",
+  paymentCurrency: "INR",
   whatsIncluded: [
     "Priority account support",
     "Share files up to 10GB",
@@ -239,7 +246,7 @@ router.get("/logout", authUser, authRole("user", "admin"), (req, res) => {
 router.get("/admin", authUser, authRole("admin"), admin);
 
 router.get("/test", authUser, (req, res) => {
-  res.send(req.user.plan);
+  res.send(req.user.userId);
 });
 
 module.exports = { webRouter: router };

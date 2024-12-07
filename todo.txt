@@ -34,3 +34,4 @@
 [+] remove test route and test file - because we use this for practice only
 [+] don't forgot to add steps in index page how to use this app
 [+] add `premium` plan up to '11USD' , and make it default plan as `free` plan
+[+] changin in webroutes for download count
