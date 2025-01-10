@@ -33,15 +33,15 @@ const sendMail = async ({ from, to, subject, text, html }) => {
   try {
     let transporter = nodemailer.createTransport({
       host: process.env.EMAIL_HOST,
-      port: process.env.EMAIL_PORT, 
-      secure: process.env.EMAIL_PORT == 465, // true for 465, false for other ports
+      port: process.env.EMAIL_PORT,
+      secure: 465, // true for 465, false for other ports
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASSWORD,
       },
       pool: true, // Use pooled connections
-      maxConnections: 5, // Limit the number of concurrent connections
-      timeout: 5000, // Set a timeout for the connection
+      maxConnections: 15, // Limit the number of concurrent connections
+      timeout: 10000, // Set a timeout for the connection
     });
 
     let info = await transporter.sendMail({
