@@ -14,33 +14,38 @@ file data -1. original file name
 
 <%- include("partials/header.ejs") %>
 
-<section class="flex w-full h-auto mx-auto mb-10">
+<section class="flex w-full max-w-[1320px] min-h-screen h-auto mx-auto mb-10">
   <div class="md:w-3/4 w-full px-3 md:px-0 text-sm md:text-base py-16 mx-auto">
     <div
       id="user"
-      class="flex flex-row gap-4 p-4 border-b-2 border-yellow-300 justify-between"
+      class="flex flex-row gap-4 px-4 border-b-2 border-yellow-300 justify-between"
     >
       <div class="">
-        <h2 class="text-yellow-300 text-lg font-bold font-IBM">
+        <h2 class="text-yellow-100 text-lg font-bold font-IBM">
           <%= username %>
         </h2>
-        <h2 class="text-green-300 text-lg font-semibold"><%= email %></h2>
+        <h2 class="text-green-100 text-lg font-semibold"><%= email %></h2>
       </div>
-      <h2 class="text-green-300 md:text-lg text-xs font-bold">
+      <h2 class="text-green-100 md:text-lg text-xs font-bold">
         total links :
         <span class="text-yellow-300"> <%= allFileLinksCount.length %> </span>
       </h2>
 
       <!-- avail links in number -->
-      <h2 class="text-green-300 md:text-lg text-xs font-bold" id="checkFileCount">
+      <h2
+        class="text-green-100 md:text-lg text-xs font-bold"
+        id="checkFileCount"
+      >
         available links :
-        <span class="text-yellow-300" id="checkFileCountNumber"> <%= checkFileCount.length %> </span>
+        <span class="text-yellow-300" id="checkFileCountNumber">
+          <%= checkFileCount.length %>
+        </span>
       </h2>
     </div>
 
     <!-- Your links -->
-    <h3 class="text-md text-purple-300 pt-11">links</h3>
-    <ul class="mt-6 mb-64">
+    <h3 class="text-md text-blue-200 pt-11">links</h3>
+    <ul class="mt-6 mb-64 items-center">
       <% if(findAllFileOFThisUser.length === 0) { %>
       <h2 class="text-red-500 text-center text-3xl w-full h-80">
         No data uploaded yet
@@ -55,23 +60,25 @@ file data -1. original file name
           <span class="text-yellow-500 mr-4 md:mr-10 file-index"
             ><%= index + 1 %>.</span
           >
+
+          <!-- w-[-webkit-fill-available] -->
           <span
-            class="text-purple-500 filename-display text-xs md:text-base w-[-webkit-fill-available] md:w-auto"
+            class="text-white filename-display inline-block md:text-base w-[190px] overflow-x-auto md:overflow-visible md:w-auto whitespace-nowrap border md:border-0 border-slate-600 rounded-xl h-7 py-1 px-2"
             title="<%=  file.originalFileName %>"
           >
             <%= file.originalFileName.length >= 20
             ?file.originalFileName.substring(0,20) + "..." :
             file.originalFileName %> -
             <small class="text-slate-400"><%= file.filename %></small>
-            <input
+            <!-- <input
               type="text"
               class="filename-input hidden"
               data-uuid="<%= file.uuid %>"
               value="<%= file.originalFileName %>"
-            />
+            /> -->
           </span>
           <span
-            class="text-green-400 md:text-base text-xs md:w-28 w-28 flex ml-2"
+            class="text-green-400 md:text-base text-sm md:w-28 w-28 flex ml-2"
             ><%= (file.size / 1024 / 1024).toFixed(2) %>
             <span class="pl-2"> mb</span>
           </span>

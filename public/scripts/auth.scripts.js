@@ -41,8 +41,10 @@ const confirmLogout = (callback) => {
   // Yes button for logout
   const logoutOkBtn = document.createElement("button");
   logoutOkBtn.innerText = "Yes";
-  logoutOkBtn.className =
-    "bg-yellow-500 text-black px-4 py-2 rounded-lg shadow hover:bg-yellow-600 transition";
+  logoutOkBtn.style.color = "white";
+  logoutOkBtn.style.backgroundColor = "black";
+  logoutOkBtn.style.padding = "8px 18px";
+  logoutOkBtn.style.borderRadius = " 10px";
   logoutOkBtn.addEventListener("click", () => {
     callback(true);
     document.body.removeChild(backdrop); // Remove the backdrop
@@ -52,7 +54,9 @@ const confirmLogout = (callback) => {
   const logoutCancelBtn = document.createElement("button");
   logoutCancelBtn.innerText = "No";
   logoutCancelBtn.style.color = "black";
-  logoutCancelBtn.style.backgroundColor = "#b06a7c";
+  logoutCancelBtn.style.border = "1px solid black";
+  logoutCancelBtn.style.backgroundColor = "black";
+  logoutCancelBtn.style.color = "white";
   logoutCancelBtn.className =
     "bg-gray-500 text-white px-4 py-2 rounded-lg shadow hover:bg-gray-600 transition";
   logoutCancelBtn.addEventListener("click", () => {
