@@ -16,7 +16,9 @@ const { showRouter } = require("../src/routes/show.routes.js");
 const { pageNotfoundRouter } = require("../src/routes/pageNotfound.routes.js");
 const { downloadRouter } = require("../src/routes/download.routes.js");
 const authUser = require("../src/middleware/auth.middleware.js");
-const { searchFileAndUSer } = require("../src/controllers/admin.controllers.js");
+const {
+  searchFileAndUSer,
+} = require("../src/controllers/admin.controllers.js");
 // const authRoles = require("../src/middleware/authRoles.middleware.js");
 /* cleanup - means delete the file after 24hrs */
 require("../src/utils/cleanup.utils.js");
@@ -26,8 +28,8 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "../views"));
 app.use(express.static(path.join(__dirname, "../public")));
 app.use(cookieParser());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: "16kb" }));
+app.use(express.urlencoded({ extended: true, limit: "16kb" }));
 app.use(cors());
 app.use(bodyParser.json());
 // ROUTES
